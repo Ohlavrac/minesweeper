@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:minesweeper/domain/entities/board_entity.dart';
 import 'package:minesweeper/domain/entities/menu_entity.dart';
 
 void main() {
@@ -25,4 +26,11 @@ void main() {
     int option = 55;
     expect(menu.selectGameMode(option), "error");
   });
+
+  /*test("Should return a Board for EASY mode", () {
+    MenuEntity menu = MenuEntity();
+    BoardEntity board = BoardEntity([], 8, 8);
+
+    expect(menu.createBoard("easy") == board, true);
+  });*/
 }
