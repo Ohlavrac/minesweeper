@@ -1,16 +1,12 @@
-# minesweeper
+# MineSweeper
+- Trabalho de Topicos Especiais em Computação, o presente trabalho refese a um campo minado com muitos testes...
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# Requisitos
+* O USUARIO deve selecionar dificuldade no menu do jogo
+* Se FACIL o tabuleiro tera 8x8 e 10 bombas
+* Se MEDIO o tabuleiro tera 10x16 e 30 bombas
+* Se DIFICIL o tabuleiro tera 24x24 e 100 bombas
+* Quando iniciar o jogo o tabuleiro deve iniciar sem nenhuma descoberta
+* Quando iniciar o jogo o timer deve comera em ZERO
+* Quando iniciar o jogo deve ser apresentado os pontos do USUARIO
+* Quando iniciar o jogo os pontos do USUARIO deve começar em ZERO
