@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:minesweeper/ui/screens/game_screen/game_screen.dart';
 import 'package:minesweeper/ui/screens/menu_screen/menu_screen.dart';
 
 class MyApp extends StatelessWidget {
@@ -11,6 +12,7 @@ class MyApp extends StatelessWidget {
       initialRoute: "/menu",
       routes: {
         "/menu" : (context) => const MenuScreen(),
+        "/game" : (context) => const GameScreen(),
       },
     );
   }
