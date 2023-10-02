@@ -35,7 +35,20 @@ class _GameScreenState extends State<GameScreen> {
           child: GridView.count(
             crossAxisCount: board.columns,
             children: List.generate(board.lines * board.columns, (index) {
-              return Container(child: Text("$index"), color: Colors.blue,);
+              return GestureDetector(
+                child: Container(
+                  height: 10,
+                  width: 10,
+                  //color: Colors.blue,
+                  decoration: BoxDecoration(
+                    color: Colors.blue,
+                    border: Border.all(
+                      color: Colors.black,
+                      width: 1
+                    )
+                  ),
+                ),
+              );
             }),
           ),
         ),
