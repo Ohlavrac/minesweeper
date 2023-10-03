@@ -24,5 +24,19 @@
     - Verificar se o tabuleiro tem 576 campos
 * Quando iniciar o jogo o tabuleiro deve iniciar sem nenhuma descoberta
 * Quando iniciar o jogo o timer deve comera em ZERO
-* Quando iniciar o jogo deve ser apresentado os pontos do USUARIO
-* Quando iniciar o jogo os pontos do USUARIO deve começar em ZERO
+* Quando iniciar o jogo deve ser apresentado as badeiras do USUARIO
+* Quando o USUARIO marcar um campo com a bandeira uma bandeira deve ser removida do contador de bandeiras
+    - Verificar se foi removido uma bandeira do contador [OK]
+    - Verificar e retornar um erro se o USUARIO tentar marcar uma bandeira quando o contador estiver em ZERO [OK]
+    - Verificar e retornar um erro se o USUARIO tentar marcar uma bandeira quando o contador estiver abaixo de ZERO [OK]
+* Quando o USUARIO remover a bandeira de um campo essa bandeira deve ser adicionada novamente ao contador
+    - Verificar se foi adicionada uma bandeira ao contador [OK]
+    - Veriricar e retornar um erro se o USUARIO tentar remover uma bandeira se o contador estiver no limite [OK]
+    - Verificar e retornar um erro se o USUARIO tentar remover uma bandeira se o contador estiver acima do limite [OK]
+* Quando o jogo iniciar os campos podem ser marcados por uma bandeira
+    - Verificar se o campo possui uma bandeira [OK]
+    - Verificar se o campo não possui uma bandeira [OK]
+    - Verificar se foi adicionado uma bandeira ao campo [OK]
+    - Verificar se foi removido uma bandeira do campo [OK]
+* Quando o jogo iniciar um campo aleatorio vai receber uma bomba
+* Quando o jogo iniciar um campo pode ser revelado
