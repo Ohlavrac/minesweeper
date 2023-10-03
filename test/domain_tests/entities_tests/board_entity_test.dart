@@ -1,40 +1,82 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:minesweeper/domain/entities/board_entity.dart';
+import 'package:minesweeper/domain/errors/flags_error.dart';
 
 void main() {
   test("Should return a board line for EASY mode", () {
-    BoardEntity board = BoardEntity([], 8, 8);
+    BoardEntity board =
+        BoardEntity(fields: [], lines: 8, columns: 8, flags: 10, bombs: 10);
 
     expect(board.getBoard().lines, 8);
   });
 
   test("Should return a board column for EASY mode", () {
-    BoardEntity board = BoardEntity([], 8, 8);
+    BoardEntity board =
+        BoardEntity(fields: [], lines: 8, columns: 8, flags: 10, bombs: 10);
 
     expect(board.getBoard().columns, 8);
   });
 
   test("Should return a board line for MEDIUM mode", () {
-    BoardEntity board = BoardEntity([], 10, 16);
+    BoardEntity board =
+        BoardEntity(fields: [], lines: 10, columns: 16, flags: 30, bombs: 30);
 
     expect(board.getBoard().lines, 10);
   });
 
   test("Should return a board column for MEDIUM mode", () {
-    BoardEntity board = BoardEntity([], 10, 16);
+    BoardEntity board =
+        BoardEntity(fields: [], lines: 10, columns: 16, flags: 30, bombs: 30);
 
     expect(board.getBoard().columns, 16);
   });
 
   test("Should return a board line for HARD mode", () {
-    BoardEntity board = BoardEntity([], 24, 24);
+    BoardEntity board =
+        BoardEntity(fields: [], lines: 24, columns: 24, flags: 100, bombs: 100);
 
     expect(board.getBoard().lines, 24);
   });
 
   test("Should return a board column for HARD mode", () {
-    BoardEntity board = BoardEntity([], 24, 24);
+    BoardEntity board =
+        BoardEntity(fields: [], lines: 24, columns: 24, flags: 100, bombs: 100);
 
     expect(board.getBoard().columns, 24);
+  });
+
+  test("Should remove flag from the counter", () {
+    BoardEntity board =
+        BoardEntity(fields: [], lines: 8, columns: 8, flags: 10, bombs: 10);
+
+    expect(board.removeFlagFromCounter(10), "9");
+  });
+
+  test("Should add flag from the counter", () {
+    BoardEntity board =
+        BoardEntity(fields: [], lines: 8, columns: 8, flags: 9, bombs: 10);
+
+    expect(board.addFlagInTheCounter(10), "10");
+  });
+
+  test("Should return FlagsCounterEmptyError if flags counter equals to 0", () {
+    BoardEntity board =
+        BoardEntity(fields: [], lines: 8, columns: 8, flags: 0, bombs: 10);
+
+    expect(board.removeFlagFromCounter(10), FlagsError.flagsCounterEmptyError.name);
+  });
+
+  test("Should return FlagsCounterEmptyError if flags counter minus tan to 0", () {
+    BoardEntity board =
+        BoardEntity(fields: [], lines: 8, columns: 8, flags: -1, bombs: 10);
+
+    expect(board.removeFlagFromCounter(10), FlagsError.flagsCounterEmptyError.name);
+  });
+
+  test("Should return FlagsCounterIsFull if flags counter max to limit", () {
+    BoardEntity board =
+        BoardEntity(fields: [], lines: 8, columns: 8, flags: 11, bombs: 10);
+
+    expect(board.addFlagInTheCounter(10), FlagsError.flagsCounterIsFull.name);
   });
 }

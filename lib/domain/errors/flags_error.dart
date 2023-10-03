@@ -1,0 +1,4 @@
+enum FlagsError {
+  flagsCounterEmptyError,
+  flagsCounterIsFull
+}

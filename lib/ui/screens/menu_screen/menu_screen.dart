@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:minesweeper/domain/entities/board_entity.dart';
 import 'package:minesweeper/domain/entities/menu_entity.dart';
 import 'package:minesweeper/ui/shared/app_colors.dart';
 import 'package:minesweeper/ui/shared/app_texts.dart';
@@ -10,6 +11,7 @@ class MenuScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     MenuEntity menu = MenuEntity();
+
     return Scaffold(
       backgroundColor: AppColors.backgroundcolor,
       body: Center(
@@ -19,17 +21,29 @@ class MenuScreen extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.only(bottom: 50),
-              child: Text("UltraMegaMineSweeper", style: AppText.title,),
+              child: Text(
+                "UltraMegaMineSweeper",
+                style: AppText.title,
+              ),
             ),
-            CustomMenuButtonWidget(title: "FACIL", onPressed: () {
-              Navigator.pushNamed(context, "/game", arguments: menu.selectGameMode(1));
-            }),
-            CustomMenuButtonWidget(title: "MEDIO", onPressed: () {
-              Navigator.pushNamed(context, "/game", arguments: menu.selectGameMode(2));
-            }),
-            CustomMenuButtonWidget(title: "DIFICIL", onPressed: () {
-              Navigator.pushNamed(context, "/game", arguments: menu.selectGameMode(3));
-            }),
+            CustomMenuButtonWidget(
+                title: "FACIL",
+                onPressed: () {
+                  Navigator.pushNamed(context, "/game",
+                      arguments: menu.createBoard("easy"));
+                }),
+            CustomMenuButtonWidget(
+                title: "MEDIO",
+                onPressed: () {
+                  Navigator.pushNamed(context, "/game",
+                      arguments: menu.createBoard("medium"));
+                }),
+            CustomMenuButtonWidget(
+                title: "DIFICIL",
+                onPressed: () {
+                  Navigator.pushNamed(context, "/game",
+                      arguments: menu.createBoard("hard"));
+                }),
           ],
         ),
       ),

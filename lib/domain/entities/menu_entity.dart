@@ -20,9 +20,11 @@ class MenuEntity {
 
   BoardEntity createBoard(String gamemode) {
     if (gamemode.toLowerCase() == "easy") {
-      return BoardEntity([], 8, 8);
+      return BoardEntity(fields: [],lines: 8,columns: 8, flags: 10, bombs: 10);
+    } else if (gamemode.toLowerCase() == "medium") {
+      return BoardEntity(fields: [],lines: 10,columns: 16, flags: 30, bombs: 30);
     } else {
-      return BoardEntity([], 24, 24);
+      return BoardEntity(fields: [],lines: 24,columns: 24, flags: 100, bombs: 100);
     }
   }
 }
