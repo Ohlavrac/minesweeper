@@ -1,8 +1,22 @@
 class FieldEntity {
   final bool hasBomb;
-  final bool isChecked;
+  bool isChecked;
   final bool wasRevelated;
   final int neighboringPumps;
 
-  FieldEntity(this.hasBomb, this.isChecked, this.wasRevelated, this.neighboringPumps);
+  FieldEntity(
+      {required this.hasBomb,
+      required this.isChecked,
+      required this.wasRevelated,
+      required this.neighboringPumps});
+
+  bool markField() {
+    if (isChecked == false) {
+      isChecked = true;
+    } else {
+      isChecked = false;
+    }
+
+    return isChecked;
+  }
 }
