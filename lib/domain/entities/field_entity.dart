@@ -15,11 +15,13 @@ class FieldEntity {
       required this.neighboringPumps});
 
   bool markField() {
-    if (isChecked == false) {
-      isChecked = true;
-    } else {
-      isChecked = false;
-    }
+    isChecked = true;
+
+    return isChecked;
+  }
+
+  bool removeFieldMark() {
+    isChecked = false;
 
     return isChecked;
   }
