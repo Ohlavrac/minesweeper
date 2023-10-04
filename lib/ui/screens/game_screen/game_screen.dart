@@ -65,14 +65,19 @@ class _GameScreenState extends State<GameScreen> {
                     } else {
                       print("NADA ACONTECE");
                     }
+                    print(board.fields[index].isChecked);
                   });
                 },
                 onDoubleTap: () {
                   setState(() {
-                    board.fields[index].markField();
-                    board.fields[index].isChecked == false
-                        ? board.addFlagInTheCounter(maxValue)
-                        : board.removeFlagFromCounter(maxValue);
+                    if (board.fields[index].isChecked == false &&
+                        board.flags != 0) {
+                      board.fields[index].markField();
+                      board.removeFlagFromCounter(maxValue);
+                    } else if (board.fields[index].isChecked == true && board.flags < maxValue) {
+                      board.addFlagInTheCounter(maxValue);
+                      board.fields[index].removeFieldMark();
+                    }
                   });
                 },
                 flag: board.fields[index].isChecked == false
