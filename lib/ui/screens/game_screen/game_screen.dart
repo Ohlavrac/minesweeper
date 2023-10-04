@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:minesweeper/domain/entities/board_entity.dart';
+import 'package:minesweeper/domain/entities/field_entity.dart';
 import 'package:minesweeper/ui/shared/app_colors.dart';
 import 'package:minesweeper/ui/shared/app_texts.dart';
+import 'package:minesweeper/ui/widgets/field_widget.dart';
 
 class GameScreen extends StatefulWidget {
   const GameScreen({super.key});
@@ -55,25 +57,30 @@ class _GameScreenState extends State<GameScreen> {
           child: GridView.count(
             crossAxisCount: board.columns,
             children: List.generate(board.lines * board.columns, (index) {
-              return GestureDetector(
-                onDoubleTap: () {
-                  setState(() {
-                    board.removeFlagFromCounter(maxValue);
-                  });
-                },
+              return FieldWidget(
                 onTap: () {
                   setState(() {
-                    board.addFlagInTheCounter(maxValue);
+                    if (board.fields[index].hasBomb == true) {
+                      print("BOOOOM");
+                    } else {
+                      print("NADA ACONTECE");
+                    }
                   });
                 },
-                child: Container(
-                  height: 10,
-                  width: 10,
-                  //color: Colors.blue,
-                  decoration: BoxDecoration(
-                      color: Colors.blue,
-                      border: Border.all(color: Colors.black, width: 1)),
-                ),
+                onDoubleTap: () {
+                  setState(() {
+                    board.fields[index].markField();
+                    board.fields[index].isChecked == false
+                        ? board.addFlagInTheCounter(maxValue)
+                        : board.removeFlagFromCounter(maxValue);
+                  });
+                },
+                flag: board.fields[index].isChecked == false
+                    ? Container()
+                    : const Icon(
+                        Icons.flag,
+                        color: Colors.red,
+                      ),
               );
             }),
           ),
