@@ -40,3 +40,10 @@
     - Verificar se foi removido uma bandeira do campo [OK]
 * Quando o jogo iniciar um campo aleatorio vai receber uma bomba
 * Quando o jogo iniciar um campo pode ser revelado
+* Quando um campo for marcado ele não pode ser desmarcado
+* Quando um campo tiver uma bandeira ele não pode ser revelado
+* Quando o USUARIO selecionar um campo com uma bomba o jogo acaba com derrota
+* Quando o USUARIO marcar todas as bombas de forma correta o jogo acaba com vitoria
+* Quando o USUARIO marcar um campo sem bombas deve ser revelado se existe alguma bomba adijacente a ele
+* Quando o jogo acabar deve ser salvo um resultado da partida em um historico
+* O USUARIO deve ter acesso ao historico das partidas
