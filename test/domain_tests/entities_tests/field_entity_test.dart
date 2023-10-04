@@ -42,7 +42,7 @@ void main() {
         wasRevelated: false,
         neighboringPumps: 0);
 
-    expect(field.markField(), false);
+    expect(field.removeFieldMark(), false);
   });
 
   test("Should return generate 64 EntityFieds for easy mode", () {
