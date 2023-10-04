@@ -2,7 +2,7 @@ import 'package:minesweeper/domain/entities/field_entity.dart';
 import 'package:minesweeper/domain/errors/flags_error.dart';
 
 class BoardEntity {
-  final List<FieldEntity> fields;
+  List<FieldEntity> fields;
   final int lines;
   final int columns;
   int bombs;
