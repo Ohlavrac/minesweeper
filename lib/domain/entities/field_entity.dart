@@ -1,5 +1,9 @@
+import 'dart:math';
+
+import 'board_entity.dart';
+
 class FieldEntity {
-  final bool hasBomb;
+  bool hasBomb;
   bool isChecked;
   final bool wasRevelated;
   final int neighboringPumps;
@@ -18,5 +22,24 @@ class FieldEntity {
     }
 
     return isChecked;
+  }
+
+  List<FieldEntity> generateFields(BoardEntity board) {
+    board.fields = List.generate(board.lines * board.columns, (index) {
+      return FieldEntity(
+          hasBomb: false,
+          isChecked: false,
+          wasRevelated: false,
+          neighboringPumps: 0);
+    });
+
+    for (int c = 0; c < board.bombs; c++) {
+      var intValue = Random().nextInt(board.fields.length);
+      if (board.fields[intValue].hasBomb == false) {
+        board.fields[intValue].hasBomb = true;
+      }
+    }
+
+    return board.fields;
   }
 }
