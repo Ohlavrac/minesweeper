@@ -47,19 +47,19 @@ void main() {
 
   test("Should return generate 64 EntityFieds for easy mode", () {
     BoardEntity board =
-        BoardEntity(fields: [], lines: 8, columns: 8, flags: 10, bombs: 10);
+        BoardEntity(fields: [], lines: 8, columns: 8, flags: 10, bombs: 10, timer: 0);
     expect(field.generateFields(board).length, 64);
   });
 
   test("Should return generate 100 EntityFieds for medium mode", () {
     BoardEntity board =
-        BoardEntity(fields: [], lines: 10, columns: 16, flags: 30, bombs: 30);
+        BoardEntity(fields: [], lines: 10, columns: 16, flags: 30, bombs: 30, timer: 0);
     expect(field.generateFields(board).length, 160);
   });
 
   test("Should return generate 576 EntityFieds for hard mode", () {
     BoardEntity board =
-        BoardEntity(fields: [], lines: 24, columns: 24, flags: 100, bombs: 100);
+        BoardEntity(fields: [], lines: 24, columns: 24, flags: 100, bombs: 100, timer: 0);
     expect(field.generateFields(board).length, 576);
   });
 }

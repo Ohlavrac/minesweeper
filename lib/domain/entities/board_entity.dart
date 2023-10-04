@@ -7,13 +7,15 @@ class BoardEntity {
   final int columns;
   int bombs;
   int flags;
+  int timer;
 
   BoardEntity(
       {required this.fields,
       required this.lines,
       required this.columns,
       required this.flags,
-      required this.bombs});
+      required this.bombs,
+      required this.timer});
 
   BoardEntity getBoard() {
     return BoardEntity(
@@ -21,7 +23,8 @@ class BoardEntity {
         lines: lines,
         columns: columns,
         flags: flags,
-        bombs: bombs);
+        bombs: bombs,
+        timer: timer);
   }
 
   //MELHORAR ISSO

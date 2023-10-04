@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:minesweeper/domain/entities/board_entity.dart';
 import 'package:minesweeper/domain/entities/menu_entity.dart';
 import 'package:minesweeper/ui/shared/app_colors.dart';
 import 'package:minesweeper/ui/shared/app_texts.dart';
