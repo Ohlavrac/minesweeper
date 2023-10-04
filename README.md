@@ -7,6 +7,9 @@
     - Verificar se foi selecionado o modo medio [OK]
     - Verificar se foi selecionado o modo dificil [OK]
     - Verificar se o usuario selecionou um modo invalido [OK]
+    - Verificar se o botão de modo facil foi criado no menu [OK]
+    - Verificar se o botão de modo medio foi criado no menu [OK]
+    - Verificar se o botão de modo dificil foi criado no menu [OK]
 * Se FACIL o tabuleiro tera 8x8 e 10 bombas
     - Verificar se foi criado um tabuleiro com o tamanho correto
     - Verificar se o tabuleiro tem 8 linhas [OK]
@@ -24,6 +27,7 @@
     - Verificar se o tabuleiro tem 576 campos
 * Quando iniciar o jogo o tabuleiro deve iniciar sem nenhuma descoberta
 * Quando iniciar o jogo o timer deve comera em ZERO
+    - Verificar se o timer esta com 0 segundos ao iniciar o jogo [OK]
 * Quando iniciar o jogo deve ser apresentado as badeiras do USUARIO
 * Quando o USUARIO marcar um campo com a bandeira uma bandeira deve ser removida do contador de bandeiras
     - Verificar se foi removido uma bandeira do contador [OK]
