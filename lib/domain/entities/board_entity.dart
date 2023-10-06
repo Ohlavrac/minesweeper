@@ -45,4 +45,12 @@ class BoardEntity {
       return FlagsError.flagsCounterIsFull.name;
     }
   }
+
+  int getLineNumber(int column, int position) {
+    return (position / columns).floor();
+  }
+
+  int getColumnNumber(int column, int position) {
+    return (position % columns);
+  }
 }
