@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:minesweeper/domain/entities/board_entity.dart';
+import 'package:minesweeper/domain/entities/field_entity.dart';
 import 'package:minesweeper/domain/errors/flags_error.dart';
 
 void main() {
@@ -87,5 +88,21 @@ void main() {
     BoardEntity board = BoardEntity(
         fields: [], lines: 8, columns: 8, flags: 11, bombs: 10, timer: 0);
     expect(board.timer, 0);
+  });
+
+  test("Should return line and column of a select field", () {
+    BoardEntity board = BoardEntity(
+        fields: [], lines: 8, columns: 8, flags: 11, bombs: 10, timer: 0);
+    FieldEntity fieldEntity = FieldEntity(
+        hasBomb: false,
+        isChecked: false,
+        wasRevelated: false,
+        neighboringPumps: 0);
+
+    fieldEntity.generateFields(board);
+    int lineNumber = board.getLineNumber(board.columns, 5);
+    int columnNumber = board.getColumnNumber(board.columns, 5);
+
+    expect([lineNumber, columnNumber], [0, 5]);
   });
 }
