@@ -27,6 +27,7 @@ class FieldEntity {
   }
 
   List<FieldEntity> generateFields(BoardEntity board) {
+    int bombCount = 0;
     board.fields = List.generate(board.lines * board.columns, (index) {
       return FieldEntity(
           hasBomb: false,
@@ -35,10 +36,13 @@ class FieldEntity {
           neighboringPumps: 0);
     });
 
-    for (int c = 0; c < board.bombs; c++) {
+    while (bombCount != board.bombs) {
       var intValue = Random().nextInt(board.fields.length);
       if (board.fields[intValue].hasBomb == false) {
         board.fields[intValue].hasBomb = true;
+        bombCount++;
+      } else {
+        continue;
       }
     }
 
