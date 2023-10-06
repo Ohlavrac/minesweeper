@@ -7,25 +7,31 @@
     - Verificar se foi selecionado o modo medio [OK]
     - Verificar se foi selecionado o modo dificil [OK]
     - Verificar se o usuario selecionou um modo invalido [OK]
-    - Verificar se o botão de modo facil foi criado no menu [OK]
-    - Verificar se o botão de modo medio foi criado no menu [OK]
-    - Verificar se o botão de modo dificil foi criado no menu [OK]
+    - Verificar se o botão de modo facil foi criado no menu [UI] [OK]
+    - Verificar se o botão de modo medio foi criado no menu [UI] [OK]
+    - Verificar se o botão de modo dificil foi criado no menu [UI] [OK]
 * Se FACIL o tabuleiro tera 8x8 e 10 bombas
     - Verificar se foi criado um tabuleiro com o tamanho correto
     - Verificar se o tabuleiro tem 8 linhas [OK]
     - Verificar se o tabuleiro tem 8 colunas [OK]
-    - Verificar se o tabuleiro tem 64 campos
+    - Verificar se o tabuleiro tem 64 campos [OK] 
+    - Verificar se foram criadas 10 bombas [OK]
 * Se MEDIO o tabuleiro tera 10x16 e 30 bombas
     - Verificar se foi criado um tabuleiro com o tamanho correto
     - Verificar se o tabuleiro tem 10 linhas [OK]
     - Verificar se o tabuleiro tem 16 colunas [OK]
-    - Verificar se o tabuleiro tem 160 campos
+    - Verificar se o tabuleiro tem 160 campos [OK]
+    - Verificar se foram criadas 30 bombas [OK]
 * Se DIFICIL o tabuleiro tera 24x24 e 100 bombas
     - Verificar se foi criado um tabuleiro com o tamanho correto
     - Verificar se o tabuleiro tem 24 linhas [OK]
     - Verificar se o tabuleiro tem 24 colunas [OK]
-    - Verificar se o tabuleiro tem 576 campos
-* Quando iniciar o jogo o tabuleiro deve iniciar sem nenhuma descoberta
+    - Verificar se o tabuleiro tem 576 campos [OK]
+    - Verificar se foram criadas 100 bombas [OK]
+* Quando iniciar o jogo o tabuleiro deve iniciar limpo
+    - Verificar se todos os campos do tabuleiro não estão descobertos
+    - Verificar se não existe bandeiras no tabuleiro
+    - Verificar se não existe bombas ativas no tabuleiro
 * Quando iniciar o jogo o timer deve comera em ZERO
     - Verificar se o timer esta com 0 segundos ao iniciar o jogo [OK]
 * Quando iniciar o jogo deve ser apresentado as badeiras do USUARIO
@@ -43,11 +49,29 @@
     - Verificar se foi adicionado uma bandeira ao campo [OK]
     - Verificar se foi removido uma bandeira do campo [OK]
 * Quando o jogo iniciar um campo aleatorio vai receber uma bomba
+    - Verificar se um campo recebeu uma bomba
 * Quando o jogo iniciar um campo pode ser revelado
-* Quando um campo for marcado ele não pode ser desmarcado
+    - Verificar se um campo foi marcado como revelado
+* Quando um campo for verificado ele não pode ser desverificado
+    - Verificar se o campo continua verificado mesmo apos ser "desverificado"
+    - Se o campo for deverificado retornar Erro UnmarkedFieldError
 * Quando um campo tiver uma bandeira ele não pode ser revelado
+    - Verificar se o campo com bandeira foi revelado
 * Quando o USUARIO selecionar um campo com uma bomba o jogo acaba com derrota
+    - Verificar se o campo selecionado possui uma bomba
+    - Verificar se o campo selecionado não possui uma bomba
+    - Verificar se o jogo acabou quando a bomba foi selecionada
 * Quando o USUARIO marcar todas as bombas de forma correta o jogo acaba com vitoria
+    - Verificar se todas as bombas foram encontradas
+    - Verificar se todos os campos sem bombas foram descobertos
 * Quando o USUARIO marcar um campo sem bombas deve ser revelado se existe alguma bomba adijacente a ele
+    - Verificar se as bombas adjacentes foram reveladas
+    - Verificar se quando não tiver bomba nos campos adjacentes os campos vão abrir automaticamente
 * Quando o jogo acabar deve ser salvo um resultado da partida em um historico
+    - Verificar se foi retornado fim de jogo
+    - Veriricar se foi retornado o historico salvo
 * O USUARIO deve ter acesso ao historico das partidas
+    - Veriricar e retornar a lista de historico
+    - Verificar e retornar Lista Vazia se não tiver nada salvo
+* Quando um campo for selecionado deve ser possivel recuber a linha e coluna do mesmo
+    - Verificar se quando um campo for selecionado é retornado o valor da linha e da coluna [OK]

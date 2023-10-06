@@ -54,40 +54,48 @@ class _GameScreenState extends State<GameScreen> {
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
         child: Center(
-          child: GridView.count(
-            crossAxisCount: board.columns,
-            children: List.generate(board.lines * board.columns, (index) {
+          child: GridView.builder(
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: board.columns,
+            ),
+            itemBuilder: (context, position) {
+              int lineNumber = board.getLineNumber(board.columns, position);
+              int columnNumber = board.getColumnNumber(board.columns, position);
+
               return FieldWidget(
                 onTap: () {
                   setState(() {
-                    if (board.fields[index].hasBomb == true) {
+                    //print("ROW[$lineNumber][$columnNumber]COLUMN");
+                    if (board.fields[position].hasBomb == true) {
                       print("BOOOOM");
                     } else {
-                      print("NADA ACONTECE");
                     }
-                    print(board.fields[index].isChecked);
                   });
                 },
                 onDoubleTap: () {
                   setState(() {
-                    if (board.fields[index].isChecked == false &&
+                    if (board.fields[position].isChecked == false &&
                         board.flags != 0) {
-                      board.fields[index].markField();
+                      board.fields[position].markField();
                       board.removeFlagFromCounter(maxValue);
-                    } else if (board.fields[index].isChecked == true && board.flags < maxValue) {
+                    } else if (board.fields[position].isChecked == true &&
+                        board.flags < maxValue) {
                       board.addFlagInTheCounter(maxValue);
-                      board.fields[index].removeFieldMark();
+                      board.fields[position].removeFieldMark();
                     }
                   });
                 },
-                flag: board.fields[index].isChecked == false
+                flag: board.fields[position].isChecked == false
                     ? Container()
                     : const Icon(
                         Icons.flag,
                         color: Colors.red,
                       ),
               );
-            }),
+            },
+            itemCount: board.lines * board.columns,
           ),
         ),
       ),
