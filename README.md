@@ -29,8 +29,12 @@
     - Verificar se o tabuleiro tem 576 campos [OK]
     - Verificar se foram criadas 100 bombas [OK]
 * Quando iniciar o jogo o tabuleiro deve iniciar limpo
-    - Verificar se todos os campos do tabuleiro não estão descobertos
-    - Verificar se não existe bandeiras no tabuleiro
+    - Verificar se os 64 campos do modo facil foram criados de forma limpa [OK]
+    - Verificar se os 160 campos do modo medio foram criados de forma limpa [OK]
+    - Verificar se os 576 campos do modo dificil foram criados de forma limpa [OK]
+    - Verificar se nenhum dos 64 campos do modo facil possui bandeira quando o tabuliro for criado [OK]
+    - Verificar se nenhum dos 160 campos do modo medio possui bandeira quando o tabuliro for criado [OK]
+    - Verificar se nenhum dos 576 campos do modo dificil possui bandeira quando o tabuliro for criado [OK]
     - Verificar se não existe bombas ativas no tabuleiro
 * Quando iniciar o jogo o timer deve comera em ZERO
     - Verificar se o timer esta com 0 segundos ao iniciar o jogo [OK]
