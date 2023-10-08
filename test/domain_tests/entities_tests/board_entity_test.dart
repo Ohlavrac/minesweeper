@@ -179,4 +179,100 @@ void main() {
 
     expect(numOfBombs, 100);
   });
+
+  test("Should return 64 undercoverd fields when board start easy mode", () {
+    BoardEntity board = BoardEntity(
+        fields: [], lines: 24, columns: 24, flags: 100, bombs: 100, timer: 0);
+
+    fieldEntity.generateFields(board);
+    int numberOfUndiscoveredFields = 0;
+
+    for (int c = 0; c < board.fields.length; c++) {
+      if (board.fields[c].wasRevelated == false) {
+        numberOfUndiscoveredFields++;
+      }
+    }
+
+    expect(numberOfUndiscoveredFields, board.fields.length);
+  });
+
+  test("Should return 160 undercoverd fields when board start medium mode", () {
+    BoardEntity board = BoardEntity(
+        fields: [], lines: 24, columns: 24, flags: 100, bombs: 100, timer: 0);
+
+    fieldEntity.generateFields(board);
+    int numberOfUndiscoveredFields = 0;
+
+    for (int c = 0; c < board.fields.length; c++) {
+      if (board.fields[c].wasRevelated == false) {
+        numberOfUndiscoveredFields++;
+      }
+    }
+
+    expect(numberOfUndiscoveredFields, board.fields.length);
+  });
+
+  test("Should return 576 undercoverd fields when board start hard mode", () {
+    BoardEntity board = BoardEntity(
+        fields: [], lines: 24, columns: 24, flags: 100, bombs: 100, timer: 0);
+
+    fieldEntity.generateFields(board);
+    int numberOfUndiscoveredFields = 0;
+
+    for (int c = 0; c < board.fields.length; c++) {
+      if (board.fields[c].wasRevelated == false) {
+        numberOfUndiscoveredFields++;
+      }
+    }
+
+    expect(numberOfUndiscoveredFields, board.fields.length);
+  });
+
+  test("Should return 64 easy mode fields not marked with a flag", () {
+    BoardEntity board = BoardEntity(
+        fields: [], lines: 24, columns: 24, flags: 100, bombs: 100, timer: 0);
+
+    fieldEntity.generateFields(board);
+    int numberOfUnmarkedFields = 0;
+
+    for (int c = 0; c < board.fields.length; c++) {
+      if (board.fields[c].isChecked == false) {
+        numberOfUnmarkedFields++;
+      }
+    }
+
+    expect(numberOfUnmarkedFields, board.fields.length);
+  });
+
+  test("Should return 160 medium mode fields not marked with a flag", () {
+    BoardEntity board = BoardEntity(
+        fields: [], lines: 24, columns: 24, flags: 100, bombs: 100, timer: 0);
+
+    fieldEntity.generateFields(board);
+    int numberOfUnmarkedFields = 0;
+
+    for (int c = 0; c < board.fields.length; c++) {
+      if (board.fields[c].isChecked == false) {
+        numberOfUnmarkedFields++;
+      }
+    }
+
+    expect(numberOfUnmarkedFields, board.fields.length);
+  });
+
+  test("Should return 576 hard mode fields not marked with a flag", () {
+    BoardEntity board = BoardEntity(
+        fields: [], lines: 24, columns: 24, flags: 100, bombs: 100, timer: 0);
+
+    fieldEntity.generateFields(board);
+    int numberOfUnmarkedFields = 0;
+
+    for (int c = 0; c < board.fields.length; c++) {
+      if (board.fields[c].isChecked == false) {
+        numberOfUnmarkedFields++;
+      }
+    }
+
+    expect(numberOfUnmarkedFields, board.fields.length);
+  });
 }
