@@ -20,6 +20,7 @@ class _GameScreenState extends State<GameScreen> {
 
     //INVES DE USAR O NUMERO MAXIMO DE BANDEIRA POSSO USAR O NUMERO MAXIMO DE BOMBAS
     int maxValue = board.bombs;
+    bool gamerunning = true;
 
     return Scaffold(
       backgroundColor: AppColors.backgroundcolor,
@@ -67,11 +68,13 @@ class _GameScreenState extends State<GameScreen> {
               return FieldWidget(
                 onTap: () {
                   setState(() {
-                    //print("ROW[$lineNumber][$columnNumber]COLUMN");
-                    if (board.fields[position].hasBomb == true) {
-                      print("BOOOOM");
-                    } else {
-                    }
+                    if (board.checkIfHasFlag(position)) {
+                      if (board.reveleField(position)) {
+                        print("BOOM");
+                      } else {
+                        print("Nada acontece");
+                      }
+                    } else {}
                   });
                 },
                 onDoubleTap: () {

@@ -230,7 +230,7 @@ void main() {
 
   test("Should return 64 easy mode fields not marked with a flag", () {
     BoardEntity board = BoardEntity(
-        fields: [], lines: 24, columns: 24, flags: 100, bombs: 100, timer: 0);
+        fields: [], lines: 8, columns: 8, flags: 10, bombs: 10, timer: 0);
 
     fieldEntity.generateFields(board);
     int numberOfUnmarkedFields = 0;
@@ -246,7 +246,7 @@ void main() {
 
   test("Should return 160 medium mode fields not marked with a flag", () {
     BoardEntity board = BoardEntity(
-        fields: [], lines: 24, columns: 24, flags: 100, bombs: 100, timer: 0);
+        fields: [], lines: 10, columns: 16, flags: 30, bombs: 30, timer: 0);
 
     fieldEntity.generateFields(board);
     int numberOfUnmarkedFields = 0;
@@ -274,5 +274,26 @@ void main() {
     }
 
     expect(numberOfUnmarkedFields, board.fields.length);
+  });
+
+  test("Should return false when player try revel a fild with a flag", () {
+    BoardEntity board = BoardEntity(
+        fields: [], lines: 8, columns: 8, flags: 10, bombs: 10, timer: 0);
+
+    fieldEntity.generateFields(board);
+
+    board.fields[5].isChecked = true;
+
+    expect(board.checkIfHasFlag(5), false);
+  });
+
+  test("Should return true when player select a field with a bomb", () {
+    BoardEntity board = BoardEntity(
+        fields: [], lines: 8, columns: 8, flags: 10, bombs: 10, timer: 0);
+
+    fieldEntity.generateFields(board);
+    board.fields[5].hasBomb = true;
+
+    expect(board.reveleField(5), true);
   });
 }

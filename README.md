@@ -35,7 +35,6 @@
     - Verificar se nenhum dos 64 campos do modo facil possui bandeira quando o tabuliro for criado [OK]
     - Verificar se nenhum dos 160 campos do modo medio possui bandeira quando o tabuliro for criado [OK]
     - Verificar se nenhum dos 576 campos do modo dificil possui bandeira quando o tabuliro for criado [OK]
-    - Verificar se não existe bombas ativas no tabuleiro
 * Quando iniciar o jogo o timer deve comera em ZERO
     - Verificar se o timer esta com 0 segundos ao iniciar o jogo [OK]
 * Quando iniciar o jogo deve ser apresentado as badeiras do USUARIO
@@ -60,7 +59,7 @@
     - Verificar se o campo continua verificado mesmo apos ser "desverificado"
     - Se o campo for deverificado retornar Erro UnmarkedFieldError
 * Quando um campo tiver uma bandeira ele não pode ser revelado
-    - Verificar se o campo com bandeira foi revelado
+    - Verificar se o campo com bandeira foi revelado [OK]
 * Quando o USUARIO selecionar um campo com uma bomba o jogo acaba com derrota
     - Verificar se o campo selecionado possui uma bomba
     - Verificar se o campo selecionado não possui uma bomba

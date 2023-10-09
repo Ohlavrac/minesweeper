@@ -53,4 +53,20 @@ class BoardEntity {
   int getColumnNumber(int column, int position) {
     return (position % columns);
   }
+
+  bool checkIfHasFlag(int position) {
+    if (fields[position].isChecked == true) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  bool reveleField(int position) {
+    if (fields[position].hasBomb == true) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
