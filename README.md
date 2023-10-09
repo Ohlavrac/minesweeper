@@ -61,8 +61,8 @@
 * Quando um campo tiver uma bandeira ele não pode ser revelado
     - Verificar se o campo com bandeira foi revelado [OK]
 * Quando o USUARIO selecionar um campo com uma bomba o jogo acaba com derrota
-    - Verificar se o campo selecionado possui uma bomba
-    - Verificar se o campo selecionado não possui uma bomba
+    - Verificar se o campo selecionado possui uma bomba [OK]
+    - Verificar se o campo selecionado não possui uma bomba [OK]
     - Verificar se o jogo acabou quando a bomba foi selecionada
 * Quando o USUARIO marcar todas as bombas de forma correta o jogo acaba com vitoria
     - Verificar se todas as bombas foram encontradas

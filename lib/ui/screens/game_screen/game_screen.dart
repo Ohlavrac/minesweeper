@@ -70,7 +70,22 @@ class _GameScreenState extends State<GameScreen> {
                   setState(() {
                     if (board.checkIfHasFlag(position)) {
                       if (board.reveleField(position)) {
-                        print("BOOM");
+                        showDialog(
+                            context: context,
+                            builder: (context) {
+                              return AlertDialog(
+                                title: const Text("FIM DE JOGO"),
+                                content: const Text("Vocé pisou em uma mina."),
+                                actions: [
+                                  ElevatedButton(
+                                      onPressed: () {
+                                        Navigator.pushReplacementNamed(
+                                            context, "/menu");
+                                      },
+                                      child: const Text("Voltar para o menu"))
+                                ],
+                              );
+                            });
                       } else {
                         print("Nada acontece");
                       }
