@@ -296,4 +296,14 @@ void main() {
 
     expect(board.reveleField(5), true);
   });
+
+  test("Should return false when player select a field without a bomb", () {
+    BoardEntity board = BoardEntity(
+        fields: [], lines: 8, columns: 8, flags: 10, bombs: 10, timer: 0);
+
+    fieldEntity.generateFields(board);
+    board.fields[5].hasBomb = false;
+
+    expect(board.reveleField(5), false);
+  });
 }
