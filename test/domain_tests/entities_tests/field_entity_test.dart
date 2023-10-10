@@ -47,19 +47,19 @@ void main() {
 
   test("Should return generate 64 EntityFieds for easy mode", () {
     BoardEntity board = BoardEntity(
-        fields: [], lines: 8, columns: 8, flags: 10, bombs: 10, timer: 0);
+        fields: [], lines: 8, columns: 8, flags: 10, bombs: 10, timer: 0, fieldsOpen: []);
     expect(field.generateFields(board).length, 64);
   });
 
   test("Should return generate 100 EntityFieds for medium mode", () {
     BoardEntity board = BoardEntity(
-        fields: [], lines: 10, columns: 16, flags: 30, bombs: 30, timer: 0);
+        fields: [], lines: 10, columns: 16, flags: 30, bombs: 30, timer: 0, fieldsOpen: []);
     expect(field.generateFields(board).length, 160);
   });
 
   test("Should return generate 576 EntityFieds for hard mode", () {
     BoardEntity board = BoardEntity(
-        fields: [], lines: 24, columns: 24, flags: 100, bombs: 100, timer: 0);
+        fields: [], lines: 24, columns: 24, flags: 100, bombs: 100, timer: 0, fieldsOpen: []);
     expect(field.generateFields(board).length, 576);
   });
 
@@ -67,7 +67,7 @@ void main() {
   
   test("Should return 0 if the field dont have nearby bombs", () {
     BoardEntity board = BoardEntity(
-        fields: [], lines: 8, columns: 8, flags: 10, bombs: 10, timer: 0);
+        fields: [], lines: 8, columns: 8, flags: 10, bombs: 10, timer: 0, fieldsOpen: []);
     field.generateFields(board);
     board.fields[7].neighboringPumps = 0;
     expect(board.fields[7].neighboringPumps, 0);
@@ -75,7 +75,7 @@ void main() {
 
   test("Should return 1 if the field have 1 nearby bombs", () {
     BoardEntity board = BoardEntity(
-        fields: [], lines: 8, columns: 8, flags: 10, bombs: 10, timer: 0);
+        fields: [], lines: 8, columns: 8, flags: 10, bombs: 10, timer: 0, fieldsOpen: []);
     field.generateFields(board);
     board.fields[7].neighboringPumps = 1;
     expect(board.fields[7].neighboringPumps, 1);
@@ -83,7 +83,7 @@ void main() {
 
   test("Should return 2 if the field have 2 nearby bombs", () {
     BoardEntity board = BoardEntity(
-        fields: [], lines: 8, columns: 8, flags: 10, bombs: 10, timer: 0);
+        fields: [], lines: 8, columns: 8, flags: 10, bombs: 10, timer: 0, fieldsOpen: []);
     field.generateFields(board);
     board.fields[7].neighboringPumps = 2;
     expect(board.fields[7].neighboringPumps, 2);
@@ -91,7 +91,7 @@ void main() {
 
   test("Should return 3 if the field have 3 nearby bombs", () {
     BoardEntity board = BoardEntity(
-        fields: [], lines: 8, columns: 8, flags: 10, bombs: 10, timer: 0);
+        fields: [], lines: 8, columns: 8, flags: 10, bombs: 10, timer: 0, fieldsOpen: []);
     field.generateFields(board);
     board.fields[7].neighboringPumps = 3;
     expect(board.fields[7].neighboringPumps, 3);
@@ -99,7 +99,7 @@ void main() {
 
   test("Should return 4 if the field have 4 nearby bombs", () {
     BoardEntity board = BoardEntity(
-        fields: [], lines: 8, columns: 8, flags: 10, bombs: 10, timer: 0);
+        fields: [], lines: 8, columns: 8, flags: 10, bombs: 10, timer: 0, fieldsOpen: []);
     field.generateFields(board);
     board.fields[7].neighboringPumps = 4;
     expect(board.fields[7].neighboringPumps, 4);
@@ -107,7 +107,7 @@ void main() {
 
   test("Should return 5 if the field have 5 nearby bombs", () {
     BoardEntity board = BoardEntity(
-        fields: [], lines: 8, columns: 8, flags: 10, bombs: 10, timer: 0);
+        fields: [], lines: 8, columns: 8, flags: 10, bombs: 10, timer: 0, fieldsOpen: []);
     field.generateFields(board);
     board.fields[7].neighboringPumps = 0;
     expect(board.fields[7].neighboringPumps, 0);
@@ -115,7 +115,7 @@ void main() {
 
   test("Should return 6 if the field have 6 nearby bombs", () {
     BoardEntity board = BoardEntity(
-        fields: [], lines: 8, columns: 8, flags: 10, bombs: 10, timer: 0);
+        fields: [], lines: 8, columns: 8, flags: 10, bombs: 10, timer: 0, fieldsOpen: []);
     field.generateFields(board);
     board.fields[7].neighboringPumps = 6;
     expect(board.fields[7].neighboringPumps, 6);
@@ -123,7 +123,7 @@ void main() {
 
   test("Should return 7 if the field have 7 nearby bombs", () {
     BoardEntity board = BoardEntity(
-        fields: [], lines: 8, columns: 8, flags: 10, bombs: 10, timer: 0);
+        fields: [], lines: 8, columns: 8, flags: 10, bombs: 10, timer: 0, fieldsOpen: []);
     field.generateFields(board);
     board.fields[7].neighboringPumps = 7;
     expect(board.fields[7].neighboringPumps, 7);
@@ -131,7 +131,7 @@ void main() {
 
   test("Should return 8 if the field have 8 nearby bombs", () {
     BoardEntity board = BoardEntity(
-        fields: [], lines: 8, columns: 8, flags: 10, bombs: 10, timer: 0);
+        fields: [], lines: 8, columns: 8, flags: 10, bombs: 10, timer: 0, fieldsOpen: []);
     field.generateFields(board);
     board.fields[7].neighboringPumps = 8;
     expect(board.fields[7].neighboringPumps, 8);

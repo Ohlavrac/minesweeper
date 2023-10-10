@@ -6,7 +6,7 @@ import 'package:minesweeper/ui/widgets/custom_menu_button_widget.dart';
 void main() {
   testWidgets("Verify if exist a easy mode button in the menu", (widgetTester) async {
     await widgetTester.pumpWidget(const MaterialApp(home: MenuScreen(),));
-    await widgetTester.pump();
+    //await widgetTester.pump();
 
     final customButtomEasyMode = find.widgetWithText(CustomMenuButtonWidget, "FACIL");
 

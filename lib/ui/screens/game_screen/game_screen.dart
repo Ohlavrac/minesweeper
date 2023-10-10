@@ -84,7 +84,13 @@ class _GameScreenState extends State<GameScreen> {
                               );
                             });
                       } else {
-                        print("Nada acontece");
+                        /*int line = board.getLineNumber(board.columns, position);
+                        int column = board.getColumnNumber(board.columns, position);
+                        if (board.getLineNumber(board.columns, position) > 0) {
+                          if (board.fields[((line-1) * board.columns + column)].hasBomb == false &&) {
+
+                          }
+                        }*/
                       }
                     } else {}
                   });
