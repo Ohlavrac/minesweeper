@@ -8,6 +8,7 @@ class BoardEntity {
   int bombs;
   int flags;
   int timer;
+  List<bool> fieldsOpen;
 
   BoardEntity(
       {required this.fields,
@@ -15,7 +16,8 @@ class BoardEntity {
       required this.columns,
       required this.flags,
       required this.bombs,
-      required this.timer});
+      required this.timer,
+      required this.fieldsOpen});
 
   BoardEntity getBoard() {
     return BoardEntity(
@@ -24,7 +26,8 @@ class BoardEntity {
         columns: columns,
         flags: flags,
         bombs: bombs,
-        timer: timer);
+        timer: timer,
+        fieldsOpen: fieldsOpen);
   }
 
   //MELHORAR ISSO
@@ -68,5 +71,11 @@ class BoardEntity {
     } else {
       return false;
     }
+  }
+
+  void createListOpenFields() {
+    fieldsOpen = List<bool>.generate(lines * columns, (index) {
+      return false;
+    });
   }
 }
