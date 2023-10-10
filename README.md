@@ -68,7 +68,15 @@
     - Verificar se todas as bombas foram encontradas
     - Verificar se todos os campos sem bombas foram descobertos
 * Quando o USUARIO marcar um campo sem bombas deve ser revelado se existe alguma bomba adijacente a ele
-    - Verificar se as bombas adjacentes foram reveladas
+    - Verificar se é retornado 0 caso o campo revelado não possua bombas vizinhas [OK]
+    - Verificar se é retornado 1 caso o campo revelado possua possua bombas vizinhas [OK]
+    - Verificar se é retornado 2 caso o campo revelado possua possua bombas vizinhas [OK]
+    - Verificar se é retornado 3 caso o campo revelado possua possua bombas vizinhas [OK]
+    - Verificar se é retornado 4 caso o campo revelado possua possua bombas vizinhas [OK]
+    - Verificar se é retornado 5 caso o campo revelado possua possua bombas vizinhas [OK]
+    - Verificar se é retornado 6 caso o campo revelado possua possua bombas vizinhas [OK]
+    - Verificar se é retornado 7 caso o campo revelado possua possua bombas vizinhas [OK]
+    - Verificar se é retornado 8 caso o campo revelado possua possua bombas vizinhas [OK]
     - Verificar se quando não tiver bomba nos campos adjacentes os campos vão abrir automaticamente
 * Quando o jogo acabar deve ser salvo um resultado da partida em um historico
     - Verificar se foi retornado fim de jogo

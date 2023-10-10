@@ -63,6 +63,8 @@ void main() {
     expect(field.generateFields(board).length, 576);
   });
 
+  //VERIFICAR SE POSSO TESTAR OS ESTREMOS DE CADA TIPO DE TABULEIRO JA QUE DEPENDENDO CADA CAMPO DA BORDA PODE TER ENTRE 0 E 5 BOMBAS
+  
   test("Should return 0 if the field dont have nearby bombs", () {
     BoardEntity board = BoardEntity(
         fields: [], lines: 8, columns: 8, flags: 10, bombs: 10, timer: 0);
