@@ -6,7 +6,7 @@ class FieldEntity {
   bool hasBomb;
   bool isChecked;
   final bool wasRevelated;
-  final int neighboringPumps;
+  int neighboringPumps;
 
   FieldEntity(
       {required this.hasBomb,
@@ -47,5 +47,60 @@ class FieldEntity {
     }
 
     return board.fields;
+  }
+
+  void calculateNeibBombs(BoardEntity board, int count) {
+    int line = board.getLineNumber(board.columns, count);
+        int column = board.getColumnNumber(board.columns, count);
+
+        if (line > 0 && column > 0) {
+          if (board.fields[((line-1) * board.columns + (column-1))].hasBomb) {
+            board.fields[count].neighboringPumps++;
+          }
+        }
+
+        if (line > 0) {
+          if (board.fields[((line - 1) * board.columns + column)].hasBomb) {
+            board.fields[count].neighboringPumps++;
+          }
+        }
+
+        if (line > 0 && column < board.columns - 1) {
+          if (board.fields[((line - 1) * board.columns + (column + 1))].hasBomb) {
+            board.fields[count].neighboringPumps++;
+          }
+        }
+
+        if (column > 0) {
+          if (board.fields[(line * board.columns + (column - 1))].hasBomb) {
+            board.fields[count].neighboringPumps++;
+          }
+        }
+
+        if (column < board.columns - 1) {
+          if (board.fields[(line * board.columns + (column + 1))].hasBomb) {
+            board.fields[count].neighboringPumps++;
+          }
+        }
+
+        if (line < board.lines - 1 && column > 0) {
+          if (board.fields[((line + 1) * board.columns + (column - 1))]
+                  .hasBomb) {
+            board.fields[count].neighboringPumps++;
+          }
+        }
+
+        if (line < board.lines - 1) {
+          if (board.fields[((line + 1) * board.columns + column)].hasBomb) {
+            board.fields[count].neighboringPumps++;
+          }
+        }
+
+        if (line < board.lines - 1 && column < board.columns - 1) {
+          if (board.fields[((line + 1) * board.columns + (column + 1))]
+                  .hasBomb) {
+            board.fields[count].neighboringPumps++;
+          }
+        }
   }
 }

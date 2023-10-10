@@ -62,9 +62,6 @@ class _GameScreenState extends State<GameScreen> {
               crossAxisCount: board.columns,
             ),
             itemBuilder: (context, position) {
-              int lineNumber = board.getLineNumber(board.columns, position);
-              int columnNumber = board.getColumnNumber(board.columns, position);
-
               return FieldWidget(
                 onTap: () {
                   setState(() {
@@ -105,12 +102,13 @@ class _GameScreenState extends State<GameScreen> {
                     }
                   });
                 },
-                flag: board.fields[position].isChecked == false
+                flag: Container(child: board.fields[position].hasBomb == true ? Text("B", style: TextStyle(fontSize: 20, color: Colors.red),) : Text(board.fields[position].neighboringPumps.toString())),
+                /*flag: board.fields[position].isChecked == false
                     ? Container()
                     : const Icon(
                         Icons.flag,
                         color: Colors.red,
-                      ),
+                      ),*/
               );
             },
             itemCount: board.lines * board.columns,
