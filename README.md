@@ -77,7 +77,58 @@
     - Verificar se é retornado 6 caso o campo revelado possua possua bombas vizinhas [OK]
     - Verificar se é retornado 7 caso o campo revelado possua possua bombas vizinhas [OK]
     - Verificar se é retornado 8 caso o campo revelado possua possua bombas vizinhas [OK]
-    - Verificar se quando não tiver bomba nos campos adjacentes os campos vão abrir automaticamente
+    // BORDAS MODO FACIL
+    - Verificar se retorna 0 caso o campo [0][0] revelado não possua bombas vizinha MODO FACIL
+    - Verificar se retorna 0 caso o campo [0][7] revelado não possua bombas vizinha MODO FACIL
+    - Verificar se retorna 0 caso o campo [7][0] revelado não possua bombas vizinha MODO FACIL
+    - Verificar se retorna 0 caso o campo [7][7] revelado não possua bombas vizinha MODO FACIL
+    - Verificar se retorna 1 caso o campo [0][0] revelado possua bombas vizinha MODO FACIL
+    - Verificar se retorna 1 caso o campo [0][7] revelado possua bombas vizinha MODO FACIL
+    - Verificar se retorna 1 caso o campo [7][0] revelado possua bombas vizinha MODO FACIL
+    - Verificar se retorna 1 caso o campo [7][7] revelado possua bombas vizinha MODO FACIL
+    - Verificar se retorna 2 caso o campo [0][0] revelado possua bombas vizinha MODO FACIL
+    - Verificar se retorna 2 caso o campo [0][7] revelado possua bombas vizinha MODO FACIL
+    - Verificar se retorna 2 caso o campo [7][0] revelado possua bombas vizinha MODO FACIL
+    - Verificar se retorna 2 caso o campo [7][7] revelado possua bombas vizinha MODO FACIL
+    - Verificar se retorna 3 caso o campo [0][0] revelado possua bombas vizinha MODO FACIL
+    - Verificar se retorna 3 caso o campo [0][7] revelado possua bombas vizinha MODO FACIL
+    - Verificar se retorna 3 caso o campo [7][0] revelado possua bombas vizinha MODO FACIL
+    - Verificar se retorna 3 caso o campo [7][7] revelado possua bombas vizinha MODO FACIL
+    
+    // BORDAS MODO MEDIO
+    - Verificar se retorna 0 caso o campo [0][0] revelado não possua bombas vizinha MODO MEDIO
+    - Verificar se retorna 0 caso o campo [0][15] revelado não possua bombas vizinha MODO MEDIO
+    - Verificar se retorna 0 caso o campo [9][0] revelado não possua bombas vizinha MODO MEDIO
+    - Verificar se retorna 0 caso o campo [9][15] revelado não possua bombas vizinha MODO MEDIO
+    - Verificar se retorna 1 caso o campo [0][0] revelado possua bombas vizinha MODO MEDIO
+    - Verificar se retorna 1 caso o campo [0][15] revelado possua bombas vizinha MODO MEDIO
+    - Verificar se retorna 1 caso o campo [9][0] revelado possua bombas vizinha MODO MEDIO
+    - Verificar se retorna 1 caso o campo [9][15] revelado possua bombas vizinha MODO MEDIO
+    - Verificar se retorna 2 caso o campo [0][0] revelado possua bombas vizinha MODO MEDIO
+    - Verificar se retorna 2 caso o campo [0][15] revelado possua bombas vizinha MODO MEDIO
+    - Verificar se retorna 2 caso o campo [9][0] revelado possua bombas vizinha MODO MEDIO
+    - Verificar se retorna 2 caso o campo [9][15] revelado possua bombas vizinha MODO MEDIO
+    - Verificar se retorna 3 caso o campo [0][0] revelado possua bombas vizinha MODO MEDIO
+    - Verificar se retorna 3 caso o campo [0][15] revelado possua bombas vizinha MODO MEDIO
+    - Verificar se retorna 3 caso o campo [9][0] revelado possua bombas vizinha MODO MEDIO
+    - Verificar se retorna 3 caso o campo [9][15] revelado possua bombas vizinha MODO MEDIO
+    // BORDAS MODO DIFICIL
+    - Verificar se retorna 0 caso o campo [0][0] revelado não possua bombas vizinha MODO DIFICIL
+    - Verificar se retorna 0 caso o campo [0][23] revelado não possua bombas vizinha MODO DIFICIL
+    - Verificar se retorna 0 caso o campo [23][0] revelado não possua bombas vizinha MODO DIFICIL
+    - Verificar se retorna 0 caso o campo [23][23] revelado não possua bombas vizinha MODO DIFICIL
+    - Verificar se retorna 1 caso o campo [0][0] revelado possua bombas vizinha MODO DIFICIL
+    - Verificar se retorna 1 caso o campo [0][23] revelado possua bombas vizinha MODO DIFICIL
+    - Verificar se retorna 1 caso o campo [23][0] revelado possua bombas vizinha MODO DIFICIL
+    - Verificar se retorna 1 caso o campo [23][23] revelado possua bombas vizinha MODO DIFICIL
+    - Verificar se retorna 2 caso o campo [0][0] revelado possua bombas vizinha MODO DIFICIL
+    - Verificar se retorna 2 caso o campo [0][23] revelado possua bombas vizinha MODO DIFICIL
+    - Verificar se retorna 2 caso o campo [23][0] revelado possua bombas vizinha MODO DIFICIL
+    - Verificar se retorna 2 caso o campo [23][23] revelado possua bombas vizinha MODO DIFICIL
+    - Verificar se retorna 3 caso o campo [0][0] revelado possua bombas vizinha MODO DIFICIL
+    - Verificar se retorna 3 caso o campo [0][23] revelado possua bombas vizinha MODO DIFICIL
+    - Verificar se retorna 3 caso o campo [23][0] revelado possua bombas vizinha MODO DIFICIL
+    - Verificar se retorna 3 caso o campo [23][23] revelado possua bombas vizinha MODO DIFICIL
 * Quando o jogo acabar deve ser salvo um resultado da partida em um historico
     - Verificar se foi retornado fim de jogo
     - Veriricar se foi retornado o historico salvo
