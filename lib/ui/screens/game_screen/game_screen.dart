@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:minesweeper/domain/entities/board_entity.dart';
-import 'package:minesweeper/domain/entities/field_entity.dart';
 import 'package:minesweeper/ui/shared/app_colors.dart';
 import 'package:minesweeper/ui/shared/app_texts.dart';
 import 'package:minesweeper/ui/widgets/field_widget.dart';
 
 class GameScreen extends StatefulWidget {
-  const GameScreen({super.key});
+  final BoardEntity board;
+  const GameScreen({super.key, required this.board});
 
   @override
   State<GameScreen> createState() => _GameScreenState();
@@ -15,11 +15,9 @@ class GameScreen extends StatefulWidget {
 class _GameScreenState extends State<GameScreen> {
   @override
   Widget build(BuildContext context) {
-    BoardEntity board =
-        ModalRoute.of(context)!.settings.arguments as BoardEntity;
 
     //INVES DE USAR O NUMERO MAXIMO DE BANDEIRA POSSO USAR O NUMERO MAXIMO DE BOMBAS
-    int maxValue = board.bombs;
+    int maxValue = widget.board.bombs;
     bool gamerunning = true;
 
     return Scaffold(
@@ -44,7 +42,7 @@ class _GameScreenState extends State<GameScreen> {
                   color: Colors.red,
                 ),
                 Text(
-                  "${board.flags}",
+                  "${widget.board.flags}",
                   style: AppText.buttontitle,
                 ),
               ],
@@ -59,17 +57,17 @@ class _GameScreenState extends State<GameScreen> {
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: board.columns,
+              crossAxisCount: widget.board.columns,
             ),
             itemBuilder: (context, position) {
               return FieldWidget(
-                color: board.fieldsOpen[position] == true
+                color: widget.board.fieldsOpen[position] == true
                     ? Colors.grey
                     : Colors.blue,
                 onTap: () {
                   setState(() {
-                    if (board.checkIfHasFlag(position)) {
-                      if (board.reveleField(position)) {
+                    if (widget.board.checkIfHasFlag(position)) {
+                      if (widget.board.reveleField(position)) {
                         showDialog(
                             context: context,
                             builder: (context) {
@@ -87,14 +85,14 @@ class _GameScreenState extends State<GameScreen> {
                               );
                             });
                       } else {
-                        int line = board.getLineNumber(board.columns, position);
+                        int line = widget.board.getLineNumber(widget.board.columns, position);
                         int column =
-                            board.getColumnNumber(board.columns, position);
+                            widget.board.getColumnNumber(widget.board.columns, position);
 
                         print("[$line][$column] Z $position");
 
                         setState(() {
-                          board.verifyField(line, column);
+                          widget.board.verifyField(line, column);
                         });
                       }
                     } else {}
@@ -102,26 +100,26 @@ class _GameScreenState extends State<GameScreen> {
                 },
                 onDoubleTap: () {
                   setState(() {
-                    if (board.fields[position].isChecked == false &&
-                        board.flags != 0) {
-                      board.fields[position].markField();
-                      board.removeFlagFromCounter(maxValue);
-                    } else if (board.fields[position].isChecked == true &&
-                        board.flags < maxValue) {
-                      board.addFlagInTheCounter(maxValue);
-                      board.fields[position].removeFieldMark();
+                    if (widget.board.fields[position].isChecked == false &&
+                        widget.board.flags != 0) {
+                      widget.board.fields[position].markField();
+                      widget.board.removeFlagFromCounter(maxValue);
+                    } else if (widget.board.fields[position].isChecked == true &&
+                        widget.board.flags < maxValue) {
+                      widget.board.addFlagInTheCounter(maxValue);
+                      widget.board.fields[position].removeFieldMark();
                     }
                   });
                 },
                 flag: Container(
-                    child: board.fields[position].hasBomb == true
+                    child: widget.board.fields[position].hasBomb == true
                         ? Text(
                             "B",
                             style: TextStyle(fontSize: 20, color: Colors.red),
                           )
-                        : Text(board.fields[position].neighboringPumps
+                        : Text(widget.board.fields[position].neighboringPumps
                             .toString())),
-                /*flag: board.fields[position].isChecked == false
+                /*flag: widget.board.fields[position].isChecked == false
                     ? Container()
                     : const Icon(
                         Icons.flag,
@@ -129,7 +127,7 @@ class _GameScreenState extends State<GameScreen> {
                       ),*/
               );
             },
-            itemCount: board.lines * board.columns,
+            itemCount: widget.board.lines * widget.board.columns,
           ),
         ),
       ),

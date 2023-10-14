@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:minesweeper/domain/entities/menu_entity.dart';
+import 'package:minesweeper/ui/screens/game_screen/game_screen.dart';
 import 'package:minesweeper/ui/shared/app_colors.dart';
 import 'package:minesweeper/ui/shared/app_texts.dart';
 import 'package:minesweeper/ui/widgets/custom_menu_button_widget.dart';
@@ -28,20 +29,17 @@ class MenuScreen extends StatelessWidget {
             CustomMenuButtonWidget(
                 title: "FACIL",
                 onPressed: () {
-                  Navigator.pushNamed(context, "/game",
-                      arguments: menu.createBoard("easy"));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => GameScreen(board: menu.createBoard("easy"),)),);
                 }),
             CustomMenuButtonWidget(
                 title: "MEDIO",
                 onPressed: () {
-                  Navigator.pushNamed(context, "/game",
-                      arguments: menu.createBoard("medium"));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => GameScreen(board: menu.createBoard("medium"),)),);
                 }),
             CustomMenuButtonWidget(
                 title: "DIFICIL",
                 onPressed: () {
-                  Navigator.pushNamed(context, "/game",
-                      arguments: menu.createBoard("hard"));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => GameScreen(board: menu.createBoard("hard"),)),);
                 }),
           ],
         ),

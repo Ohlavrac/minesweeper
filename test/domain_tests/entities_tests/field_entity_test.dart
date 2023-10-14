@@ -18,6 +18,24 @@ void main() {
       timer: 0,
       fieldsOpen: []);
 
+  BoardEntity boardMediumMode = BoardEntity(
+      fields: [],
+      lines: 10,
+      columns: 16,
+      flags: 30,
+      bombs: 30,
+      timer: 0,
+      fieldsOpen: []);
+
+  BoardEntity boardHardMode = BoardEntity(
+      fields: [],
+      lines: 24,
+      columns: 24,
+      flags: 100,
+      bombs: 100,
+      timer: 0,
+      fieldsOpen: []);
+
   test("Should return a field with a bomb", () {
     FieldEntity field = FieldEntity(
         hasBomb: true,
@@ -60,27 +78,11 @@ void main() {
   });
 
   test("Should return generate 100 EntityFieds for medium mode", () {
-    BoardEntity board = BoardEntity(
-        fields: [],
-        lines: 10,
-        columns: 16,
-        flags: 30,
-        bombs: 30,
-        timer: 0,
-        fieldsOpen: []);
-    expect(field.generateFields(board).length, 160);
+    expect(field.generateFields(boardMediumMode).length, 160);
   });
 
   test("Should return generate 576 EntityFieds for hard mode", () {
-    BoardEntity board = BoardEntity(
-        fields: [],
-        lines: 24,
-        columns: 24,
-        flags: 100,
-        bombs: 100,
-        timer: 0,
-        fieldsOpen: []);
-    expect(field.generateFields(board).length, 576);
+    expect(field.generateFields(boardHardMode).length, 576);
   });
 
   //VERIFICAR SE POSSO TESTAR OS ESTREMOS DE CADA TIPO DE TABULEIRO JA QUE DEPENDENDO CADA CAMPO DA BORDA PODE TER ENTRE 0 E 5 BOMBAS
@@ -170,7 +172,8 @@ void main() {
         1);
   });
 
-  test("Should return 2 if the field [0][0] have nearby bombs on easy mode", () {
+  test("Should return 2 if the field [0][0] have nearby bombs on easy mode",
+      () {
     field.generateFields(boardEasyMode);
     boardEasyMode.fields[(0 * boardEasyMode.columns + 0)].hasBomb = false;
     boardEasyMode.fields[(0 * boardEasyMode.columns + 1)].hasBomb = true;
@@ -184,7 +187,8 @@ void main() {
         2);
   });
 
-  test("Should return 3 if the field [0][0] have nearby bombs on easy mode",() {
+  test("Should return 3 if the field [0][0] have nearby bombs on easy mode",
+      () {
     field.generateFields(boardEasyMode);
     boardEasyMode.fields[(0 * boardEasyMode.columns + 0)].hasBomb = false;
     boardEasyMode.fields[(0 * boardEasyMode.columns + 1)].hasBomb = true;
@@ -198,7 +202,9 @@ void main() {
         3);
   });
 
-  test("Should return 0 if the field [0][7] dont have nearby bombs on easy mode",() {
+  test(
+      "Should return 0 if the field [0][7] dont have nearby bombs on easy mode",
+      () {
     field.generateFields(boardEasyMode);
     boardEasyMode.fields[(0 * boardEasyMode.columns + 7)].hasBomb = false;
     boardEasyMode.fields[(0 * boardEasyMode.columns + 6)].hasBomb = false;
@@ -212,7 +218,8 @@ void main() {
         0);
   });
 
-  test("Should return 1 if the field [0][7] have nearby bombs on easy mode",() {
+  test("Should return 1 if the field [0][7] have nearby bombs on easy mode",
+      () {
     field.generateFields(boardEasyMode);
     boardEasyMode.fields[(0 * boardEasyMode.columns + 7)].hasBomb = false;
     boardEasyMode.fields[(0 * boardEasyMode.columns + 6)].hasBomb = true;
@@ -226,7 +233,8 @@ void main() {
         1);
   });
 
-  test("Should return 2 if the field [0][7] have nearby bombs on easy mode",() {
+  test("Should return 2 if the field [0][7] have nearby bombs on easy mode",
+      () {
     field.generateFields(boardEasyMode);
     boardEasyMode.fields[(0 * boardEasyMode.columns + 7)].hasBomb = false;
     boardEasyMode.fields[(0 * boardEasyMode.columns + 6)].hasBomb = true;
@@ -240,7 +248,8 @@ void main() {
         2);
   });
 
-  test("Should return 3 if the field [0][7] have nearby bombs on easy mode",() {
+  test("Should return 3 if the field [0][7] have nearby bombs on easy mode",
+      () {
     field.generateFields(boardEasyMode);
     boardEasyMode.fields[(0 * boardEasyMode.columns + 7)].hasBomb = false;
     boardEasyMode.fields[(0 * boardEasyMode.columns + 6)].hasBomb = true;
@@ -254,7 +263,9 @@ void main() {
         3);
   });
 
-  test("Should return 0 if the field [7][0] dont have nearby bombs on easy mode",() {
+  test(
+      "Should return 0 if the field [7][0] dont have nearby bombs on easy mode",
+      () {
     field.generateFields(boardEasyMode);
     boardEasyMode.fields[(7 * boardEasyMode.columns + 0)].hasBomb = false;
     boardEasyMode.fields[(6 * boardEasyMode.columns + 0)].hasBomb = false;
@@ -268,7 +279,8 @@ void main() {
         0);
   });
 
-  test("Should return 1 if the field [7][0] have nearby bombs on easy mode",() {
+  test("Should return 1 if the field [7][0] have nearby bombs on easy mode",
+      () {
     field.generateFields(boardEasyMode);
     boardEasyMode.fields[(7 * boardEasyMode.columns + 0)].hasBomb = false;
     boardEasyMode.fields[(6 * boardEasyMode.columns + 0)].hasBomb = true;
@@ -282,7 +294,8 @@ void main() {
         1);
   });
 
-  test("Should return 2 if the field [7][0] have nearby bombs on easy mode",() {
+  test("Should return 2 if the field [7][0] have nearby bombs on easy mode",
+      () {
     field.generateFields(boardEasyMode);
     boardEasyMode.fields[(7 * boardEasyMode.columns + 0)].hasBomb = false;
     boardEasyMode.fields[(6 * boardEasyMode.columns + 0)].hasBomb = true;
@@ -296,7 +309,8 @@ void main() {
         2);
   });
 
-  test("Should return 3 if the field [7][0] have nearby bombs on easy mode",() {
+  test("Should return 3 if the field [7][0] have nearby bombs on easy mode",
+      () {
     field.generateFields(boardEasyMode);
     boardEasyMode.fields[(7 * boardEasyMode.columns + 0)].hasBomb = false;
     boardEasyMode.fields[(6 * boardEasyMode.columns + 0)].hasBomb = true;
@@ -310,7 +324,9 @@ void main() {
         3);
   });
 
-  test("Should return 0 if the field [7][7] dont have nearby bombs on easy mode",() {
+  test(
+      "Should return 0 if the field [7][7] dont have nearby bombs on easy mode",
+      () {
     field.generateFields(boardEasyMode);
     boardEasyMode.fields[(7 * boardEasyMode.columns + 7)].hasBomb = false;
     boardEasyMode.fields[(6 * boardEasyMode.columns + 7)].hasBomb = false;
@@ -324,7 +340,8 @@ void main() {
         0);
   });
 
-  test("Should return 1 if the field [7][7] have nearby bombs on easy mode",() {
+  test("Should return 1 if the field [7][7] have nearby bombs on easy mode",
+      () {
     field.generateFields(boardEasyMode);
     boardEasyMode.fields[(7 * boardEasyMode.columns + 7)].hasBomb = false;
     boardEasyMode.fields[(6 * boardEasyMode.columns + 7)].hasBomb = true;
@@ -338,7 +355,8 @@ void main() {
         1);
   });
 
-  test("Should return 2 if the field [7][7] have nearby bombs on easy mode",() {
+  test("Should return 2 if the field [7][7] have nearby bombs on easy mode",
+      () {
     field.generateFields(boardEasyMode);
     boardEasyMode.fields[(7 * boardEasyMode.columns + 7)].hasBomb = false;
     boardEasyMode.fields[(6 * boardEasyMode.columns + 7)].hasBomb = true;
@@ -352,7 +370,8 @@ void main() {
         2);
   });
 
-  test("Should return 3 if the field [7][7] have nearby bombs on easy mode",() {
+  test("Should return 3 if the field [7][7] have nearby bombs on easy mode",
+      () {
     field.generateFields(boardEasyMode);
     boardEasyMode.fields[(7 * boardEasyMode.columns + 7)].hasBomb = false;
     boardEasyMode.fields[(6 * boardEasyMode.columns + 7)].hasBomb = true;
@@ -367,6 +386,494 @@ void main() {
   });
 
   //Test das bombas vizinhas no modo medio (Cantos)
+  test(
+      "Should return 0 if the field [0][0] dont have nearby bombs on medium mode",
+      () {
+    field.generateFields(boardMediumMode);
+    boardMediumMode.fields[(0 * boardMediumMode.columns + 0)].hasBomb = false;
+    boardMediumMode.fields[(0 * boardMediumMode.columns + 1)].hasBomb = false;
+    boardMediumMode.fields[(1 * boardMediumMode.columns + 0)].hasBomb = false;
+    boardMediumMode.fields[(1 * boardMediumMode.columns + 1)].hasBomb = false;
+    boardMediumMode.createListOpenFields();
+    boardMediumMode.verifyField(0, 0);
+    field.calculateNeibBombs(boardMediumMode, 0);
+    expect(
+        boardMediumMode
+            .fields[(0 * boardMediumMode.columns + 0)].neighboringPumps,
+        0);
+  });
+
+  test("Should return 1 if the field [0][0] have nearby bombs on medium mode",
+      () {
+    field.generateFields(boardMediumMode);
+    boardMediumMode.fields[(0 * boardMediumMode.columns + 0)].hasBomb = false;
+    boardMediumMode.fields[(0 * boardMediumMode.columns + 1)].hasBomb = true;
+    boardMediumMode.fields[(1 * boardMediumMode.columns + 0)].hasBomb = false;
+    boardMediumMode.fields[(1 * boardMediumMode.columns + 1)].hasBomb = false;
+    boardMediumMode.createListOpenFields();
+    boardMediumMode.verifyField(0, 0);
+    field.calculateNeibBombs(boardMediumMode, 0);
+    expect(
+        boardMediumMode
+            .fields[(0 * boardMediumMode.columns + 0)].neighboringPumps,
+        1);
+  });
+
+  test("Should return 2 if the field [0][0] have nearby bombs on medium mode",
+      () {
+    field.generateFields(boardMediumMode);
+    boardMediumMode.fields[(0 * boardMediumMode.columns + 0)].hasBomb = false;
+    boardMediumMode.fields[(0 * boardMediumMode.columns + 1)].hasBomb = true;
+    boardMediumMode.fields[(1 * boardMediumMode.columns + 0)].hasBomb = true;
+    boardMediumMode.fields[(1 * boardMediumMode.columns + 1)].hasBomb = false;
+    boardMediumMode.createListOpenFields();
+    boardMediumMode.verifyField(0, 0);
+    field.calculateNeibBombs(boardMediumMode, 0);
+    expect(
+        boardMediumMode
+            .fields[(0 * boardMediumMode.columns + 0)].neighboringPumps,
+        2);
+  });
+
+  test("Should return 3 if the field [0][0] have nearby bombs on medium mode",
+      () {
+    field.generateFields(boardMediumMode);
+    boardMediumMode.fields[(0 * boardMediumMode.columns + 0)].hasBomb = false;
+    boardMediumMode.fields[(0 * boardMediumMode.columns + 1)].hasBomb = true;
+    boardMediumMode.fields[(1 * boardMediumMode.columns + 0)].hasBomb = true;
+    boardMediumMode.fields[(1 * boardMediumMode.columns + 1)].hasBomb = true;
+    boardMediumMode.createListOpenFields();
+    boardMediumMode.verifyField(0, 0);
+    field.calculateNeibBombs(boardMediumMode, 0);
+    expect(
+        boardMediumMode
+            .fields[(0 * boardMediumMode.columns + 0)].neighboringPumps,
+        3);
+  });
+
+  test(
+      "Should return 0 if the field [0][15] dont have nearby bombs on medium mode",
+      () {
+    field.generateFields(boardMediumMode);
+    boardMediumMode.fields[(0 * boardMediumMode.columns + 15)].hasBomb = false;
+    boardMediumMode.fields[(0 * boardMediumMode.columns + 14)].hasBomb = false;
+    boardMediumMode.fields[(1 * boardMediumMode.columns + 15)].hasBomb = false;
+    boardMediumMode.fields[(1 * boardMediumMode.columns + 14)].hasBomb = false;
+    boardMediumMode.createListOpenFields();
+    boardMediumMode.verifyField(0, 15);
+    field.calculateNeibBombs(boardMediumMode, 15);
+    expect(
+        boardMediumMode
+            .fields[(0 * boardMediumMode.columns + 15)].neighboringPumps,
+        0);
+  });
+
+  test("Should return 1 if the field [0][15] have nearby bombs on medium mode",
+      () {
+    field.generateFields(boardMediumMode);
+    boardMediumMode.fields[(0 * boardMediumMode.columns + 15)].hasBomb = false;
+    boardMediumMode.fields[(0 * boardMediumMode.columns + 14)].hasBomb = true;
+    boardMediumMode.fields[(1 * boardMediumMode.columns + 15)].hasBomb = false;
+    boardMediumMode.fields[(1 * boardMediumMode.columns + 14)].hasBomb = false;
+    boardMediumMode.createListOpenFields();
+    boardMediumMode.verifyField(0, 15);
+    field.calculateNeibBombs(boardMediumMode, 15);
+    expect(
+        boardMediumMode
+            .fields[(0 * boardMediumMode.columns + 15)].neighboringPumps,
+        1);
+  });
+
+  test("Should return 2 if the field [0][15] have nearby bombs on medium mode",
+      () {
+    field.generateFields(boardMediumMode);
+    boardMediumMode.fields[(0 * boardMediumMode.columns + 15)].hasBomb = false;
+    boardMediumMode.fields[(0 * boardMediumMode.columns + 14)].hasBomb = true;
+    boardMediumMode.fields[(1 * boardMediumMode.columns + 15)].hasBomb = true;
+    boardMediumMode.fields[(1 * boardMediumMode.columns + 14)].hasBomb = false;
+    boardMediumMode.createListOpenFields();
+    boardMediumMode.verifyField(0, 15);
+    field.calculateNeibBombs(boardMediumMode, 15);
+    expect(
+        boardMediumMode
+            .fields[(0 * boardMediumMode.columns + 15)].neighboringPumps,
+        2);
+  });
+
+  test("Should return 3 if the field [0][15] have nearby bombs on medium mode",
+      () {
+    field.generateFields(boardMediumMode);
+    boardMediumMode.fields[(0 * boardMediumMode.columns + 15)].hasBomb = false;
+    boardMediumMode.fields[(0 * boardMediumMode.columns + 14)].hasBomb = true;
+    boardMediumMode.fields[(1 * boardMediumMode.columns + 15)].hasBomb = true;
+    boardMediumMode.fields[(1 * boardMediumMode.columns + 14)].hasBomb = true;
+    boardMediumMode.createListOpenFields();
+    boardMediumMode.verifyField(0, 15);
+    field.calculateNeibBombs(boardMediumMode, 15);
+    expect(
+        boardMediumMode
+            .fields[(0 * boardMediumMode.columns + 15)].neighboringPumps,
+        3);
+  });
+
+  test(
+      "Should return 0 if the field [9][0] dont have nearby bombs on medium mode",
+      () {
+    field.generateFields(boardMediumMode);
+    boardMediumMode.fields[(9 * boardMediumMode.columns + 0)].hasBomb = false;
+    boardMediumMode.fields[(8 * boardMediumMode.columns + 0)].hasBomb = false;
+    boardMediumMode.fields[(9 * boardMediumMode.columns + 1)].hasBomb = false;
+    boardMediumMode.fields[(8 * boardMediumMode.columns + 1)].hasBomb = false;
+    boardMediumMode.createListOpenFields();
+    boardMediumMode.verifyField(9, 0);
+    field.calculateNeibBombs(boardMediumMode, 144);
+    expect(
+        boardMediumMode
+            .fields[(9 * boardMediumMode.columns + 0)].neighboringPumps,
+        0);
+  });
+
+  test("Should return 1 if the field [9][0] have nearby bombs on medium mode",
+      () {
+    field.generateFields(boardMediumMode);
+    boardMediumMode.fields[(9 * boardMediumMode.columns + 0)].hasBomb = false;
+    boardMediumMode.fields[(8 * boardMediumMode.columns + 0)].hasBomb = true;
+    boardMediumMode.fields[(9 * boardMediumMode.columns + 1)].hasBomb = false;
+    boardMediumMode.fields[(8 * boardMediumMode.columns + 1)].hasBomb = false;
+    boardMediumMode.createListOpenFields();
+    boardMediumMode.verifyField(9, 0);
+    field.calculateNeibBombs(boardMediumMode, 144);
+    expect(
+        boardMediumMode
+            .fields[(9 * boardMediumMode.columns + 0)].neighboringPumps,
+        1);
+  });
+
+  test("Should return 2 if the field [9][0] have nearby bombs on medium mode",
+      () {
+    field.generateFields(boardMediumMode);
+    boardMediumMode.fields[(9 * boardMediumMode.columns + 0)].hasBomb = false;
+    boardMediumMode.fields[(8 * boardMediumMode.columns + 0)].hasBomb = true;
+    boardMediumMode.fields[(9 * boardMediumMode.columns + 1)].hasBomb = true;
+    boardMediumMode.fields[(8 * boardMediumMode.columns + 1)].hasBomb = false;
+    boardMediumMode.createListOpenFields();
+    boardMediumMode.verifyField(9, 0);
+    field.calculateNeibBombs(boardMediumMode, 144);
+    expect(
+        boardMediumMode
+            .fields[(9 * boardMediumMode.columns + 0)].neighboringPumps,
+        2);
+  });
+
+  test("Should return 3 if the field [9][0] have nearby bombs on medium mode",
+      () {
+    field.generateFields(boardMediumMode);
+    boardMediumMode.fields[(9 * boardMediumMode.columns + 0)].hasBomb = false;
+    boardMediumMode.fields[(8 * boardMediumMode.columns + 0)].hasBomb = true;
+    boardMediumMode.fields[(9 * boardMediumMode.columns + 1)].hasBomb = true;
+    boardMediumMode.fields[(8 * boardMediumMode.columns + 1)].hasBomb = true;
+    boardMediumMode.createListOpenFields();
+    boardMediumMode.verifyField(9, 0);
+    field.calculateNeibBombs(boardMediumMode, 144);
+    expect(
+        boardMediumMode
+            .fields[(9 * boardMediumMode.columns + 0)].neighboringPumps,
+        3);
+  });
+
+  test(
+      "Should return 0 if the field [9][15] dont have nearby bombs on medium mode",
+      () {
+    field.generateFields(boardMediumMode);
+    boardMediumMode.fields[(9 * boardMediumMode.columns + 15)].hasBomb = false;
+    boardMediumMode.fields[(8 * boardMediumMode.columns + 15)].hasBomb = false;
+    boardMediumMode.fields[(9 * boardMediumMode.columns + 14)].hasBomb = false;
+    boardMediumMode.fields[(8 * boardMediumMode.columns + 14)].hasBomb = false;
+    boardMediumMode.createListOpenFields();
+    boardMediumMode.verifyField(9, 15);
+    field.calculateNeibBombs(boardMediumMode, 159);
+    expect(
+        boardMediumMode
+            .fields[(9 * boardMediumMode.columns + 15)].neighboringPumps,
+        0);
+  });
+
+  test("Should return 1 if the field [9][15] have nearby bombs on medium mode",
+      () {
+    field.generateFields(boardMediumMode);
+    boardMediumMode.fields[(9 * boardMediumMode.columns + 15)].hasBomb = false;
+    boardMediumMode.fields[(8 * boardMediumMode.columns + 15)].hasBomb = true;
+    boardMediumMode.fields[(9 * boardMediumMode.columns + 14)].hasBomb = false;
+    boardMediumMode.fields[(8 * boardMediumMode.columns + 14)].hasBomb = false;
+    boardMediumMode.createListOpenFields();
+    boardMediumMode.verifyField(9, 15);
+    field.calculateNeibBombs(boardMediumMode, 159);
+    expect(
+        boardMediumMode
+            .fields[(9 * boardMediumMode.columns + 15)].neighboringPumps,
+        1);
+  });
+
+  test("Should return 2 if the field [9][15] have nearby bombs on medium mode",
+      () {
+    field.generateFields(boardMediumMode);
+    boardMediumMode.fields[(9 * boardMediumMode.columns + 15)].hasBomb = false;
+    boardMediumMode.fields[(8 * boardMediumMode.columns + 15)].hasBomb = true;
+    boardMediumMode.fields[(9 * boardMediumMode.columns + 14)].hasBomb = true;
+    boardMediumMode.fields[(8 * boardMediumMode.columns + 14)].hasBomb = false;
+    boardMediumMode.createListOpenFields();
+    boardMediumMode.verifyField(9, 15);
+    field.calculateNeibBombs(boardMediumMode, 159);
+    expect(
+        boardMediumMode
+            .fields[(9 * boardMediumMode.columns + 15)].neighboringPumps,
+        2);
+  });
+
+  test("Should return 3 if the field [9][15] have nearby bombs on medium mode",
+      () {
+    field.generateFields(boardMediumMode);
+    boardMediumMode.fields[(9 * boardMediumMode.columns + 15)].hasBomb = false;
+    boardMediumMode.fields[(8 * boardMediumMode.columns + 15)].hasBomb = true;
+    boardMediumMode.fields[(9 * boardMediumMode.columns + 14)].hasBomb = true;
+    boardMediumMode.fields[(8 * boardMediumMode.columns + 14)].hasBomb = true;
+    boardMediumMode.createListOpenFields();
+    boardMediumMode.verifyField(9, 15);
+    field.calculateNeibBombs(boardMediumMode, 159);
+    expect(
+        boardMediumMode
+            .fields[(9 * boardMediumMode.columns + 15)].neighboringPumps,
+        3);
+  });
 
   //Test das bombas vizinhas no modo dificil (Cantos)
+
+  test(
+      "Should return 0 if the field [0][0] dont have nearby bombs on hard mode",
+      () {
+    field.generateFields(boardHardMode);
+    boardHardMode.fields[(0 * boardHardMode.columns + 0)].hasBomb = false;
+    boardHardMode.fields[(0 * boardHardMode.columns + 1)].hasBomb = false;
+    boardHardMode.fields[(1 * boardHardMode.columns + 0)].hasBomb = false;
+    boardHardMode.fields[(1 * boardHardMode.columns + 1)].hasBomb = false;
+    boardHardMode.createListOpenFields();
+    boardHardMode.verifyField(0, 0);
+    field.calculateNeibBombs(boardHardMode, 0);
+    expect(
+        boardHardMode.fields[(0 * boardHardMode.columns + 0)].neighboringPumps,
+        0);
+  });
+
+  test("Should return 1 if the field [0][0] have nearby bombs on hard mode",
+      () {
+    field.generateFields(boardHardMode);
+    boardHardMode.fields[(0 * boardHardMode.columns + 0)].hasBomb = false;
+    boardHardMode.fields[(0 * boardHardMode.columns + 1)].hasBomb = true;
+    boardHardMode.fields[(1 * boardHardMode.columns + 0)].hasBomb = false;
+    boardHardMode.fields[(1 * boardHardMode.columns + 1)].hasBomb = false;
+    boardHardMode.createListOpenFields();
+    boardHardMode.verifyField(0, 0);
+    field.calculateNeibBombs(boardHardMode, 0);
+    expect(
+        boardHardMode.fields[(0 * boardHardMode.columns + 0)].neighboringPumps,
+        1);
+  });
+
+  test("Should return 2 if the field [0][0] have nearby bombs on hard mode",
+      () {
+    field.generateFields(boardHardMode);
+    boardHardMode.fields[(0 * boardHardMode.columns + 0)].hasBomb = false;
+    boardHardMode.fields[(0 * boardHardMode.columns + 1)].hasBomb = true;
+    boardHardMode.fields[(1 * boardHardMode.columns + 0)].hasBomb = true;
+    boardHardMode.fields[(1 * boardHardMode.columns + 1)].hasBomb = false;
+    boardHardMode.createListOpenFields();
+    boardHardMode.verifyField(0, 0);
+    field.calculateNeibBombs(boardHardMode, 0);
+    expect(
+        boardHardMode.fields[(0 * boardHardMode.columns + 0)].neighboringPumps,
+        2);
+  });
+
+  test("Should return 3 if the field [0][0] have nearby bombs on hard mode",
+      () {
+    field.generateFields(boardHardMode);
+    boardHardMode.fields[(0 * boardHardMode.columns + 0)].hasBomb = false;
+    boardHardMode.fields[(0 * boardHardMode.columns + 1)].hasBomb = true;
+    boardHardMode.fields[(1 * boardHardMode.columns + 0)].hasBomb = true;
+    boardHardMode.fields[(1 * boardHardMode.columns + 1)].hasBomb = true;
+    boardHardMode.createListOpenFields();
+    boardHardMode.verifyField(0, 0);
+    field.calculateNeibBombs(boardHardMode, 0);
+    expect(
+        boardHardMode.fields[(0 * boardHardMode.columns + 0)].neighboringPumps,
+        3);
+  });
+
+  test("Should return 0 if the field [0][23] dont have nearby bombs on hard mode", () {
+    field.generateFields(boardHardMode);
+    boardHardMode.fields[(0 * boardHardMode.columns + 23)].hasBomb = false;
+    boardHardMode.fields[(0 * boardHardMode.columns + 22)].hasBomb = false;
+    boardHardMode.fields[(1 * boardHardMode.columns + 23)].hasBomb = false;
+    boardHardMode.fields[(1 * boardHardMode.columns + 22)].hasBomb = false;
+    boardHardMode.createListOpenFields();
+    boardHardMode.verifyField(0, 23);
+    field.calculateNeibBombs(boardHardMode, 23);
+    expect(
+        boardHardMode.fields[(0 * boardHardMode.columns + 23)].neighboringPumps,
+        0);
+  });
+
+  test("Should return 1 if the field [0][23] have nearby bombs on hard mode", () {
+    field.generateFields(boardHardMode);
+    boardHardMode.fields[(0 * boardHardMode.columns + 23)].hasBomb = false;
+    boardHardMode.fields[(0 * boardHardMode.columns + 22)].hasBomb = true;
+    boardHardMode.fields[(1 * boardHardMode.columns + 23)].hasBomb = false;
+    boardHardMode.fields[(1 * boardHardMode.columns + 22)].hasBomb = false;
+    boardHardMode.createListOpenFields();
+    boardHardMode.verifyField(0, 23);
+    field.calculateNeibBombs(boardHardMode, 23);
+    expect(
+        boardHardMode.fields[(0 * boardHardMode.columns + 23)].neighboringPumps,
+        1);
+  });
+
+  test("Should return 2 if the field [0][23] have nearby bombs on hard mode", () {
+    field.generateFields(boardHardMode);
+    boardHardMode.fields[(0 * boardHardMode.columns + 23)].hasBomb = false;
+    boardHardMode.fields[(0 * boardHardMode.columns + 22)].hasBomb = true;
+    boardHardMode.fields[(1 * boardHardMode.columns + 23)].hasBomb = true;
+    boardHardMode.fields[(1 * boardHardMode.columns + 22)].hasBomb = false;
+    boardHardMode.createListOpenFields();
+    boardHardMode.verifyField(0, 23);
+    field.calculateNeibBombs(boardHardMode, 23);
+    expect(
+        boardHardMode.fields[(0 * boardHardMode.columns + 23)].neighboringPumps,
+        2);
+  });
+
+  test("Should return 3 if the field [0][23] have nearby bombs on hard mode", () {
+    field.generateFields(boardHardMode);
+    boardHardMode.fields[(0 * boardHardMode.columns + 23)].hasBomb = false;
+    boardHardMode.fields[(0 * boardHardMode.columns + 22)].hasBomb = true;
+    boardHardMode.fields[(1 * boardHardMode.columns + 23)].hasBomb = true;
+    boardHardMode.fields[(1 * boardHardMode.columns + 22)].hasBomb = true;
+    boardHardMode.createListOpenFields();
+    boardHardMode.verifyField(0, 23);
+    field.calculateNeibBombs(boardHardMode, 23);
+    expect(
+        boardHardMode.fields[(0 * boardHardMode.columns + 23)].neighboringPumps,
+        3);
+  });
+
+  test("Should return 0 if the field [23][0] dont have nearby bombs on hard mode", () {
+    field.generateFields(boardHardMode);
+    boardHardMode.fields[(23 * boardHardMode.columns + 0)].hasBomb = false;
+    boardHardMode.fields[(22 * boardHardMode.columns + 0)].hasBomb = false;
+    boardHardMode.fields[(23 * boardHardMode.columns + 1)].hasBomb = false;
+    boardHardMode.fields[(22 * boardHardMode.columns + 1)].hasBomb = false;
+    boardHardMode.createListOpenFields();
+    boardHardMode.verifyField(23, 0);
+    field.calculateNeibBombs(boardHardMode, 552);
+    expect(
+        boardHardMode.fields[(23 * boardHardMode.columns + 0)].neighboringPumps,
+        0);
+  });
+
+  test("Should return 1 if the field [23][0] have nearby bombs on hard mode", () {
+    field.generateFields(boardHardMode);
+    boardHardMode.fields[(23 * boardHardMode.columns + 0)].hasBomb = false;
+    boardHardMode.fields[(22 * boardHardMode.columns + 0)].hasBomb = true;
+    boardHardMode.fields[(23 * boardHardMode.columns + 1)].hasBomb = false;
+    boardHardMode.fields[(22 * boardHardMode.columns + 1)].hasBomb = false;
+    boardHardMode.createListOpenFields();
+    boardHardMode.verifyField(23, 0);
+    field.calculateNeibBombs(boardHardMode, 552);
+    expect(
+        boardHardMode.fields[(23 * boardHardMode.columns + 0)].neighboringPumps,
+        1);
+  });
+
+  test("Should return 2 if the field [23][0] have nearby bombs on hard mode", () {
+    field.generateFields(boardHardMode);
+    boardHardMode.fields[(23 * boardHardMode.columns + 0)].hasBomb = false;
+    boardHardMode.fields[(22 * boardHardMode.columns + 0)].hasBomb = true;
+    boardHardMode.fields[(23 * boardHardMode.columns + 1)].hasBomb = true;
+    boardHardMode.fields[(22 * boardHardMode.columns + 1)].hasBomb = false;
+    boardHardMode.createListOpenFields();
+    boardHardMode.verifyField(23, 0);
+    field.calculateNeibBombs(boardHardMode, 552);
+    expect(
+        boardHardMode.fields[(23 * boardHardMode.columns + 0)].neighboringPumps,
+        2);
+  });
+
+  test("Should return 3 if the field [23][0] have nearby bombs on hard mode", () {
+    field.generateFields(boardHardMode);
+    boardHardMode.fields[(23 * boardHardMode.columns + 0)].hasBomb = false;
+    boardHardMode.fields[(22 * boardHardMode.columns + 0)].hasBomb = true;
+    boardHardMode.fields[(23 * boardHardMode.columns + 1)].hasBomb = true;
+    boardHardMode.fields[(22 * boardHardMode.columns + 1)].hasBomb = true;
+    boardHardMode.createListOpenFields();
+    boardHardMode.verifyField(23, 0);
+    field.calculateNeibBombs(boardHardMode, 552);
+    expect(
+        boardHardMode.fields[(23 * boardHardMode.columns + 0)].neighboringPumps,
+        3);
+  });
+
+  test("Should return 0 if the field [23][23] dont have nearby bombs on hard mode", () {
+    field.generateFields(boardHardMode);
+    boardHardMode.fields[(23 * boardHardMode.columns + 0)].hasBomb = false;
+    boardHardMode.fields[(22 * boardHardMode.columns + 23)].hasBomb = false;
+    boardHardMode.fields[(23 * boardHardMode.columns + 22)].hasBomb = false;
+    boardHardMode.fields[(22 * boardHardMode.columns + 22)].hasBomb = false;
+    boardHardMode.createListOpenFields();
+    boardHardMode.verifyField(23, 23);
+    field.calculateNeibBombs(boardHardMode, 575);
+    expect(
+        boardHardMode.fields[(23 * boardHardMode.columns + 23)].neighboringPumps,
+        0);
+  });
+
+  test("Should return 1 if the field [23][23] have nearby bombs on hard mode", () {
+    field.generateFields(boardHardMode);
+    boardHardMode.fields[(23 * boardHardMode.columns + 0)].hasBomb = false;
+    boardHardMode.fields[(22 * boardHardMode.columns + 23)].hasBomb = true;
+    boardHardMode.fields[(23 * boardHardMode.columns + 22)].hasBomb = false;
+    boardHardMode.fields[(22 * boardHardMode.columns + 22)].hasBomb = false;
+    boardHardMode.createListOpenFields();
+    boardHardMode.verifyField(23, 23);
+    field.calculateNeibBombs(boardHardMode, 575);
+    expect(
+        boardHardMode.fields[(23 * boardHardMode.columns + 23)].neighboringPumps,
+        1);
+  });
+
+  test("Should return 2 if the field [23][23] have nearby bombs on hard mode", () {
+    field.generateFields(boardHardMode);
+    boardHardMode.fields[(23 * boardHardMode.columns + 0)].hasBomb = false;
+    boardHardMode.fields[(22 * boardHardMode.columns + 23)].hasBomb = true;
+    boardHardMode.fields[(23 * boardHardMode.columns + 22)].hasBomb = true;
+    boardHardMode.fields[(22 * boardHardMode.columns + 22)].hasBomb = false;
+    boardHardMode.createListOpenFields();
+    boardHardMode.verifyField(23, 23);
+    field.calculateNeibBombs(boardHardMode, 575);
+    expect(
+        boardHardMode.fields[(23 * boardHardMode.columns + 23)].neighboringPumps,
+        2);
+  });
+
+  test("Should return 3 if the field [23][23] have nearby bombs on hard mode", () {
+    field.generateFields(boardHardMode);
+    boardHardMode.fields[(23 * boardHardMode.columns + 0)].hasBomb = false;
+    boardHardMode.fields[(22 * boardHardMode.columns + 23)].hasBomb = true;
+    boardHardMode.fields[(23 * boardHardMode.columns + 22)].hasBomb = true;
+    boardHardMode.fields[(22 * boardHardMode.columns + 22)].hasBomb = true;
+    boardHardMode.createListOpenFields();
+    boardHardMode.verifyField(23, 23);
+    field.calculateNeibBombs(boardHardMode, 575);
+    expect(
+        boardHardMode.fields[(23 * boardHardMode.columns + 23)].neighboringPumps,
+        3);
+  });
 }

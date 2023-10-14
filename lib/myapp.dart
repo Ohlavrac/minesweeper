@@ -7,13 +7,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: "/menu",
+      /*initialRoute: "/menu",
       routes: {
         "/menu" : (context) => const MenuScreen(),
         "/game" : (context) => const GameScreen(),
-      },
+      },*/
+      home: MenuScreen(),
     );
   }
 }
