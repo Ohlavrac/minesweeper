@@ -63,6 +63,9 @@ class _GameScreenState extends State<GameScreen> {
             ),
             itemBuilder: (context, position) {
               return FieldWidget(
+                color: board.fieldsOpen[position] == true
+                    ? Colors.grey
+                    : Colors.blue,
                 onTap: () {
                   setState(() {
                     if (board.checkIfHasFlag(position)) {
@@ -84,13 +87,15 @@ class _GameScreenState extends State<GameScreen> {
                               );
                             });
                       } else {
-                        /*int line = board.getLineNumber(board.columns, position);
-                        int column = board.getColumnNumber(board.columns, position);
-                        if (board.getLineNumber(board.columns, position) > 0) {
-                          if (board.fields[((line-1) * board.columns + column)].hasBomb == false &&) {
+                        int line = board.getLineNumber(board.columns, position);
+                        int column =
+                            board.getColumnNumber(board.columns, position);
 
-                          }
-                        }*/
+                        print("[$line][$column] Z $position");
+
+                        setState(() {
+                          board.verifyField(line, column);
+                        });
                       }
                     } else {}
                   });
@@ -108,7 +113,14 @@ class _GameScreenState extends State<GameScreen> {
                     }
                   });
                 },
-                flag: Container(child: board.fields[position].hasBomb == true ? Text("B", style: TextStyle(fontSize: 20, color: Colors.red),) : Text(board.fields[position].neighboringPumps.toString())),
+                flag: Container(
+                    child: board.fields[position].hasBomb == true
+                        ? Text(
+                            "B",
+                            style: TextStyle(fontSize: 20, color: Colors.red),
+                          )
+                        : Text(board.fields[position].neighboringPumps
+                            .toString())),
                 /*flag: board.fields[position].isChecked == false
                     ? Container()
                     : const Icon(

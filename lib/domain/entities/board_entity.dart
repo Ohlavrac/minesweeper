@@ -78,4 +78,46 @@ class BoardEntity {
       return false;
     });
   }
+
+  void verifyField(int line, int column) {
+    int position = (line * columns + column);
+
+    fieldsOpen[position] = true;
+
+    if (line > 0) {
+      if (fields[((line - 1) * columns) + column].hasBomb == false &&
+          fieldsOpen[((line - 1) * columns) + column] == false) {
+        if (fields[(line * columns + column)].neighboringPumps == 0) {
+          verifyField(line - 1, column);
+        }
+      }
+    }
+
+    if (column > 0) {
+      if (fields[(line * columns + (column - 1))].hasBomb == false &&
+          fieldsOpen[(line * columns) + column - 1] == false) {
+        if (fields[(line * columns + column)].neighboringPumps == 0) {
+          verifyField(line, column - 1);
+        }
+      }
+    }
+
+    if (column < columns - 1) {
+      if (fields[(line * columns + (column + 1))].hasBomb == false &&
+          fieldsOpen[(line * columns) + column + 1] == false) {
+        if (fields[(line * columns + column)].neighboringPumps == 0) {
+          verifyField(line, column + 1);
+        }
+      }
+    }
+
+    if (line < lines - 1) {
+      if (fields[((line + 1) * columns + column)].hasBomb == false &&
+          fieldsOpen[((line + 1) * columns) + column] == false) {
+        if (fields[(line * columns + column)].neighboringPumps == 0) {
+          verifyField(line + 1, column);
+        }
+      }
+    }
+  }
 }
