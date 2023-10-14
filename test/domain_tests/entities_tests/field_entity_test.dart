@@ -254,18 +254,61 @@ void main() {
         3);
   });
 
-  test(
-      "Should return 0 if the field [7][0] dont have nearby bombs on easy mode",
-      () {});
+  test("Should return 0 if the field [7][0] dont have nearby bombs on easy mode",() {
+    field.generateFields(boardEasyMode);
+    boardEasyMode.fields[(7 * boardEasyMode.columns + 0)].hasBomb = false;
+    boardEasyMode.fields[(6 * boardEasyMode.columns + 0)].hasBomb = false;
+    boardEasyMode.fields[(7 * boardEasyMode.columns + 1)].hasBomb = false;
+    boardEasyMode.fields[(6 * boardEasyMode.columns + 1)].hasBomb = false;
+    boardEasyMode.createListOpenFields();
+    boardEasyMode.verifyField(7, 0);
+    field.calculateNeibBombs(boardEasyMode, 56);
+    expect(
+        boardEasyMode.fields[(7 * boardEasyMode.columns + 0)].neighboringPumps,
+        0);
+  });
 
-  test("Should return 1 if the field [7][0] have nearby bombs on easy mode",
-      () {});
+  test("Should return 1 if the field [7][0] have nearby bombs on easy mode",() {
+    field.generateFields(boardEasyMode);
+    boardEasyMode.fields[(7 * boardEasyMode.columns + 0)].hasBomb = false;
+    boardEasyMode.fields[(6 * boardEasyMode.columns + 0)].hasBomb = true;
+    boardEasyMode.fields[(7 * boardEasyMode.columns + 1)].hasBomb = false;
+    boardEasyMode.fields[(6 * boardEasyMode.columns + 1)].hasBomb = false;
+    boardEasyMode.createListOpenFields();
+    boardEasyMode.verifyField(7, 0);
+    field.calculateNeibBombs(boardEasyMode, 56);
+    expect(
+        boardEasyMode.fields[(7 * boardEasyMode.columns + 0)].neighboringPumps,
+        1);
+  });
 
-  test("Should return 2 if the field [7][0] have nearby bombs on easy mode",
-      () {});
+  test("Should return 2 if the field [7][0] have nearby bombs on easy mode",() {
+    field.generateFields(boardEasyMode);
+    boardEasyMode.fields[(7 * boardEasyMode.columns + 0)].hasBomb = false;
+    boardEasyMode.fields[(6 * boardEasyMode.columns + 0)].hasBomb = true;
+    boardEasyMode.fields[(7 * boardEasyMode.columns + 1)].hasBomb = true;
+    boardEasyMode.fields[(6 * boardEasyMode.columns + 1)].hasBomb = false;
+    boardEasyMode.createListOpenFields();
+    boardEasyMode.verifyField(7, 0);
+    field.calculateNeibBombs(boardEasyMode, 56);
+    expect(
+        boardEasyMode.fields[(7 * boardEasyMode.columns + 0)].neighboringPumps,
+        2);
+  });
 
-  test("Should return 3 if the field [7][0] have nearby bombs on easy mode",
-      () {});
+  test("Should return 3 if the field [7][0] have nearby bombs on easy mode",() {
+    field.generateFields(boardEasyMode);
+    boardEasyMode.fields[(7 * boardEasyMode.columns + 0)].hasBomb = false;
+    boardEasyMode.fields[(6 * boardEasyMode.columns + 0)].hasBomb = true;
+    boardEasyMode.fields[(7 * boardEasyMode.columns + 1)].hasBomb = true;
+    boardEasyMode.fields[(6 * boardEasyMode.columns + 1)].hasBomb = true;
+    boardEasyMode.createListOpenFields();
+    boardEasyMode.verifyField(7, 0);
+    field.calculateNeibBombs(boardEasyMode, 56);
+    expect(
+        boardEasyMode.fields[(7 * boardEasyMode.columns + 0)].neighboringPumps,
+        3);
+  });
 
   test(
       "Should return 0 if the field [7][7] dont have nearby bombs on easy mode",
