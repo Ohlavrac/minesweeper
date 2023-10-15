@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:minesweeper/domain/entities/board_entity.dart';
 import 'package:minesweeper/ui/shared/app_colors.dart';
@@ -13,12 +15,39 @@ class GameScreen extends StatefulWidget {
 }
 
 class _GameScreenState extends State<GameScreen> {
+  late Timer timer;
+  int start = 0;
+
+  void startTimer() {
+    const oneSec = Duration(seconds: 1);
+    timer = Timer.periodic(
+      oneSec,
+      (Timer timer) {
+        setState(() {
+          start++;
+        });
+      },
+    );
+  }
+
+  @override
+  void initState() {
+    startTimer();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    timer.cancel();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-
     //INVES DE USAR O NUMERO MAXIMO DE BANDEIRA POSSO USAR O NUMERO MAXIMO DE BOMBAS
     int maxValue = widget.board.bombs;
     bool gamerunning = true;
+    widget.board.timer = start;
 
     return Scaffold(
       backgroundColor: AppColors.backgroundcolor,
@@ -28,7 +57,7 @@ class _GameScreenState extends State<GameScreen> {
         centerTitle: true,
         title: Container(
           child: Text(
-            "000",
+            "${widget.board.timer}",
             style: AppText.buttontitle,
           ),
         ),
@@ -85,9 +114,10 @@ class _GameScreenState extends State<GameScreen> {
                               );
                             });
                       } else {
-                        int line = widget.board.getLineNumber(widget.board.columns, position);
-                        int column =
-                            widget.board.getColumnNumber(widget.board.columns, position);
+                        int line = widget.board
+                            .getLineNumber(widget.board.columns, position);
+                        int column = widget.board
+                            .getColumnNumber(widget.board.columns, position);
 
                         print("[$line][$column] Z $position");
 
@@ -104,7 +134,8 @@ class _GameScreenState extends State<GameScreen> {
                         widget.board.flags != 0) {
                       widget.board.fields[position].markField();
                       widget.board.removeFlagFromCounter(maxValue);
-                    } else if (widget.board.fields[position].isChecked == true &&
+                    } else if (widget.board.fields[position].isChecked ==
+                            true &&
                         widget.board.flags < maxValue) {
                       widget.board.addFlagInTheCounter(maxValue);
                       widget.board.fields[position].removeFieldMark();

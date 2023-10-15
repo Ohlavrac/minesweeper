@@ -37,6 +37,9 @@
     - Verificar se nenhum dos 576 campos do modo dificil possui bandeira quando o tabuliro for criado [OK]
 * Quando iniciar o jogo o timer deve comera em ZERO
     - Verificar se o timer esta com 0 segundos ao iniciar o jogo [OK]
+    - Verificar se o timer esta com 0 segundos ao iniciar o jogo [UI] [OK]
+    - Verificar se o timer não esta com 1 segundos ao iniciar o jogo [UI] [OK]
+    - Verificar se o timer esta com 11 segundos depois de 11 secs de jogo [UI] [OK]
 * Quando iniciar o jogo deve ser apresentado as badeiras do USUARIO
 * Quando o USUARIO marcar um campo com a bandeira uma bandeira deve ser removida do contador de bandeiras
     - Verificar se foi removido uma bandeira do contador [OK]
