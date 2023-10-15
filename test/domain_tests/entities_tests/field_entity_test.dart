@@ -16,7 +16,8 @@ void main() {
       flags: 10,
       bombs: 10,
       timer: 0,
-      fieldsOpen: []);
+      fieldsOpen: [],
+      bombsMarkedFlag: []);
 
   BoardEntity boardMediumMode = BoardEntity(
       fields: [],
@@ -25,7 +26,8 @@ void main() {
       flags: 30,
       bombs: 30,
       timer: 0,
-      fieldsOpen: []);
+      fieldsOpen: [],
+      bombsMarkedFlag: []);
 
   BoardEntity boardHardMode = BoardEntity(
       fields: [],
@@ -34,7 +36,8 @@ void main() {
       flags: 100,
       bombs: 100,
       timer: 0,
-      fieldsOpen: []);
+      fieldsOpen: [],
+      bombsMarkedFlag: []);
 
   test("Should return a field with a bomb", () {
     FieldEntity field = FieldEntity(

@@ -9,6 +9,7 @@ class BoardEntity {
   int flags;
   int timer;
   List<bool> fieldsOpen;
+  List<bool> bombsMarkedFlag;
 
   BoardEntity(
       {required this.fields,
@@ -17,7 +18,8 @@ class BoardEntity {
       required this.flags,
       required this.bombs,
       required this.timer,
-      required this.fieldsOpen});
+      required this.fieldsOpen,
+      required this.bombsMarkedFlag});
 
   BoardEntity getBoard() {
     return BoardEntity(
@@ -27,7 +29,8 @@ class BoardEntity {
         flags: flags,
         bombs: bombs,
         timer: timer,
-        fieldsOpen: fieldsOpen);
+        fieldsOpen: fieldsOpen,
+        bombsMarkedFlag: bombsMarkedFlag);
   }
 
   //MELHORAR ISSO
@@ -79,6 +82,12 @@ class BoardEntity {
     });
   }
 
+  void createListOfBombsMarked() {
+    bombsMarkedFlag = List<bool>.generate(lines * columns, (index) {
+      return false;
+    });
+  }
+
   void verifyField(int line, int column) {
     int position = (line * columns + column);
 
@@ -119,5 +128,25 @@ class BoardEntity {
         }
       }
     }
+  }
+
+  bool verifyIfFieldMarkedHasBomb(int position) {
+    if (fields[position].hasBomb == true) {
+      bombsMarkedFlag[position] = true;
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  int verifyNumberOfBombsMarkedWithFlag() {
+    int numbombsMarked = 0;
+    for (int c = 0; c < bombsMarkedFlag.length; c++) {
+      if (bombsMarkedFlag[c] == true) {
+        numbombsMarked++;
+      }
+    }
+
+    return numbombsMarked;
   }
 }
