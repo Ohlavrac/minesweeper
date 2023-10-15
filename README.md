@@ -144,3 +144,7 @@
     - Verificar e retornar Lista Vazia se não tiver nada salvo
 * Quando um campo for selecionado deve ser possivel recuber a linha e coluna do mesmo
     - Verificar se quando um campo for selecionado é retornado o valor da linha e da coluna [OK]
+* Quando o usuario por uma bandeira em um campo com bomba deve ser inserido um valor true na lista de bombas marcadas
+    - Verificar se foi retornado true quando um campo com bomba for marcado com uma bandeira [OK]
+    - Verificar se foi retornado false quando um campo sem bomba for marcado [OK]
+    - Verificar se foi removido o valor true da lista de campos com bomba marcados quando o usuario remover a bandeira de um campo com bomba
