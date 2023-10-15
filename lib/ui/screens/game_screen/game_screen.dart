@@ -132,8 +132,12 @@ class _GameScreenState extends State<GameScreen> {
                   setState(() {
                     if (widget.board.fields[position].isChecked == false &&
                         widget.board.flags != 0) {
+                      widget.board.verifyIfFieldMarkedHasBomb(position);
+                      widget.board.verifyNumberOfBombsMarkedWithFlag();
                       widget.board.fields[position].markField();
                       widget.board.removeFlagFromCounter(maxValue);
+
+                      print(widget.board.bombsMarkedFlag);
                     } else if (widget.board.fields[position].isChecked ==
                             true &&
                         widget.board.flags < maxValue) {

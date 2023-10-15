@@ -132,8 +132,13 @@ class BoardEntity {
 
   bool verifyIfFieldMarkedHasBomb(int position) {
     if (fields[position].hasBomb == true) {
-      bombsMarkedFlag[position] = true;
-      return true;
+      if (bombsMarkedFlag[position] == true) {
+        bombsMarkedFlag[position] = false;
+        return false;
+      } else {
+        bombsMarkedFlag[position] = true;
+        return true;
+      }
     } else {
       return false;
     }

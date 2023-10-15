@@ -918,4 +918,16 @@ void main() {
     boardEasyMode.fields[1].hasBomb = false;
     expect(boardEasyMode.verifyIfFieldMarkedHasBomb(1), false);
   });
+
+  test(
+      "Should return false when the player remove marks from a field with a bomb",
+      () {
+    field.generateFields(boardEasyMode);
+    boardEasyMode.createListOfBombsMarked();
+    boardEasyMode.createListOpenFields();
+    boardEasyMode.fields[1].hasBomb = true;
+    boardEasyMode.fields[1].isChecked = true;
+    boardEasyMode.verifyIfFieldMarkedHasBomb(1);
+    expect(boardEasyMode.verifyIfFieldMarkedHasBomb(1), false);
+  });
 }
