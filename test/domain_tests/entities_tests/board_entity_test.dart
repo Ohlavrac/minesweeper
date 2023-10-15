@@ -367,4 +367,20 @@ void main() {
 
     expect(boardEasyMode.verifyNumberOfBombsMarkedWithFlag(), 10);
   });
+
+  test("Should return 30 when all bombs are marked with flags in medium mode",
+      () {
+    fieldEntity.generateFields(boardMediumMode);
+
+    boardMediumMode.createListOfBombsMarked();
+    boardMediumMode.createListOpenFields();
+
+    for (int c = 0; c < boardMediumMode.fields.length; c++) {
+      if (boardMediumMode.fields[c].hasBomb == true) {
+        boardMediumMode.verifyIfFieldMarkedHasBomb(c);
+      }
+    }
+
+    expect(boardMediumMode.verifyNumberOfBombsMarkedWithFlag(), 30);
+  });
 }
