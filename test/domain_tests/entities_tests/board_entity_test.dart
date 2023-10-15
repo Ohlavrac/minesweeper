@@ -383,4 +383,20 @@ void main() {
 
     expect(boardMediumMode.verifyNumberOfBombsMarkedWithFlag(), 30);
   });
+
+  test("Should return 100 when all bombs are marked with flags in hard mode",
+      () {
+    fieldEntity.generateFields(boardHardMode);
+
+    boardHardMode.createListOfBombsMarked();
+    boardHardMode.createListOpenFields();
+
+    for (int c = 0; c < boardHardMode.fields.length; c++) {
+      if (boardHardMode.fields[c].hasBomb == true) {
+        boardHardMode.verifyIfFieldMarkedHasBomb(c);
+      }
+    }
+
+    expect(boardHardMode.verifyNumberOfBombsMarkedWithFlag(), 100);
+  });
 }
