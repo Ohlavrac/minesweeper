@@ -135,6 +135,10 @@
 * Quando o jogo acabar deve ser salvo um resultado da partida em um historico
     - Verificar se foi retornado fim de jogo
     - Veriricar se foi retornado o historico salvo
+* Quando o usuario marcar com bandeira todas os campos com bomba o jogo deve acabar
+    - Verificar se as 10 bandeira estão marcando as 10 bombas no modo facil [OK]
+    - Verificar se as 30 bandeiras estão marcando as 30 bombas no modo medio
+    - Verificar se as 100 bandeiras estão marcando as 100 bombas no modo dificil
 * O USUARIO deve ter acesso ao historico das partidas
     - Veriricar e retornar a lista de historico
     - Verificar e retornar Lista Vazia se não tiver nada salvo

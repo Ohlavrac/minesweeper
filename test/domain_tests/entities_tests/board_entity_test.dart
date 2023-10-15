@@ -10,95 +10,63 @@ void main() {
       isChecked: false,
       wasRevelated: false,
       neighboringPumps: 0);
-  test("Should return a board line for EASY mode", () {
-    BoardEntity board = BoardEntity(
-        fields: [],
-        lines: 8,
-        columns: 8,
-        flags: 10,
-        bombs: 10,
-        timer: 0,
-        fieldsOpen: []);
 
-    expect(board.getBoard().lines, 8);
+  BoardEntity boardEasyMode = BoardEntity(
+      fields: [],
+      lines: 8,
+      columns: 8,
+      flags: 10,
+      bombs: 10,
+      timer: 0,
+      fieldsOpen: [],
+      bombsMarkedFlag: []);
+
+  BoardEntity boardMediumMode = BoardEntity(
+      fields: [],
+      lines: 10,
+      columns: 16,
+      flags: 30,
+      bombs: 30,
+      timer: 0,
+      fieldsOpen: [],
+      bombsMarkedFlag: []);
+
+  BoardEntity boardHardMode = BoardEntity(
+      fields: [],
+      lines: 24,
+      columns: 24,
+      flags: 100,
+      bombs: 100,
+      timer: 0,
+      fieldsOpen: [],
+      bombsMarkedFlag: []);
+
+  test("Should return a board line for EASY mode", () {
+    expect(boardEasyMode.getBoard().lines, 8);
   });
 
   test("Should return a board column for EASY mode", () {
-    BoardEntity board = BoardEntity(
-        fields: [],
-        lines: 8,
-        columns: 8,
-        flags: 10,
-        bombs: 10,
-        timer: 0,
-        fieldsOpen: []);
-
-    expect(board.getBoard().columns, 8);
+    expect(boardEasyMode.getBoard().columns, 8);
   });
 
   test("Should return a board line for MEDIUM mode", () {
-    BoardEntity board = BoardEntity(
-        fields: [],
-        lines: 10,
-        columns: 16,
-        flags: 30,
-        bombs: 30,
-        timer: 0,
-        fieldsOpen: []);
-
-    expect(board.getBoard().lines, 10);
+    expect(boardMediumMode.getBoard().lines, 10);
   });
 
   test("Should return a board column for MEDIUM mode", () {
-    BoardEntity board = BoardEntity(
-        fields: [],
-        lines: 10,
-        columns: 16,
-        flags: 30,
-        bombs: 30,
-        timer: 0,
-        fieldsOpen: []);
-
-    expect(board.getBoard().columns, 16);
+    expect(boardMediumMode.getBoard().columns, 16);
   });
 
   test("Should return a board line for HARD mode", () {
-    BoardEntity board = BoardEntity(
-        fields: [],
-        lines: 24,
-        columns: 24,
-        flags: 100,
-        bombs: 100,
-        timer: 0,
-        fieldsOpen: []);
-
-    expect(board.getBoard().lines, 24);
+    expect(boardHardMode.getBoard().lines, 24);
   });
 
   test("Should return a board column for HARD mode", () {
-    BoardEntity board = BoardEntity(
-        fields: [],
-        lines: 24,
-        columns: 24,
-        flags: 100,
-        bombs: 100,
-        timer: 0,
-        fieldsOpen: []);
-
-    expect(board.getBoard().columns, 24);
+    expect(boardHardMode.getBoard().columns, 24);
   });
 
   test("Should remove flag from the counter", () {
-    BoardEntity board = BoardEntity(
-        fields: [],
-        lines: 8,
-        columns: 8,
-        flags: 10,
-        bombs: 10,
-        timer: 0,
-        fieldsOpen: []);
-
-    expect(board.removeFlagFromCounter(10), "9");
+    expect(boardEasyMode.removeFlagFromCounter(10), "9");
   });
 
   test("Should add flag from the counter", () {
@@ -109,7 +77,8 @@ void main() {
         flags: 9,
         bombs: 10,
         timer: 0,
-        fieldsOpen: []);
+        fieldsOpen: [],
+        bombsMarkedFlag: []);
 
     expect(board.addFlagInTheCounter(10), "10");
   });
@@ -122,7 +91,8 @@ void main() {
         flags: 0,
         bombs: 10,
         timer: 0,
-        fieldsOpen: []);
+        fieldsOpen: [],
+        bombsMarkedFlag: []);
 
     expect(board.removeFlagFromCounter(10),
         FlagsError.flagsCounterEmptyError.name);
@@ -137,7 +107,8 @@ void main() {
         flags: -1,
         bombs: 10,
         timer: 0,
-        fieldsOpen: []);
+        fieldsOpen: [],
+        bombsMarkedFlag: []);
 
     expect(board.removeFlagFromCounter(10),
         FlagsError.flagsCounterEmptyError.name);
@@ -151,7 +122,8 @@ void main() {
         flags: 11,
         bombs: 10,
         timer: 0,
-        fieldsOpen: []);
+        fieldsOpen: [],
+        bombsMarkedFlag: []);
 
     expect(board.addFlagInTheCounter(10), FlagsError.flagsCounterIsFull.name);
   });
@@ -164,7 +136,8 @@ void main() {
         flags: 11,
         bombs: 10,
         timer: 0,
-        fieldsOpen: []);
+        fieldsOpen: [],
+        bombsMarkedFlag: []);
     expect(board.timer, 0);
   });
 
@@ -176,7 +149,9 @@ void main() {
         flags: 11,
         bombs: 10,
         timer: 0,
-        fieldsOpen: []);
+        fieldsOpen: [],
+        bombsMarkedFlag: []);
+
     fieldEntity.generateFields(board);
     int lineNumber = board.getLineNumber(board.columns, 5);
     int columnNumber = board.getColumnNumber(board.columns, 5);
@@ -185,65 +160,29 @@ void main() {
   });
 
   test("Should return 64 fields from easy mode board", () {
-    BoardEntity board = BoardEntity(
-        fields: [],
-        lines: 8,
-        columns: 8,
-        flags: 10,
-        bombs: 10,
-        timer: 0,
-        fieldsOpen: []);
+    fieldEntity.generateFields(boardEasyMode);
 
-    fieldEntity.generateFields(board);
-
-    expect(board.fields.length, 64);
+    expect(boardEasyMode.fields.length, 64);
   });
 
   test("Should return 160 fields from medium mode board", () {
-    BoardEntity board = BoardEntity(
-        fields: [],
-        lines: 10,
-        columns: 16,
-        flags: 30,
-        bombs: 30,
-        timer: 0,
-        fieldsOpen: []);
+    fieldEntity.generateFields(boardMediumMode);
 
-    fieldEntity.generateFields(board);
-
-    expect(board.fields.length, 160);
+    expect(boardMediumMode.fields.length, 160);
   });
 
   test("Should return 576 fields from hard mode board", () {
-    BoardEntity board = BoardEntity(
-        fields: [],
-        lines: 24,
-        columns: 24,
-        flags: 100,
-        bombs: 100,
-        timer: 0,
-        fieldsOpen: []);
+    fieldEntity.generateFields(boardHardMode);
 
-    fieldEntity.generateFields(board);
-
-    expect(board.fields.length, 576);
+    expect(boardHardMode.fields.length, 576);
   });
 
   test("Should return 10 bombs from easy mode board", () {
-    BoardEntity board = BoardEntity(
-        fields: [],
-        lines: 8,
-        columns: 8,
-        flags: 10,
-        bombs: 10,
-        timer: 0,
-        fieldsOpen: []);
-
-    fieldEntity.generateFields(board);
+    fieldEntity.generateFields(boardEasyMode);
     int numOfBombs = 0;
 
-    for (int c = 0; c < board.fields.length; c++) {
-      if (board.fields[c].hasBomb == true) {
+    for (int c = 0; c < boardEasyMode.fields.length; c++) {
+      if (boardEasyMode.fields[c].hasBomb == true) {
         numOfBombs++;
       }
     }
@@ -252,20 +191,11 @@ void main() {
   });
 
   test("Should return 30 bombs from medium mode board", () {
-    BoardEntity board = BoardEntity(
-        fields: [],
-        lines: 10,
-        columns: 16,
-        flags: 30,
-        bombs: 30,
-        timer: 0,
-        fieldsOpen: []);
-
-    fieldEntity.generateFields(board);
+    fieldEntity.generateFields(boardMediumMode);
     int numOfBombs = 0;
 
-    for (int c = 0; c < board.fields.length; c++) {
-      if (board.fields[c].hasBomb == true) {
+    for (int c = 0; c < boardMediumMode.fields.length; c++) {
+      if (boardMediumMode.fields[c].hasBomb == true) {
         numOfBombs++;
       }
     }
@@ -274,20 +204,11 @@ void main() {
   });
 
   test("Should return 100 bombs from hard mode board", () {
-    BoardEntity board = BoardEntity(
-        fields: [],
-        lines: 24,
-        columns: 24,
-        flags: 100,
-        bombs: 100,
-        timer: 0,
-        fieldsOpen: []);
-
-    fieldEntity.generateFields(board);
+    fieldEntity.generateFields(boardHardMode);
     int numOfBombs = 0;
 
-    for (int c = 0; c < board.fields.length; c++) {
-      if (board.fields[c].hasBomb == true) {
+    for (int c = 0; c < boardHardMode.fields.length; c++) {
+      if (boardHardMode.fields[c].hasBomb == true) {
         numOfBombs++;
       }
     }
@@ -296,201 +217,111 @@ void main() {
   });
 
   test("Should return 64 undercoverd fields when board start easy mode", () {
-    BoardEntity board = BoardEntity(
-        fields: [],
-        lines: 24,
-        columns: 24,
-        flags: 100,
-        bombs: 100,
-        timer: 0,
-        fieldsOpen: []);
-
-    fieldEntity.generateFields(board);
+    fieldEntity.generateFields(boardHardMode);
     int numberOfUndiscoveredFields = 0;
 
-    for (int c = 0; c < board.fields.length; c++) {
-      if (board.fields[c].wasRevelated == false) {
+    for (int c = 0; c < boardHardMode.fields.length; c++) {
+      if (boardHardMode.fields[c].wasRevelated == false) {
         numberOfUndiscoveredFields++;
       }
     }
 
-    expect(numberOfUndiscoveredFields, board.fields.length);
+    expect(numberOfUndiscoveredFields, boardHardMode.fields.length);
   });
 
   test("Should return 160 undercoverd fields when board start medium mode", () {
-    BoardEntity board = BoardEntity(
-        fields: [],
-        lines: 24,
-        columns: 24,
-        flags: 100,
-        bombs: 100,
-        timer: 0,
-        fieldsOpen: []);
-
-    fieldEntity.generateFields(board);
+    fieldEntity.generateFields(boardHardMode);
     int numberOfUndiscoveredFields = 0;
 
-    for (int c = 0; c < board.fields.length; c++) {
-      if (board.fields[c].wasRevelated == false) {
+    for (int c = 0; c < boardHardMode.fields.length; c++) {
+      if (boardHardMode.fields[c].wasRevelated == false) {
         numberOfUndiscoveredFields++;
       }
     }
 
-    expect(numberOfUndiscoveredFields, board.fields.length);
+    expect(numberOfUndiscoveredFields, boardHardMode.fields.length);
   });
 
   test("Should return 576 undercoverd fields when board start hard mode", () {
-    BoardEntity board = BoardEntity(
-        fields: [],
-        lines: 24,
-        columns: 24,
-        flags: 100,
-        bombs: 100,
-        timer: 0,
-        fieldsOpen: []);
-
-    fieldEntity.generateFields(board);
+    fieldEntity.generateFields(boardHardMode);
     int numberOfUndiscoveredFields = 0;
 
-    for (int c = 0; c < board.fields.length; c++) {
-      if (board.fields[c].wasRevelated == false) {
+    for (int c = 0; c < boardHardMode.fields.length; c++) {
+      if (boardHardMode.fields[c].wasRevelated == false) {
         numberOfUndiscoveredFields++;
       }
     }
 
-    expect(numberOfUndiscoveredFields, board.fields.length);
+    expect(numberOfUndiscoveredFields, boardHardMode.fields.length);
   });
 
   test("Should return 64 easy mode fields not marked with a flag", () {
-    BoardEntity board = BoardEntity(
-        fields: [],
-        lines: 8,
-        columns: 8,
-        flags: 10,
-        bombs: 10,
-        timer: 0,
-        fieldsOpen: []);
-
-    fieldEntity.generateFields(board);
+    fieldEntity.generateFields(boardEasyMode);
     int numberOfUnmarkedFields = 0;
 
-    for (int c = 0; c < board.fields.length; c++) {
-      if (board.fields[c].isChecked == false) {
+    for (int c = 0; c < boardEasyMode.fields.length; c++) {
+      if (boardEasyMode.fields[c].isChecked == false) {
         numberOfUnmarkedFields++;
       }
     }
 
-    expect(numberOfUnmarkedFields, board.fields.length);
+    expect(numberOfUnmarkedFields, boardEasyMode.fields.length);
   });
 
   test("Should return 160 medium mode fields not marked with a flag", () {
-    BoardEntity board = BoardEntity(
-        fields: [],
-        lines: 10,
-        columns: 16,
-        flags: 30,
-        bombs: 30,
-        timer: 0,
-        fieldsOpen: []);
-
-    fieldEntity.generateFields(board);
+    fieldEntity.generateFields(boardMediumMode);
     int numberOfUnmarkedFields = 0;
 
-    for (int c = 0; c < board.fields.length; c++) {
-      if (board.fields[c].isChecked == false) {
+    for (int c = 0; c < boardMediumMode.fields.length; c++) {
+      if (boardMediumMode.fields[c].isChecked == false) {
         numberOfUnmarkedFields++;
       }
     }
 
-    expect(numberOfUnmarkedFields, board.fields.length);
+    expect(numberOfUnmarkedFields, boardMediumMode.fields.length);
   });
 
   test("Should return 576 hard mode fields not marked with a flag", () {
-    BoardEntity board = BoardEntity(
-        fields: [],
-        lines: 24,
-        columns: 24,
-        flags: 100,
-        bombs: 100,
-        timer: 0,
-        fieldsOpen: []);
-
-    fieldEntity.generateFields(board);
+    fieldEntity.generateFields(boardHardMode);
     int numberOfUnmarkedFields = 0;
 
-    for (int c = 0; c < board.fields.length; c++) {
-      if (board.fields[c].isChecked == false) {
+    for (int c = 0; c < boardHardMode.fields.length; c++) {
+      if (boardHardMode.fields[c].isChecked == false) {
         numberOfUnmarkedFields++;
       }
     }
 
-    expect(numberOfUnmarkedFields, board.fields.length);
+    expect(numberOfUnmarkedFields, boardHardMode.fields.length);
   });
 
   test("Should return false when player try revel a fild with a flag", () {
-    BoardEntity board = BoardEntity(
-        fields: [],
-        lines: 8,
-        columns: 8,
-        flags: 10,
-        bombs: 10,
-        timer: 0,
-        fieldsOpen: []);
+    fieldEntity.generateFields(boardEasyMode);
 
-    fieldEntity.generateFields(board);
+    boardEasyMode.fields[5].isChecked = true;
 
-    board.fields[5].isChecked = true;
-
-    expect(board.checkIfHasFlag(5), false);
+    expect(boardEasyMode.checkIfHasFlag(5), false);
   });
 
   test("Should return true when player select a field with a bomb", () {
-    BoardEntity board = BoardEntity(
-        fields: [],
-        lines: 8,
-        columns: 8,
-        flags: 10,
-        bombs: 10,
-        timer: 0,
-        fieldsOpen: []);
+    fieldEntity.generateFields(boardEasyMode);
+    boardEasyMode.fields[5].hasBomb = true;
 
-    fieldEntity.generateFields(board);
-    board.fields[5].hasBomb = true;
-
-    expect(board.reveleField(5), true);
+    expect(boardEasyMode.reveleField(5), true);
   });
 
   test("Should return false when player select a field without a bomb", () {
-    BoardEntity board = BoardEntity(
-        fields: [],
-        lines: 8,
-        columns: 8,
-        flags: 10,
-        bombs: 10,
-        timer: 0,
-        fieldsOpen: []);
+    fieldEntity.generateFields(boardEasyMode);
+    boardEasyMode.fields[5].hasBomb = false;
 
-    fieldEntity.generateFields(board);
-    board.fields[5].hasBomb = false;
-
-    expect(board.reveleField(5), false);
+    expect(boardEasyMode.reveleField(5), false);
   });
 
   test("Should return 64 values false in openFields on easy mode board", () {
-    BoardEntity board = BoardEntity(
-        fields: [],
-        lines: 8,
-        columns: 8,
-        flags: 10,
-        bombs: 10,
-        timer: 0,
-        fieldsOpen: []);
-
-    board.createListOpenFields();
+    boardEasyMode.createListOpenFields();
     int fieldsOpenCount = 0;
 
-    for (int c = 0; c < board.fieldsOpen.length; c++) {
-      if (board.fieldsOpen[c] == false) {
+    for (int c = 0; c < boardEasyMode.fieldsOpen.length; c++) {
+      if (boardEasyMode.fieldsOpen[c] == false) {
         fieldsOpenCount++;
       }
     }
@@ -498,20 +329,11 @@ void main() {
   });
 
   test("Should return 160 values false in openFields on medium mode board", () {
-    BoardEntity board = BoardEntity(
-        fields: [],
-        lines: 10,
-        columns: 16,
-        flags: 30,
-        bombs: 30,
-        timer: 0,
-        fieldsOpen: []);
-
-    board.createListOpenFields();
+    boardMediumMode.createListOpenFields();
     int fieldsOpenCount = 0;
 
-    for (int c = 0; c < board.fieldsOpen.length; c++) {
-      if (board.fieldsOpen[c] == false) {
+    for (int c = 0; c < boardMediumMode.fieldsOpen.length; c++) {
+      if (boardMediumMode.fieldsOpen[c] == false) {
         fieldsOpenCount++;
       }
     }
@@ -519,23 +341,30 @@ void main() {
   });
 
   test("Should return 576 values false in openFields on hard mode board", () {
-    BoardEntity board = BoardEntity(
-        fields: [],
-        lines: 24,
-        columns: 24,
-        flags: 100,
-        bombs: 100,
-        timer: 0,
-        fieldsOpen: []);
-
-    board.createListOpenFields();
+    boardHardMode.createListOpenFields();
     int fieldsOpenCount = 0;
 
-    for (int c = 0; c < board.fieldsOpen.length; c++) {
-      if (board.fieldsOpen[c] == false) {
+    for (int c = 0; c < boardHardMode.fieldsOpen.length; c++) {
+      if (boardHardMode.fieldsOpen[c] == false) {
         fieldsOpenCount++;
       }
     }
     expect(fieldsOpenCount, 576);
+  });
+
+  test("Should return 10 when all bombs are marked with flags in easy mode",
+      () {
+    fieldEntity.generateFields(boardEasyMode);
+
+    boardEasyMode.createListOfBombsMarked();
+    boardEasyMode.createListOpenFields();
+
+    for (int c = 0; c < boardEasyMode.fields.length; c++) {
+      if (boardEasyMode.fields[c].hasBomb == true) {
+        boardEasyMode.verifyIfFieldMarkedHasBomb(c);
+      }
+    }
+
+    expect(boardEasyMode.verifyNumberOfBombsMarkedWithFlag(), 10);
   });
 }
