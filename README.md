@@ -57,10 +57,9 @@
 * Quando o jogo iniciar um campo aleatorio vai receber uma bomba
     - Verificar se um campo recebeu uma bomba
 * Quando o jogo iniciar um campo pode ser revelado
-    - Verificar se um campo foi marcado como revelado
+    - Verificar se um campo foi marcado como revelado [OK]
 * Quando um campo for verificado ele não pode ser desverificado
     - Verificar se o campo continua verificado mesmo apos ser "desverificado" [OK]
-    - Se o campo for deverificado retornar Erro UnmarkedFieldError
 * Quando um campo tiver uma bandeira ele não pode ser revelado
     - Verificar se o campo com bandeira foi revelado [OK]
 * Quando o USUARIO selecionar um campo com uma bomba o jogo acaba com derrota
