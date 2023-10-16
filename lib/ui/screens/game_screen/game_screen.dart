@@ -48,6 +48,7 @@ class _GameScreenState extends State<GameScreen> {
     int maxValue = widget.board.bombs;
     bool gamerunning = true;
     widget.board.timer = start;
+    Color fieldColor = Colors.blue;
 
     return Scaffold(
       backgroundColor: AppColors.backgroundcolor,
@@ -89,10 +90,13 @@ class _GameScreenState extends State<GameScreen> {
               crossAxisCount: widget.board.columns,
             ),
             itemBuilder: (context, position) {
+              if (widget.board.fieldsOpen[position] == true) {
+                fieldColor = Colors.grey;
+              } else {
+                fieldColor = Colors.blue;
+              }
               return FieldWidget(
-                color: widget.board.fieldsOpen[position] == true
-                    ? Colors.grey
-                    : Colors.blue,
+                color: fieldColor,
                 onTap: () {
                   setState(() {
                     if (widget.board.checkIfHasFlag(position)) {
@@ -124,42 +128,41 @@ class _GameScreenState extends State<GameScreen> {
                         setState(() {
                           widget.board.verifyField(line, column);
                         });
+                        print(widget.board.fields[position].wasRevelated);
                       }
                     } else {}
                   });
                 },
                 onDoubleTap: () {
                   setState(() {
+                    print(
+                        "${widget.board.fields[position].isChecked == false} | ${widget.board.flags != 0} | ${widget.board.fields[position].wasRevelated}");
                     if (widget.board.fields[position].isChecked == false &&
-                        widget.board.flags != 0) {
+                        widget.board.flags != 0 && widget.board.fields[position].wasRevelated != true) {
                       widget.board.verifyIfFieldMarkedHasBomb(position);
                       widget.board.verifyNumberOfBombsMarkedWithFlag();
                       widget.board.fields[position].markField();
                       widget.board.removeFlagFromCounter(maxValue);
 
-                      print(widget.board.bombsMarkedFlag);
+                      //print(widget.board.bombsMarkedFlag);
                     } else if (widget.board.fields[position].isChecked ==
                             true &&
                         widget.board.flags < maxValue) {
                       widget.board.addFlagInTheCounter(maxValue);
                       widget.board.fields[position].removeFieldMark();
                     }
+                    print(
+                        "${widget.board.fields[position].isChecked == false} | ${widget.board.flags != 0} | ${widget.board.fields[position].wasRevelated}");
                   });
                 },
-                flag: Container(
-                    child: widget.board.fields[position].hasBomb == true
-                        ? Text(
-                            "B",
-                            style: TextStyle(fontSize: 20, color: Colors.red),
-                          )
-                        : Text(widget.board.fields[position].neighboringPumps
-                            .toString())),
-                /*flag: widget.board.fields[position].isChecked == false
-                    ? Container()
-                    : const Icon(
-                        Icons.flag,
-                        color: Colors.red,
-                      ),*/
+                flag: widget.board.fields[position].isChecked == false
+                    ? widget.board.fields[position].neighboringPumps > 0 && widget.board.fields[position].wasRevelated == true ? Center(child: Text("${widget.board.fields[position].neighboringPumps}"),) : Container()
+                    : const Center(
+                      child: Icon(
+                          Icons.flag,
+                          color: Colors.red,
+                        ),
+                    ),
               );
             },
             itemCount: widget.board.lines * widget.board.columns,

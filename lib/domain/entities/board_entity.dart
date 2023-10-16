@@ -92,6 +92,7 @@ class BoardEntity {
     int position = (line * columns + column);
 
     fieldsOpen[position] = true;
+    fields[position].wasRevelated = true;
 
     if (line > 0) {
       if (fields[((line - 1) * columns) + column].hasBomb == false &&
