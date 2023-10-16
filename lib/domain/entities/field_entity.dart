@@ -5,7 +5,7 @@ import 'board_entity.dart';
 class FieldEntity {
   bool hasBomb;
   bool isChecked;
-  final bool wasRevelated;
+  bool wasRevelated;
   int neighboringPumps;
 
   FieldEntity(

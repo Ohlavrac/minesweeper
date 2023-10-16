@@ -930,4 +930,13 @@ void main() {
     boardEasyMode.verifyIfFieldMarkedHasBomb(1);
     expect(boardEasyMode.verifyIfFieldMarkedHasBomb(1), false);
   });
+
+  test("Should remains checked even if the player tries to uncheck", () {
+    field.generateFields(boardEasyMode);
+    boardEasyMode.fields[0].hasBomb = false;
+    boardEasyMode.fields[0].wasRevelated = true;
+    boardEasyMode.createListOpenFields();
+    boardEasyMode.verifyField(0, 0);
+    expect(boardEasyMode.fields[0].wasRevelated, true);
+  });
 }
