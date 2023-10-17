@@ -399,4 +399,29 @@ void main() {
 
     expect(boardHardMode.verifyNumberOfBombsMarkedWithFlag(), 100);
   });
+
+  test("Should return 10 flags in the counter when game start in easy mode",
+      () {
+    BoardEntity board = BoardEntity(
+      fields: [],
+      lines: 8,
+      columns: 8,
+      flags: 10,
+      bombs: 10,
+      timer: 0,
+      fieldsOpen: [],
+      bombsMarkedFlag: []);
+      
+    expect(board.flags, 10);
+  });
+
+  test("Should return 30 flags in the counter when game start in medium mode",
+      () {
+    expect(boardMediumMode.flags, 30);
+  });
+
+  test("Should return 100 flags in the counter when game start in hard mode",
+      () {
+    expect(boardHardMode.flags, 100);
+  });
 }

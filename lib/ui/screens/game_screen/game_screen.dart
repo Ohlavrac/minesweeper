@@ -123,12 +123,9 @@ class _GameScreenState extends State<GameScreen> {
                         int column = widget.board
                             .getColumnNumber(widget.board.columns, position);
 
-                        print("[$line][$column] Z $position");
-
                         setState(() {
                           widget.board.verifyField(line, column);
                         });
-                        print(widget.board.fields[position].wasRevelated);
                       }
                     } else {}
                   });
@@ -138,12 +135,16 @@ class _GameScreenState extends State<GameScreen> {
                     print(
                         "${widget.board.fields[position].isChecked == false} | ${widget.board.flags != 0} | ${widget.board.fields[position].wasRevelated}");
                     if (widget.board.fields[position].isChecked == false &&
-                        widget.board.flags != 0 && widget.board.fields[position].wasRevelated != true) {
+                        widget.board.flags != 0 &&
+                        widget.board.fields[position].wasRevelated != true) {
                       widget.board.verifyIfFieldMarkedHasBomb(position);
                       widget.board.verifyNumberOfBombsMarkedWithFlag();
                       widget.board.fields[position].markField();
                       widget.board.removeFlagFromCounter(maxValue);
-
+                      if (widget.board.verifyNumberOfBombsMarkedWithFlag() ==
+                          widget.board.bombs) {
+                        print("FIM DE JOGO GANHO");
+                      }
                       //print(widget.board.bombsMarkedFlag);
                     } else if (widget.board.fields[position].isChecked ==
                             true &&
@@ -156,13 +157,19 @@ class _GameScreenState extends State<GameScreen> {
                   });
                 },
                 flag: widget.board.fields[position].isChecked == false
-                    ? widget.board.fields[position].neighboringPumps > 0 && widget.board.fields[position].wasRevelated == true ? Center(child: Text("${widget.board.fields[position].neighboringPumps}"),) : Container()
+                    ? widget.board.fields[position].neighboringPumps > 0 &&
+                            widget.board.fields[position].wasRevelated == true
+                        ? Center(
+                            child: Text(
+                                "${widget.board.fields[position].neighboringPumps}"),
+                          )
+                        : Container()
                     : const Center(
-                      child: Icon(
+                        child: Icon(
                           Icons.flag,
                           color: Colors.red,
                         ),
-                    ),
+                      ),
               );
             },
             itemCount: widget.board.lines * widget.board.columns,

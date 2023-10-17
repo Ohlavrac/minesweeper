@@ -49,6 +49,13 @@
     - Verificar se foi adicionada uma bandeira ao contador [OK]
     - Veriricar e retornar um erro se o USUARIO tentar remover uma bandeira se o contador estiver no limite [OK]
     - Verificar e retornar um erro se o USUARIO tentar remover uma bandeira se o contador estiver acima do limite [OK]
+* Quando o jogo iniciar o contador de badeiras deve estar completo
+    - Verificar se o jogo começou com 10 bandeiras no contador de bandeiras no modo facil [UI] [OK]
+    - Verificar se o jogo começou com 30 bandeiras no contador de bandeiras no modo medio [UI] [OK]
+    - Verificar se o jogo começou com 100 bandeiras no contador de bandeiras no modo dificil [UI] [OK]
+    - Verificar se o jogo começou com 10 bandeiras no contador de bandeiras no modo facil [OK]
+    - Verificar se o jogo começou com 30 bandeiras no contador de bandeiras no modo medio [OK]
+    - Verificar se o jogo começou com 100 bandeiras no contador de bandeiras no modo dificil [OK]
 * Quando o jogo iniciar os campos podem ser marcados por uma bandeira
     - Verificar se o campo possui uma bandeira [OK]
     - Verificar se o campo não possui uma bandeira [OK]
