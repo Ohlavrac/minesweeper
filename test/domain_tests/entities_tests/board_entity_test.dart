@@ -402,15 +402,15 @@ void main() {
   test("Should return 10 flags in the counter when game start in easy mode",
       () {
     BoardEntity board = BoardEntity(
-      fields: [],
-      lines: 8,
-      columns: 8,
-      flags: 10,
-      bombs: 10,
-      timer: 0,
-      fieldsOpen: [],
-      bombsMarkedFlag: []);
-      
+        fields: [],
+        lines: 8,
+        columns: 8,
+        flags: 10,
+        bombs: 10,
+        timer: 0,
+        fieldsOpen: [],
+        bombsMarkedFlag: []);
+
     expect(board.flags, 10);
   });
 
@@ -422,5 +422,44 @@ void main() {
   test("Should return 100 flags in the counter when game start in hard mode",
       () {
     expect(boardHardMode.flags, 100);
+  });
+
+  test("Should return 54 discovered fields in easy mode", () {
+    fieldEntity.generateFields(boardEasyMode);
+    boardEasyMode.createListOfBombsMarked();
+    boardEasyMode.createListOpenFields();
+
+    for (int c = 0; c < boardEasyMode.fields.length; c++) {
+      if (boardEasyMode.fields[c].hasBomb == false) {
+        boardEasyMode.verifyField((c / boardEasyMode.columns).floor(), c % boardEasyMode.columns);
+      }
+    }
+    expect(boardEasyMode.verifyNumberOfFieldsOpen(), 54);
+  });
+
+  test("Should return 130 discovered fields in medium mode", () {
+    fieldEntity.generateFields(boardMediumMode);
+    boardMediumMode.createListOfBombsMarked();
+    boardMediumMode.createListOpenFields();
+
+    for (int c = 0; c < boardMediumMode.fields.length; c++) {
+      if (boardMediumMode.fields[c].hasBomb == false) {
+        boardMediumMode.verifyField((c / boardMediumMode.columns).floor(), c % boardMediumMode.columns);
+      }
+    }
+    expect(boardMediumMode.verifyNumberOfFieldsOpen(), 130);
+  });
+
+  test("Should return 476 discovered fields in hard mode", () {
+    fieldEntity.generateFields(boardHardMode);
+    boardHardMode.createListOfBombsMarked();
+    boardHardMode.createListOpenFields();
+
+    for (int c = 0; c < boardHardMode.fields.length; c++) {
+      if (boardHardMode.fields[c].hasBomb == false) {
+        boardHardMode.verifyField((c / boardHardMode.columns).floor(), c % boardHardMode.columns);
+      }
+    }
+    expect(boardHardMode.verifyNumberOfFieldsOpen(), 476);
   });
 }

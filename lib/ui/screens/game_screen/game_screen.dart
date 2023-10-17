@@ -133,27 +133,24 @@ class _GameScreenState extends State<GameScreen> {
                       }
                     }
 
-                    if (widget.board.verifyNumberOfBombsMarkedWithFlag() ==
-                            widget.board.bombs &&
-                        widget.board.verifyNumberOfFieldsOpen() ==
-                            widget.board.fields.length - widget.board.bombs) {
+                    if (widget.board.gamewin()) {
                       showDialog(
-                          context: context,
-                          barrierDismissible: false,
-                          builder: (context) {
-                            return GameWinWidget(
-                              onPressed: () {
-                                widget.board =
-                                    menu.initGame(widget.board.bombs == 10
-                                        ? "easy"
-                                        : widget.board.bombs == 30
-                                            ? "medium"
-                                            : "hard");
-                                Navigator.pop(context);
-                                start = 0;
-                              },
-                            );
-                          });
+                        context: context,
+                        barrierDismissible: false,
+                        builder: (context) {
+                          return GameWinWidget(
+                            onPressed: () {
+                              widget.board =
+                                  menu.initGame(widget.board.bombs == 10
+                                      ? "easy"
+                                      : widget.board.bombs == 30
+                                          ? "medium"
+                                          : "hard");
+                              Navigator.pop(context);
+                              start = 0;
+                            },
+                          );
+                        });
                     }
                   });
                 },

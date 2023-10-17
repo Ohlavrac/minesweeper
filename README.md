@@ -75,10 +75,7 @@
 * Quando o USUARIO selecionar um campo com uma bomba o jogo acaba com derrota
     - Verificar se o campo selecionado possui uma bomba [OK]
     - Verificar se o campo selecionado não possui uma bomba [OK]
-    - Verificar se o jogo acabou quando a bomba foi selecionada
-* Quando o USUARIO marcar todas as bombas de forma correta o jogo acaba com vitoria
-    - Verificar se todas as bombas foram encontradas
-    - Verificar se todos os campos sem bombas foram descobertos
+    - Verificar se o jogo acabou quando a bomba foi selecionada [OK]
 * Quando o USUARIO marcar um campo sem bombas deve ser revelado se existe alguma bomba adijacente a ele
     - Verificar se é retornado 0 caso o campo revelado não possua bombas vizinhas [OK]
     - Verificar se é retornado 1 caso o campo revelado possua possua bombas vizinhas [OK]
@@ -144,10 +141,13 @@
 * Quando o jogo acabar deve ser salvo um resultado da partida em um historico
     - Verificar se foi retornado fim de jogo
     - Veriricar se foi retornado o historico salvo
-* Quando o usuario marcar com bandeira todas os campos com bomba o jogo deve acabar
+* Quando o usuario marcar com bandeira todas os campos com bomba e todos os campos sem bobas forem revelados o jogo deve acabar com VITORIA
     - Verificar se as 10 bandeira estão marcando as 10 bombas no modo facil [OK]
     - Verificar se as 30 bandeiras estão marcando as 30 bombas no modo medio [OK]
     - Verificar se as 100 bandeiras estão marcando as 100 bombas no modo dificil [OK]
+    - Verificar se todos os campos sem bombas foram descobertos no modo facil [OK]
+    - Verificar se todos os campos sem bombas foram descobertos no modo medio [OK]
+    - Verificar se todos os campos sem bombas foram descobertos no modo dificl [OK]
 * O USUARIO deve ter acesso ao historico das partidas
     - Veriricar e retornar a lista de historico
     - Verificar e retornar Lista Vazia se não tiver nada salvo

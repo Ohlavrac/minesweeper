@@ -165,4 +165,13 @@ class BoardEntity {
     }
     return numberOfFieldsOpen;
   }
+
+  bool gamewin() {
+    if (verifyNumberOfBombsMarkedWithFlag() == bombs &&
+        verifyNumberOfFieldsOpen() == fields.length - bombs) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
