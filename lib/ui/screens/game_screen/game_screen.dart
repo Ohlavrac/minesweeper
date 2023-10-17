@@ -156,8 +156,6 @@ class _GameScreenState extends State<GameScreen> {
                 },
                 onDoubleTap: () {
                   setState(() {
-                    print(
-                        "${widget.board.fields[position].isChecked == false} | ${widget.board.flags != 0} | ${widget.board.fields[position].wasRevelated}");
                     if (widget.board.fields[position].isChecked == false &&
                         widget.board.flags != 0 &&
                         widget.board.fields[position].wasRevelated != true) {
@@ -188,7 +186,6 @@ class _GameScreenState extends State<GameScreen> {
                               );
                             });
                       }
-                      //print(widget.board.bombsMarkedFlag);
                     } else if (widget.board.fields[position].isChecked ==
                             true &&
                         widget.board.flags < maxValue) {

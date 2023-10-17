@@ -139,7 +139,9 @@
     - Verificar se retorna 3 caso o campo [23][0] revelado possua bombas vizinha MODO DIFICIL [OK]
     - Verificar se retorna 3 caso o campo [23][23] revelado possua bombas vizinha MODO DIFICIL [OK]
 * Quando o jogo acabar deve ser salvo um resultado da partida em um historico
-    - Verificar se foi retornado fim de jogo
+    - Verificar se foi retornado fim de jogo ganho modo facil [OK]
+    - Verificar se foi retornado fim de jogo ganho modo medio [OK]
+    - Verificar se foi retornado fim de jogo ganho modo dificil [OK]
     - Veriricar se foi retornado o historico salvo
 * Quando o usuario marcar com bandeira todas os campos com bomba e todos os campos sem bobas forem revelados o jogo deve acabar com VITORIA
     - Verificar se as 10 bandeira estão marcando as 10 bombas no modo facil [OK]

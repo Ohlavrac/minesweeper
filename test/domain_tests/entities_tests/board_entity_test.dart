@@ -431,7 +431,8 @@ void main() {
 
     for (int c = 0; c < boardEasyMode.fields.length; c++) {
       if (boardEasyMode.fields[c].hasBomb == false) {
-        boardEasyMode.verifyField((c / boardEasyMode.columns).floor(), c % boardEasyMode.columns);
+        boardEasyMode.verifyField(
+            (c / boardEasyMode.columns).floor(), c % boardEasyMode.columns);
       }
     }
     expect(boardEasyMode.verifyNumberOfFieldsOpen(), 54);
@@ -444,7 +445,8 @@ void main() {
 
     for (int c = 0; c < boardMediumMode.fields.length; c++) {
       if (boardMediumMode.fields[c].hasBomb == false) {
-        boardMediumMode.verifyField((c / boardMediumMode.columns).floor(), c % boardMediumMode.columns);
+        boardMediumMode.verifyField(
+            (c / boardMediumMode.columns).floor(), c % boardMediumMode.columns);
       }
     }
     expect(boardMediumMode.verifyNumberOfFieldsOpen(), 130);
@@ -457,9 +459,67 @@ void main() {
 
     for (int c = 0; c < boardHardMode.fields.length; c++) {
       if (boardHardMode.fields[c].hasBomb == false) {
-        boardHardMode.verifyField((c / boardHardMode.columns).floor(), c % boardHardMode.columns);
+        boardHardMode.verifyField(
+            (c / boardHardMode.columns).floor(), c % boardHardMode.columns);
       }
     }
     expect(boardHardMode.verifyNumberOfFieldsOpen(), 476);
+  });
+
+  test("Shoul return true when game win on easy mode", () {
+    fieldEntity.generateFields(boardEasyMode);
+    boardEasyMode.createListOfBombsMarked();
+    boardEasyMode.createListOpenFields();
+
+    for (int c = 0; c < boardEasyMode.fields.length; c++) {
+      if (boardEasyMode.fields[c].hasBomb == false) {
+        boardEasyMode.verifyField(
+            (c / boardEasyMode.columns).floor(), c % boardEasyMode.columns);
+      }
+
+      if (boardEasyMode.fields[c].hasBomb == true) {
+        boardEasyMode.verifyIfFieldMarkedHasBomb(c);
+      }
+    }
+
+    expect(boardEasyMode.gamewin(), true);
+  });
+
+  test("Shoul return true when game win on medium mode", () {
+    fieldEntity.generateFields(boardMediumMode);
+    boardMediumMode.createListOfBombsMarked();
+    boardMediumMode.createListOpenFields();
+
+    for (int c = 0; c < boardMediumMode.fields.length; c++) {
+      if (boardMediumMode.fields[c].hasBomb == false) {
+        boardMediumMode.verifyField(
+            (c / boardMediumMode.columns).floor(), c % boardMediumMode.columns);
+      }
+
+      if (boardMediumMode.fields[c].hasBomb == true) {
+        boardMediumMode.verifyIfFieldMarkedHasBomb(c);
+      }
+    }
+
+    expect(boardMediumMode.gamewin(), true);
+  });
+
+  test("Shoul return true when game win on hard mode", () {
+    fieldEntity.generateFields(boardHardMode);
+    boardHardMode.createListOfBombsMarked();
+    boardHardMode.createListOpenFields();
+
+    for (int c = 0; c < boardHardMode.fields.length; c++) {
+      if (boardHardMode.fields[c].hasBomb == false) {
+        boardHardMode.verifyField(
+            (c / boardHardMode.columns).floor(), c % boardHardMode.columns);
+      }
+
+      if (boardHardMode.fields[c].hasBomb == true) {
+        boardHardMode.verifyIfFieldMarkedHasBomb(c);
+      }
+    }
+
+    expect(boardHardMode.gamewin(), true);
   });
 }
