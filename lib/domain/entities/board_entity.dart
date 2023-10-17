@@ -155,4 +155,14 @@ class BoardEntity {
 
     return numbombsMarked;
   }
+
+  int verifyNumberOfFieldsOpen() {
+    int numberOfFieldsOpen = 0;
+    for (int c = 0; c < fieldsOpen.length; c++) {
+      if (fieldsOpen[c] == true) {
+        numberOfFieldsOpen++;
+      }
+    }
+    return numberOfFieldsOpen;
+  }
 }

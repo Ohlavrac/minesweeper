@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:minesweeper/domain/entities/board_entity.dart';
 import 'package:minesweeper/domain/entities/field_entity.dart';
 
@@ -21,7 +19,7 @@ class MenuEntity {
     }
   }
 
-  BoardEntity createBoard(String gamemode) {
+  BoardEntity initGame(String gamemode) {
     BoardEntity board;
     FieldEntity field = FieldEntity(
       hasBomb: false,

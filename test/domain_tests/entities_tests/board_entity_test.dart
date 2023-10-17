@@ -1,7 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:minesweeper/domain/entities/board_entity.dart';
 import 'package:minesweeper/domain/entities/field_entity.dart';
-import 'package:minesweeper/domain/entities/menu_entity.dart';
 import 'package:minesweeper/domain/errors/flags_error.dart';
 
 void main() {

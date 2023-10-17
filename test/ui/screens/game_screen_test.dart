@@ -9,7 +9,7 @@ void main() {
     MenuEntity menu = MenuEntity();
     await widgetTester.pumpWidget(MaterialApp(
         home: GameScreen(
-      board: menu.createBoard("easy"),
+      board: menu.initGame("easy"),
     )));
 
     final timerAppBar = find.widgetWithText(AppBar, "0");
@@ -21,7 +21,7 @@ void main() {
     MenuEntity menu = MenuEntity();
     await widgetTester.pumpWidget(MaterialApp(
         home: GameScreen(
-      board: menu.createBoard("easy"),
+      board: menu.initGame("easy"),
     )));
 
     final timerAppBar = find.widgetWithText(AppBar, "1");
@@ -32,7 +32,7 @@ void main() {
     MenuEntity menu = MenuEntity();
     await widgetTester.pumpWidget(MaterialApp(
         home: GameScreen(
-      board: menu.createBoard("easy"),
+      board: menu.initGame("easy"),
     )));
 
     await widgetTester.pump(const Duration(seconds: 11));
@@ -46,7 +46,7 @@ void main() {
     MenuEntity menu = MenuEntity();
     await widgetTester.pumpWidget(MaterialApp(
         home: GameScreen(
-      board: menu.createBoard("easy"),
+      board: menu.initGame("easy"),
     )));
 
     final flags = find.widgetWithText(AppBar, "10");
@@ -59,7 +59,7 @@ void main() {
     MenuEntity menu = MenuEntity();
     await widgetTester.pumpWidget(MaterialApp(
         home: GameScreen(
-      board: menu.createBoard("medium"),
+      board: menu.initGame("medium"),
     )));
 
     final flags = find.widgetWithText(AppBar, "30");
@@ -72,7 +72,7 @@ void main() {
     MenuEntity menu = MenuEntity();
     await widgetTester.pumpWidget(MaterialApp(
         home: GameScreen(
-      board: menu.createBoard("hard"),
+      board: menu.initGame("hard"),
     )));
 
     final flags = find.widgetWithText(AppBar, "100");
@@ -86,7 +86,7 @@ void main() {
     MenuEntity menu = MenuEntity();
     await widgetTester.pumpWidget(MaterialApp(
         home: GameScreen(
-      board: menu.createBoard("easy"),
+      board: menu.initGame("easy"),
     )));
 
     await widgetTester.pump(Duration(seconds: 1));
@@ -112,7 +112,7 @@ void main() {
     MenuEntity menu = MenuEntity();
     await widgetTester.pumpWidget(MaterialApp(
         home: GameScreen(
-      board: menu.createBoard("medium"),
+      board: menu.initGame("medium"),
     )));
 
     await widgetTester.pump(Duration(seconds: 1));
@@ -138,7 +138,7 @@ void main() {
     MenuEntity menu = MenuEntity();
     await widgetTester.pumpWidget(MaterialApp(
         home: GameScreen(
-      board: menu.createBoard("hard"),
+      board: menu.initGame("hard"),
     )));
 
     await widgetTester.pump(Duration(seconds: 1));

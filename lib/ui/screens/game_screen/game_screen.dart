@@ -2,13 +2,16 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:minesweeper/domain/entities/board_entity.dart';
+import 'package:minesweeper/domain/entities/menu_entity.dart';
 import 'package:minesweeper/ui/shared/app_colors.dart';
 import 'package:minesweeper/ui/shared/app_texts.dart';
 import 'package:minesweeper/ui/widgets/field_widget.dart';
+import 'package:minesweeper/ui/widgets/gameover_widget.dart';
+import 'package:minesweeper/ui/widgets/gamewin_widget.dart';
 
 class GameScreen extends StatefulWidget {
-  final BoardEntity board;
-  const GameScreen({super.key, required this.board});
+  BoardEntity board;
+  GameScreen({super.key, required this.board});
 
   @override
   State<GameScreen> createState() => _GameScreenState();
@@ -44,11 +47,11 @@ class _GameScreenState extends State<GameScreen> {
 
   @override
   Widget build(BuildContext context) {
-    //INVES DE USAR O NUMERO MAXIMO DE BANDEIRA POSSO USAR O NUMERO MAXIMO DE BOMBAS
     int maxValue = widget.board.bombs;
-    bool gamerunning = true;
+
     widget.board.timer = start;
     Color fieldColor = Colors.blue;
+    MenuEntity menu = MenuEntity();
 
     return Scaffold(
       backgroundColor: AppColors.backgroundcolor,
@@ -56,7 +59,7 @@ class _GameScreenState extends State<GameScreen> {
         backgroundColor: AppColors.backgroundcolor,
         elevation: 0,
         centerTitle: true,
-        title: Container(
+        title: SizedBox(
           child: Text(
             "${widget.board.timer}",
             style: AppText.buttontitle,
@@ -85,7 +88,7 @@ class _GameScreenState extends State<GameScreen> {
         child: Center(
           child: GridView.builder(
             shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: widget.board.columns,
             ),
@@ -103,18 +106,19 @@ class _GameScreenState extends State<GameScreen> {
                       if (widget.board.reveleField(position)) {
                         showDialog(
                             context: context,
+                            barrierDismissible: false,
                             builder: (context) {
-                              return AlertDialog(
-                                title: const Text("FIM DE JOGO"),
-                                content: const Text("Vocé pisou em uma mina."),
-                                actions: [
-                                  ElevatedButton(
-                                      onPressed: () {
-                                        Navigator.pushReplacementNamed(
-                                            context, "/menu");
-                                      },
-                                      child: const Text("Voltar para o menu"))
-                                ],
+                              return GameOverWidget(
+                                onPressed: () {
+                                  widget.board =
+                                      menu.initGame(widget.board.bombs == 10
+                                          ? "easy"
+                                          : widget.board.bombs == 30
+                                              ? "medium"
+                                              : "hard");
+                                  Navigator.pop(context);
+                                  start = 0;
+                                },
                               );
                             });
                       } else {
@@ -127,7 +131,30 @@ class _GameScreenState extends State<GameScreen> {
                           widget.board.verifyField(line, column);
                         });
                       }
-                    } else {}
+                    }
+
+                    if (widget.board.verifyNumberOfBombsMarkedWithFlag() ==
+                            widget.board.bombs &&
+                        widget.board.verifyNumberOfFieldsOpen() ==
+                            widget.board.fields.length - widget.board.bombs) {
+                      showDialog(
+                          context: context,
+                          barrierDismissible: false,
+                          builder: (context) {
+                            return GameWinWidget(
+                              onPressed: () {
+                                widget.board =
+                                    menu.initGame(widget.board.bombs == 10
+                                        ? "easy"
+                                        : widget.board.bombs == 30
+                                            ? "medium"
+                                            : "hard");
+                                Navigator.pop(context);
+                                start = 0;
+                              },
+                            );
+                          });
+                    }
                   });
                 },
                 onDoubleTap: () {
@@ -141,9 +168,28 @@ class _GameScreenState extends State<GameScreen> {
                       widget.board.verifyNumberOfBombsMarkedWithFlag();
                       widget.board.fields[position].markField();
                       widget.board.removeFlagFromCounter(maxValue);
+
                       if (widget.board.verifyNumberOfBombsMarkedWithFlag() ==
-                          widget.board.bombs) {
-                        print("FIM DE JOGO GANHO");
+                              widget.board.bombs &&
+                          widget.board.verifyNumberOfFieldsOpen() ==
+                              widget.board.fields.length - widget.board.bombs) {
+                        showDialog(
+                            context: context,
+                            barrierDismissible: false,
+                            builder: (context) {
+                              return GameWinWidget(
+                                onPressed: () {
+                                  widget.board =
+                                      menu.initGame(widget.board.bombs == 10
+                                          ? "easy"
+                                          : widget.board.bombs == 30
+                                              ? "medium"
+                                              : "hard");
+                                  Navigator.pop(context);
+                                  start = 0;
+                                },
+                              );
+                            });
                       }
                       //print(widget.board.bombsMarkedFlag);
                     } else if (widget.board.fields[position].isChecked ==
@@ -152,8 +198,6 @@ class _GameScreenState extends State<GameScreen> {
                       widget.board.addFlagInTheCounter(maxValue);
                       widget.board.fields[position].removeFieldMark();
                     }
-                    print(
-                        "${widget.board.fields[position].isChecked == false} | ${widget.board.flags != 0} | ${widget.board.fields[position].wasRevelated}");
                   });
                 },
                 flag: widget.board.fields[position].isChecked == false
