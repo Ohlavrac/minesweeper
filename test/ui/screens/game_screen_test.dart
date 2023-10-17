@@ -79,4 +79,82 @@ void main() {
 
     expect(flags, findsOne);
   });
+
+  testWidgets(
+      "Should return 9 flags when the player marks a field in easy mode",
+      (widgetTester) async {
+    MenuEntity menu = MenuEntity();
+    await widgetTester.pumpWidget(MaterialApp(
+        home: GameScreen(
+      board: menu.createBoard("easy"),
+    )));
+
+    await widgetTester.pump(Duration(seconds: 1));
+
+    final field = find.byType(FieldWidget).first;
+
+    await widgetTester.pump(Duration(seconds: 1));
+
+    await widgetTester.tap(field);
+    await widgetTester.pump(Duration(milliseconds: 50));
+    await widgetTester.tap(field);
+
+    await widgetTester.pump(Duration(seconds: 1));
+
+    final flags = find.widgetWithText(AppBar, "9");
+
+    expect(flags, findsOne);
+  });
+
+  testWidgets(
+      "Should return 29 flags when the player marks a field in medium mode",
+      (widgetTester) async {
+    MenuEntity menu = MenuEntity();
+    await widgetTester.pumpWidget(MaterialApp(
+        home: GameScreen(
+      board: menu.createBoard("medium"),
+    )));
+
+    await widgetTester.pump(Duration(seconds: 1));
+
+    final field = find.byType(FieldWidget).first;
+
+    await widgetTester.pump(Duration(seconds: 1));
+
+    await widgetTester.tap(field);
+    await widgetTester.pump(Duration(milliseconds: 50));
+    await widgetTester.tap(field);
+
+    await widgetTester.pump(Duration(seconds: 1));
+
+    final flags = find.widgetWithText(AppBar, "29");
+
+    expect(flags, findsOne);
+  });
+
+  testWidgets(
+      "Should return 99 flags when the player marks a field in hard mode",
+      (widgetTester) async {
+    MenuEntity menu = MenuEntity();
+    await widgetTester.pumpWidget(MaterialApp(
+        home: GameScreen(
+      board: menu.createBoard("hard"),
+    )));
+
+    await widgetTester.pump(Duration(seconds: 1));
+
+    final field = find.byType(FieldWidget).first;
+
+    await widgetTester.pump(Duration(seconds: 1));
+
+    await widgetTester.tap(field);
+    await widgetTester.pump(Duration(milliseconds: 50));
+    await widgetTester.tap(field);
+
+    await widgetTester.pump(Duration(seconds: 1));
+
+    final flags = find.widgetWithText(AppBar, "99");
+
+    expect(flags, findsOne);
+  });
 }

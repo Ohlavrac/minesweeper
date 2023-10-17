@@ -43,6 +43,9 @@
 * Quando iniciar o jogo deve ser apresentado as badeiras do USUARIO
 * Quando o USUARIO marcar um campo com a bandeira uma bandeira deve ser removida do contador de bandeiras
     - Verificar se foi removido uma bandeira do contador [OK]
+    - Verificar se o contador fica com 9 bandeiras no contador de bandeiras apos marcar um campo com uma bandeira no modo facil [UI] [OK]
+    - Verificar se o contador fica com 29 bandeiras no contador de bandeiras apos marcar um campo com uma bandeira no modo medio [UI] [OK]
+    - Verificar se o contador fica com 99 bandeiras no contador de bandeiras apos marcar um campo com uma bandeira no modo dificil [UI] [OK]
     - Verificar e retornar um erro se o USUARIO tentar marcar uma bandeira quando o contador estiver em ZERO [OK]
     - Verificar e retornar um erro se o USUARIO tentar marcar uma bandeira quando o contador estiver abaixo de ZERO [OK]
 * Quando o USUARIO remover a bandeira de um campo essa bandeira deve ser adicionada novamente ao contador
