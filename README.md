@@ -11,19 +11,19 @@
     - Verificar se o botão de modo medio foi criado no menu [UI] [OK]
     - Verificar se o botão de modo dificil foi criado no menu [UI] [OK]
 * Se FACIL o tabuleiro tera 8x8 e 10 bombas
-    - Verificar se foi criado um tabuleiro com o tamanho correto
+    - Verificar se foi criado um tabuleiro com o tamanho correto [OK]
     - Verificar se o tabuleiro tem 8 linhas [OK]
     - Verificar se o tabuleiro tem 8 colunas [OK]
     - Verificar se o tabuleiro tem 64 campos [OK] 
     - Verificar se foram criadas 10 bombas [OK]
 * Se MEDIO o tabuleiro tera 10x16 e 30 bombas
-    - Verificar se foi criado um tabuleiro com o tamanho correto
+    - Verificar se foi criado um tabuleiro com o tamanho correto [OK]
     - Verificar se o tabuleiro tem 10 linhas [OK]
     - Verificar se o tabuleiro tem 16 colunas [OK]
     - Verificar se o tabuleiro tem 160 campos [OK]
     - Verificar se foram criadas 30 bombas [OK]
 * Se DIFICIL o tabuleiro tera 24x24 e 100 bombas
-    - Verificar se foi criado um tabuleiro com o tamanho correto
+    - Verificar se foi criado um tabuleiro com o tamanho correto [OK]
     - Verificar se o tabuleiro tem 24 linhas [OK]
     - Verificar se o tabuleiro tem 24 colunas [OK]
     - Verificar se o tabuleiro tem 576 campos [OK]
@@ -40,12 +40,17 @@
     - Verificar se o timer esta com 0 segundos ao iniciar o jogo [UI] [OK]
     - Verificar se o timer não esta com 1 segundos ao iniciar o jogo [UI] [OK]
     - Verificar se o timer esta com 11 segundos depois de 11 secs de jogo [UI] [OK]
-* Quando iniciar o jogo deve ser apresentado as badeiras do USUARIO
 * Quando o USUARIO marcar um campo com a bandeira uma bandeira deve ser removida do contador de bandeiras
     - Verificar se foi removido uma bandeira do contador [OK]
     - Verificar se o contador fica com 9 bandeiras no contador de bandeiras apos marcar um campo com uma bandeira no modo facil [UI] [OK]
     - Verificar se o contador fica com 29 bandeiras no contador de bandeiras apos marcar um campo com uma bandeira no modo medio [UI] [OK]
     - Verificar se o contador fica com 99 bandeiras no contador de bandeiras apos marcar um campo com uma bandeira no modo dificil [UI] [OK]
+    - Verificar se o contador fica com 0 bandeiras no contador de bandeiras apos marcar 10 campos com uma bandeira no modo facil [UI] [OK]
+    - Verificar se o contador fica com 0 bandeiras no contador de bandeiras apos marcar 30 campos com uma bandeira no modo medio [UI] [OK]
+    - Verificar se o contador fica com 0 bandeiras no contador de bandeiras apos marcar 100 campos com uma bandeira no modo dificil [UI] [OK]
+    - Verificar se o contador fica com 1 bandeiras no contador de bandeiras apos marcar 10 campos e depois remover uma bandeira no modo facil [UI] [OK]
+    - Verificar se o contador fica com 1 bandeiras no contador de bandeiras apos marcar 30 campos e depois remover uma bandeira no modo medio [UI] [OK]
+    - Verificar se o contador fica com 1 bandeiras no contador de bandeiras apos marcar 100 campos e depois remover uma bandeira no modo dificil [UI] [OK]
     - Verificar e retornar um erro se o USUARIO tentar marcar uma bandeira quando o contador estiver em ZERO [OK]
     - Verificar e retornar um erro se o USUARIO tentar marcar uma bandeira quando o contador estiver abaixo de ZERO [OK]
 * Quando o USUARIO remover a bandeira de um campo essa bandeira deve ser adicionada novamente ao contador
@@ -64,10 +69,38 @@
     - Verificar se o campo não possui uma bandeira [OK]
     - Verificar se foi adicionado uma bandeira ao campo [OK]
     - Verificar se foi removido uma bandeira do campo [OK]
+    - Verificar se um campo foi marcado como revelado [OK]
+    - Verificar se o campo 1 existe e pode ser marcado com bandeira modo facil [OK]
+    - Verificar se o campo 32 existe e pode ser marcado com bandeira modo facil [OK]
+    - Verificar se o campo 64 existe e pode ser marcado com bandeira modo facil [OK]
+    - Verificar se o campo 1 existe e pode ser marcado com bandeira modo medio [OK]
+    - Verificar se o campo 82 existe e pode ser marcado com bandeira modo medio [OK]
+    - Verificar se o campo 160 existe e pode ser marcado com bandeira modo medio [OK]
+    - Verificar se o campo 1 existe e pode ser marcado com bandeira modo dificil [OK]
+    - Verificar se o campo 288 existe e pode ser marcado com bandeira modo dificil [OK]
+    - Verificar se o campo 576 existe e pode ser marcado com bandeira modo dificil [OK]
+    - Verificar se o campo fica com icone de bandeira quando marcado no modo facil [UI] [OK]
+    - Verificar se o campo fica com icone de bandeira quando marcado no modo medio [UI] [OK]
+    - Verificar se o campo fica com icone de bandeira quando marcado no modo dificil [UI] [OK]
+    - Verificar se o campo fica sem icone de bandeira quando desmarcado no modo facil [UI] [OK]
+    - Verificar se o campo fica sem icone de bandeira quando desmarcado no modo medio [UI] [OK]
+    - Verificar se o campo fica sem icone de bandeira quando desmarcado no modo dificil [UI] [OK]
 * Quando o jogo iniciar um campo aleatorio vai receber uma bomba
     - Verificar se um campo recebeu uma bomba
 * Quando o jogo iniciar um campo pode ser revelado
     - Verificar se um campo foi marcado como revelado [OK]
+    - Verificar se o campo 1 existe e pode ser revelado modo facil [OK]
+    - Verificar se o campo 32 existe e pode ser revelado modo facil [OK]
+    - Verificar se o campo 64 existe e pode ser revelado modo facil [OK]
+    - Verificar se o campo 1 existe e pode ser revelado modo medio [OK]
+    - Verificar se o campo 82 existe e pode ser revelado modo medio [OK]
+    - Verificar se o campo 160 existe e pode ser revelado modo medio [OK]
+    - Verificar se o campo 1 existe e pode ser revelado modo dificil [OK]
+    - Verificar se o campo 288 existe e pode ser revelado modo dificil [OK]
+    - Verificar se o campo 576 existe e pode ser revelado modo dificil [OK]
+    - Verificar se o campo fica cinza quando revelado no modo facil [UI] [OK]
+    - Verificar se o campo fica cinza quando revelado no modo medio [UI] [OK]
+    - Verificar se o campo fica cinza quando revelado no modo dificil [UI] [OK]
 * Quando um campo for verificado ele não pode ser desverificado
     - Verificar se o campo continua verificado mesmo apos ser "desverificado" [OK]
 * Quando um campo tiver uma bandeira ele não pode ser revelado

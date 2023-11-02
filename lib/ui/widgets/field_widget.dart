@@ -6,7 +6,7 @@ class FieldWidget extends StatelessWidget {
   final Color color;
   final Widget flag;
   const FieldWidget(
-      {super.key, this.onDoubleTap, this.onTap, required this.flag, required this.color});
+      {this.onDoubleTap, this.onTap, required this.flag, required this.color});
 
   @override
   Widget build(BuildContext context) {

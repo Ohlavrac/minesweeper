@@ -89,17 +89,17 @@ void main() {
       board: menu.initGame("easy"),
     )));
 
-    await widgetTester.pump(Duration(seconds: 1));
+    await widgetTester.pump(const Duration(seconds: 1));
 
     final field = find.byType(FieldWidget).first;
 
-    await widgetTester.pump(Duration(seconds: 1));
+    await widgetTester.pump(const Duration(seconds: 1));
 
     await widgetTester.tap(field);
-    await widgetTester.pump(Duration(milliseconds: 50));
+    await widgetTester.pump(const Duration(milliseconds: 50));
     await widgetTester.tap(field);
 
-    await widgetTester.pump(Duration(seconds: 1));
+    await widgetTester.pump(const Duration(seconds: 1));
 
     final flags = find.widgetWithText(AppBar, "9");
 
@@ -107,7 +107,71 @@ void main() {
   });
 
   testWidgets(
-      "Should return 29 flags when the player marks a field in medium mode",
+      "Should return 0 flags when the player marks 10 fields in easy mode",
+      (widgetTester) async {
+    MenuEntity menu = MenuEntity();
+    await widgetTester.pumpWidget(MaterialApp(
+        home: GameScreen(
+      board: menu.initGame("easy"),
+    )));
+
+    await widgetTester.pump(const Duration(seconds: 1));
+
+    final field = find.byType(FieldWidget);
+
+    for (int c = 0; c < 10; c++) {
+      await widgetTester.pump(const Duration(seconds: 1));
+
+      await widgetTester.tap(field.at(c));
+      await widgetTester.pump(const Duration(milliseconds: 50));
+      await widgetTester.tap(field.at(c));
+
+      await widgetTester.pump(const Duration(seconds: 1));
+    }
+
+    final flags = find.widgetWithText(AppBar, "0");
+
+    expect(flags, findsOne);
+  });
+
+  testWidgets(
+      "Should return 1 flag when player marks 10 fields and then unmarks a field in easy mode",
+      (widgetTester) async {
+    MenuEntity menu = MenuEntity();
+    await widgetTester.pumpWidget(MaterialApp(
+        home: GameScreen(
+      board: menu.initGame("easy"),
+    )));
+
+    await widgetTester.pump(const Duration(seconds: 1));
+
+    final field = find.byType(FieldWidget);
+
+    for (int c = 0; c < 10; c++) {
+      await widgetTester.pump(const Duration(seconds: 1));
+
+      await widgetTester.tap(field.at(c));
+      await widgetTester.pump(const Duration(milliseconds: 50));
+      await widgetTester.tap(field.at(c));
+
+      await widgetTester.pump(const Duration(seconds: 1));
+    }
+
+    await widgetTester.pump(const Duration(seconds: 1));
+
+    await widgetTester.tap(field.at(0));
+    await widgetTester.pump(const Duration(milliseconds: 50));
+    await widgetTester.tap(field.at(0));
+
+    await widgetTester.pump(const Duration(seconds: 1));
+
+    final flags = find.widgetWithText(AppBar, "1");
+
+    expect(flags, findsOne);
+  });
+
+  testWidgets(
+      "Should return 0 flags when the player marks 30 fields in medium mode",
       (widgetTester) async {
     MenuEntity menu = MenuEntity();
     await widgetTester.pumpWidget(MaterialApp(
@@ -115,25 +179,63 @@ void main() {
       board: menu.initGame("medium"),
     )));
 
-    await widgetTester.pump(Duration(seconds: 1));
+    await widgetTester.pump(const Duration(seconds: 1));
 
-    final field = find.byType(FieldWidget).first;
+    final field = find.byType(FieldWidget);
 
-    await widgetTester.pump(Duration(seconds: 1));
+    for (int c = 0; c < 30; c++) {
+      await widgetTester.pump(const Duration(seconds: 1));
 
-    await widgetTester.tap(field);
-    await widgetTester.pump(Duration(milliseconds: 50));
-    await widgetTester.tap(field);
+      await widgetTester.tap(field.at(c));
+      await widgetTester.pump(const Duration(milliseconds: 50));
+      await widgetTester.tap(field.at(c));
 
-    await widgetTester.pump(Duration(seconds: 1));
+      await widgetTester.pump(const Duration(seconds: 1));
+    }
 
-    final flags = find.widgetWithText(AppBar, "29");
+    final flags = find.widgetWithText(AppBar, "0");
 
     expect(flags, findsOne);
   });
 
   testWidgets(
-      "Should return 99 flags when the player marks a field in hard mode",
+      "Should return 1 flags when the player marks 30 fields and then unmarks a field in medium mode",
+      (widgetTester) async {
+    MenuEntity menu = MenuEntity();
+    await widgetTester.pumpWidget(MaterialApp(
+        home: GameScreen(
+      board: menu.initGame("medium"),
+    )));
+
+    await widgetTester.pump(const Duration(seconds: 1));
+
+    final field = find.byType(FieldWidget);
+
+    for (int c = 0; c < 30; c++) {
+      await widgetTester.pump(const Duration(seconds: 1));
+
+      await widgetTester.tap(field.at(c));
+      await widgetTester.pump(const Duration(milliseconds: 50));
+      await widgetTester.tap(field.at(c));
+
+      await widgetTester.pump(const Duration(seconds: 1));
+    }
+
+    await widgetTester.pump(const Duration(seconds: 1));
+
+    await widgetTester.tap(field.at(0));
+    await widgetTester.pump(const Duration(milliseconds: 50));
+    await widgetTester.tap(field.at(0));
+
+    await widgetTester.pump(const Duration(seconds: 1));
+
+    final flags = find.widgetWithText(AppBar, "1");
+
+    expect(flags, findsOne);
+  });
+
+  testWidgets(
+      "Should return 0 flags when the player marks 100 fields in hard mode",
       (widgetTester) async {
     MenuEntity menu = MenuEntity();
     await widgetTester.pumpWidget(MaterialApp(
@@ -141,20 +243,351 @@ void main() {
       board: menu.initGame("hard"),
     )));
 
-    await widgetTester.pump(Duration(seconds: 1));
+    await widgetTester.pump(const Duration(seconds: 1));
 
-    final field = find.byType(FieldWidget).first;
+    final field = find.byType(FieldWidget);
 
-    await widgetTester.pump(Duration(seconds: 1));
+    for (int c = 0; c < 100; c++) {
+      await widgetTester.pump(const Duration(seconds: 1));
 
-    await widgetTester.tap(field);
-    await widgetTester.pump(Duration(milliseconds: 50));
-    await widgetTester.tap(field);
+      await widgetTester.tap(field.at(c));
+      await widgetTester.pump(const Duration(milliseconds: 50));
+      await widgetTester.tap(field.at(c));
 
-    await widgetTester.pump(Duration(seconds: 1));
+      await widgetTester.pump(const Duration(seconds: 1));
+    }
 
-    final flags = find.widgetWithText(AppBar, "99");
+    final flags = find.widgetWithText(AppBar, "0");
 
     expect(flags, findsOne);
   });
+
+  testWidgets(
+      "Should return 1 flags when the player marks 100 fields and then unmarks a field in hard mode",
+      (widgetTester) async {
+    MenuEntity menu = MenuEntity();
+    await widgetTester.pumpWidget(MaterialApp(
+        home: GameScreen(
+      board: menu.initGame("hard"),
+    )));
+
+    await widgetTester.pump(const Duration(seconds: 1));
+
+    final field = find.byType(FieldWidget);
+
+    for (int c = 0; c < 100; c++) {
+      await widgetTester.pump(const Duration(seconds: 1));
+
+      await widgetTester.tap(field.at(c));
+      await widgetTester.pump(const Duration(milliseconds: 50));
+      await widgetTester.tap(field.at(c));
+
+      await widgetTester.pump(const Duration(seconds: 1));
+    }
+
+    await widgetTester.pump(const Duration(seconds: 1));
+
+    await widgetTester.tap(field.at(1));
+    await widgetTester.pump(const Duration(milliseconds: 50));
+    await widgetTester.tap(field.at(1));
+
+    await widgetTester.pump(const Duration(seconds: 1));
+
+    final flags = find.widgetWithText(AppBar, "1");
+
+    expect(flags, findsOne);
+  });
+
+  /*testWidgets("Should return 64 fields widget on easy mode board",
+      (widgetTester) async {
+    MenuEntity menu = MenuEntity();
+    await widgetTester.pumpWidget(MaterialApp(
+        home: GameScreen(
+      board: menu.initGame("easy"),
+    )));
+
+    await widgetTester.pump(const Duration(seconds: 1));
+
+    final fields = widgetTester.widgetList(find.byType(FieldWidget));
+
+    expect(fields.length, 64);
+  });*/
+
+  testWidgets(
+      "Should return true if field 1 color change to grey when player revel the field easy mode",
+      (widgetTester) async {
+    MenuEntity menu = MenuEntity();
+    await widgetTester.pumpWidget(MaterialApp(
+        home: GameScreen(
+      board: menu.initGame("easy"),
+    )));
+
+    await widgetTester.pump(const Duration(seconds: 1));
+
+    final fieldFinder = find.byType(FieldWidget).at(1);
+
+    await widgetTester.pump(const Duration(seconds: 1));
+
+    await widgetTester.tap(fieldFinder);
+    await widgetTester.pump(const Duration(milliseconds: 50));
+
+    await widgetTester.pump(const Duration(seconds: 1));
+
+    final fieldFinderAfter = widgetTester.widget(fieldFinder) as FieldWidget;
+
+    await widgetTester.pump(const Duration(seconds: 1));
+    expect(fieldFinderAfter.color, equals(Colors.grey));
+  });
+
+  testWidgets(
+      "Should return true if field 1 color change to grey when player revel the field medium mode",
+      (widgetTester) async {
+    MenuEntity menu = MenuEntity();
+    await widgetTester.pumpWidget(MaterialApp(
+        home: GameScreen(
+      board: menu.initGame("medium"),
+    )));
+
+    await widgetTester.pump(const Duration(seconds: 1));
+
+    final fieldFinder = find.byType(FieldWidget).at(1);
+
+    await widgetTester.pump(const Duration(seconds: 1));
+
+    await widgetTester.tap(fieldFinder);
+    await widgetTester.pump(const Duration(milliseconds: 50));
+
+    await widgetTester.pump(const Duration(seconds: 1));
+
+    final fieldFinderAfter = widgetTester.widget(fieldFinder) as FieldWidget;
+
+    await widgetTester.pump(const Duration(seconds: 1));
+    expect(fieldFinderAfter.color, equals(Colors.grey));
+  });
+
+  testWidgets(
+      "Should return true if field 1 color change to grey when player revel the field hard mode",
+      (widgetTester) async {
+    MenuEntity menu = MenuEntity();
+    await widgetTester.pumpWidget(MaterialApp(
+        home: GameScreen(
+      board: menu.initGame("hard"),
+    )));
+
+    await widgetTester.pump(const Duration(seconds: 1));
+
+    final fieldFinder = find.byType(FieldWidget).at(1);
+
+    await widgetTester.pump(const Duration(seconds: 1));
+
+    await widgetTester.tap(fieldFinder);
+    await widgetTester.pump(const Duration(milliseconds: 50));
+
+    await widgetTester.pump(const Duration(seconds: 1));
+
+    final fieldFinderAfter = widgetTester.widget(fieldFinder) as FieldWidget;
+
+    await widgetTester.pump(const Duration(seconds: 1));
+    expect(fieldFinderAfter.color, equals(Colors.grey));
+  });
+
+  testWidgets(
+      "Should return true if field 1 show a flag when player mark the field easy mode",
+      (widgetTester) async {
+    MenuEntity menu = MenuEntity();
+    await widgetTester.pumpWidget(MaterialApp(
+        home: GameScreen(
+      board: menu.initGame("easy"),
+    )));
+
+    await widgetTester.pump(const Duration(seconds: 1));
+
+    final fieldFinder = find.byType(FieldWidget).at(1);
+
+    await widgetTester.pump(const Duration(seconds: 1));
+
+    await widgetTester.tap(fieldFinder);
+    await widgetTester.pump(const Duration(milliseconds: 50));
+    await widgetTester.tap(fieldFinder);
+
+    await widgetTester.pump(const Duration(seconds: 1));
+
+    await widgetTester.pump(const Duration(seconds: 1));
+    expect(find.widgetWithIcon(FieldWidget, Icons.flag), findsOneWidget);
+  });
+
+  testWidgets(
+      "Should return true if field 1 show a flag when player mark the field medium mode",
+      (widgetTester) async {
+    MenuEntity menu = MenuEntity();
+    await widgetTester.pumpWidget(MaterialApp(
+        home: GameScreen(
+      board: menu.initGame("medium"),
+    )));
+
+    await widgetTester.pump(const Duration(seconds: 1));
+
+    final fieldFinder = find.byType(FieldWidget).at(1);
+
+    await widgetTester.pump(const Duration(seconds: 1));
+
+    await widgetTester.tap(fieldFinder);
+    await widgetTester.pump(const Duration(milliseconds: 50));
+    await widgetTester.tap(fieldFinder);
+
+    await widgetTester.pump(const Duration(seconds: 1));
+
+    await widgetTester.pump(const Duration(seconds: 1));
+    expect(find.widgetWithIcon(FieldWidget, Icons.flag), findsOneWidget);
+  });
+
+  testWidgets(
+      "Should return true if field 1 show a flag when player mark the field hard mode",
+      (widgetTester) async {
+    MenuEntity menu = MenuEntity();
+    await widgetTester.pumpWidget(MaterialApp(
+        home: GameScreen(
+      board: menu.initGame("hard"),
+    )));
+
+    await widgetTester.pump(const Duration(seconds: 1));
+
+    final fieldFinder = find.byType(FieldWidget).at(1);
+
+    await widgetTester.pump(const Duration(seconds: 1));
+
+    await widgetTester.tap(fieldFinder);
+    await widgetTester.pump(const Duration(milliseconds: 50));
+    await widgetTester.tap(fieldFinder);
+
+    await widgetTester.pump(const Duration(seconds: 1));
+
+    await widgetTester.pump(const Duration(seconds: 1));
+    expect(find.widgetWithIcon(FieldWidget, Icons.flag), findsOneWidget);
+  });
+
+  testWidgets(
+      "Should return return findsNothing if the player removes the flag from a field in easy mode",
+      (widgetTester) async {
+    MenuEntity menu = MenuEntity();
+    await widgetTester.pumpWidget(MaterialApp(
+        home: GameScreen(
+      board: menu.initGame("easy"),
+    )));
+
+    await widgetTester.pump(const Duration(seconds: 1));
+
+    final fieldFinder = find.byType(FieldWidget).at(1);
+
+    await widgetTester.pump(const Duration(seconds: 1));
+
+    //Adiciona uma bandeira
+    await widgetTester.tap(fieldFinder);
+    await widgetTester.pump(const Duration(milliseconds: 50));
+    await widgetTester.tap(fieldFinder);
+
+    await widgetTester.pump(const Duration(seconds: 1));
+
+    //remove uma bandeira
+    await widgetTester.tap(fieldFinder);
+    await widgetTester.pump(const Duration(milliseconds: 50));
+    await widgetTester.tap(fieldFinder);
+
+    await widgetTester.pump(const Duration(seconds: 1));
+
+    await widgetTester.pump(const Duration(seconds: 1));
+    expect(find.widgetWithIcon(FieldWidget, Icons.flag), findsNothing);
+  });
+
+  testWidgets(
+      "Should return return findsNothing if the player removes the flag from a field in medium mode",
+      (widgetTester) async {
+    MenuEntity menu = MenuEntity();
+    await widgetTester.pumpWidget(MaterialApp(
+        home: GameScreen(
+      board: menu.initGame("medium"),
+    )));
+
+    await widgetTester.pump(const Duration(seconds: 1));
+
+    final fieldFinder = find.byType(FieldWidget).at(1);
+
+    await widgetTester.pump(const Duration(seconds: 1));
+
+    //Adiciona uma bandeira
+    await widgetTester.tap(fieldFinder);
+    await widgetTester.pump(const Duration(milliseconds: 50));
+    await widgetTester.tap(fieldFinder);
+
+    await widgetTester.pump(const Duration(seconds: 1));
+
+    //remove uma bandeira
+    await widgetTester.tap(fieldFinder);
+    await widgetTester.pump(const Duration(milliseconds: 50));
+    await widgetTester.tap(fieldFinder);
+
+    await widgetTester.pump(const Duration(seconds: 1));
+
+    await widgetTester.pump(const Duration(seconds: 1));
+    expect(find.widgetWithIcon(FieldWidget, Icons.flag), findsNothing);
+  });
+
+  testWidgets(
+      "Should return return findsNothing if the player removes the flag from a field in hard mode",
+      (widgetTester) async {
+    MenuEntity menu = MenuEntity();
+    await widgetTester.pumpWidget(MaterialApp(
+        home: GameScreen(
+      board: menu.initGame("hard"),
+    )));
+
+    await widgetTester.pump(const Duration(seconds: 1));
+
+    final fieldFinder = find.byType(FieldWidget).at(1);
+
+    await widgetTester.pump(const Duration(seconds: 1));
+
+    //Adiciona uma bandeira
+    await widgetTester.tap(fieldFinder);
+    await widgetTester.pump(const Duration(milliseconds: 50));
+    await widgetTester.tap(fieldFinder);
+
+    await widgetTester.pump(const Duration(seconds: 1));
+
+    //remove uma bandeira
+    await widgetTester.tap(fieldFinder);
+    await widgetTester.pump(const Duration(milliseconds: 50));
+    await widgetTester.tap(fieldFinder);
+
+    await widgetTester.pump(const Duration(seconds: 1));
+
+    await widgetTester.pump(const Duration(seconds: 1));
+    expect(find.widgetWithIcon(FieldWidget, Icons.flag), findsNothing);
+  });
+
+  /*testWidgets(
+      "Should return true if field 32 color change to grey when player revel the field easy mode",
+      (widgetTester) async {
+    MenuEntity menu = MenuEntity();
+    await widgetTester.pumpWidget(MaterialApp(
+        home: GameScreen(
+      board: menu.initGame("easy"),
+    )));
+
+    await widgetTester.pump(const Duration(seconds: 1));
+
+    final fieldFinder = find.byType(FieldWidget).at(32);
+
+    await widgetTester.pump(const Duration(seconds: 1));
+
+    await widgetTester.tap(fieldFinder);
+    await widgetTester.pump(const Duration(milliseconds: 50));
+
+    await widgetTester.pump(const Duration(seconds: 1));
+
+    final fieldFinderAfter = widgetTester.widget(fieldFinder) as FieldWidget;
+
+    await widgetTester.pump(const Duration(seconds: 1));
+    expect(fieldFinderAfter.color, equals(Colors.grey));
+  });*/
 }

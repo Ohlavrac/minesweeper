@@ -522,4 +522,196 @@ void main() {
 
     expect(boardHardMode.gamewin(), true);
   });
+
+  test("Should return true when player try revel field 1 on easy mode", () {
+    fieldEntity.generateFields(boardEasyMode);
+    boardEasyMode.createListOfBombsMarked();
+    boardEasyMode.createListOpenFields();
+
+    boardEasyMode.verifyField(0, 0);
+    expect(boardEasyMode.fieldsOpen[0], true);
+  });
+
+  test("Should return true when player try revel field 31 on easy mode", () {
+    fieldEntity.generateFields(boardEasyMode);
+    boardEasyMode.createListOfBombsMarked();
+    boardEasyMode.createListOpenFields();
+
+    boardEasyMode.verifyField(3, 7);
+    expect(boardEasyMode.fieldsOpen[31], true);
+  });
+
+  test("Should return true when player try revel field 63 on easy mode", () {
+    fieldEntity.generateFields(boardEasyMode);
+    boardEasyMode.createListOfBombsMarked();
+    boardEasyMode.createListOpenFields();
+
+    boardEasyMode.verifyField(7, 7);
+    expect(boardEasyMode.fieldsOpen[63], true);
+  });
+
+  test("Should return true when player try revel field 1 on mediun mode", () {
+    fieldEntity.generateFields(boardMediumMode);
+    boardMediumMode.createListOfBombsMarked();
+    boardMediumMode.createListOpenFields();
+
+    boardMediumMode.verifyField(0, 0);
+    expect(boardMediumMode.fieldsOpen[0], true);
+  });
+
+  test("Should return true when player try revel field 82 on mediun mode", () {
+    fieldEntity.generateFields(boardMediumMode);
+    boardMediumMode.createListOfBombsMarked();
+    boardMediumMode.createListOpenFields();
+
+    boardMediumMode.verifyField(5, 2);
+    expect(boardMediumMode.fieldsOpen[82], true);
+  });
+
+  test("Should return true when player try revel field 159 on mediun mode", () {
+    fieldEntity.generateFields(boardMediumMode);
+    boardMediumMode.createListOfBombsMarked();
+    boardMediumMode.createListOpenFields();
+
+    boardMediumMode.verifyField(9, 15);
+    expect(boardMediumMode.fieldsOpen[159], true);
+  });
+
+  test("Should return true when player try revel field 1 on hard mode", () {
+    fieldEntity.generateFields(boardHardMode);
+    boardHardMode.createListOfBombsMarked();
+    boardHardMode.createListOpenFields();
+
+    boardHardMode.verifyField(0, 0);
+    expect(boardHardMode.fieldsOpen[0], true);
+  });
+
+  test("Should return true when player try revel field 288 on hard mode", () {
+    fieldEntity.generateFields(boardHardMode);
+    boardHardMode.createListOfBombsMarked();
+    boardHardMode.createListOpenFields();
+
+    boardHardMode.verifyField(12, 0);
+    expect(boardHardMode.fieldsOpen[288], true);
+  });
+
+  test("Should return true when player try revel field 575 on hard mode", () {
+    fieldEntity.generateFields(boardHardMode);
+    boardHardMode.createListOfBombsMarked();
+    boardHardMode.createListOpenFields();
+
+    boardHardMode.verifyField(23, 23);
+    expect(boardHardMode.fieldsOpen[575], true);
+  });
+
+  test("Should return true when the player tries to flag field 1 in easy mode",
+      () {
+    fieldEntity.generateFields(boardEasyMode);
+    boardEasyMode.createListOfBombsMarked();
+    boardEasyMode.createListOpenFields();
+
+    boardEasyMode.fields[0].hasBomb = false;
+    boardEasyMode.fields[0].markField();
+    expect(boardEasyMode.fields[0].isChecked, true);
+  });
+
+  test("Should return true when the player tries to flag field 31 in easy mode",
+      () {
+    fieldEntity.generateFields(boardEasyMode);
+    boardEasyMode.createListOfBombsMarked();
+    boardEasyMode.createListOpenFields();
+
+    boardEasyMode.fields[31].hasBomb = false;
+    boardEasyMode.fields[31].markField();
+    expect(boardEasyMode.fields[31].isChecked, true);
+  });
+
+  test("Should return true when the player tries to flag field 63 in easy mode",
+      () {
+    fieldEntity.generateFields(boardEasyMode);
+    boardEasyMode.createListOfBombsMarked();
+    boardEasyMode.createListOpenFields();
+
+    boardEasyMode.fields[63].hasBomb = false;
+    boardEasyMode.fields[63].markField();
+    expect(boardEasyMode.fields[63].isChecked, true);
+  });
+
+  test(
+      "Should return true when the player tries to flag field 1 in medium mode",
+      () {
+    fieldEntity.generateFields(boardMediumMode);
+    boardMediumMode.createListOfBombsMarked();
+    boardMediumMode.createListOpenFields();
+
+    boardMediumMode.fields[0].hasBomb = false;
+    boardMediumMode.fields[0].markField();
+    expect(boardMediumMode.fields[0].isChecked, true);
+  });
+
+  test(
+      "Should return true when the player tries to flag field 82 in medium mode",
+      () {
+    fieldEntity.generateFields(boardMediumMode);
+    boardMediumMode.createListOfBombsMarked();
+    boardMediumMode.createListOpenFields();
+
+    boardMediumMode.fields[82].hasBomb = false;
+    boardMediumMode.fields[82].markField();
+    expect(boardMediumMode.fields[82].isChecked, true);
+  });
+
+  test(
+      "Should return true when the player tries to flag field 159 in medium mode",
+      () {
+    fieldEntity.generateFields(boardMediumMode);
+    boardMediumMode.createListOfBombsMarked();
+    boardMediumMode.createListOpenFields();
+
+    boardMediumMode.fields[159].hasBomb = false;
+    boardMediumMode.fields[159].markField();
+    expect(boardMediumMode.fields[159].isChecked, true);
+  });
+
+  test("Should return true when player try revel field 1 on hard mode", () {
+    fieldEntity.generateFields(boardHardMode);
+    boardHardMode.createListOfBombsMarked();
+    boardHardMode.createListOpenFields();
+
+    boardHardMode.fields[0].hasBomb = false;
+    boardHardMode.fields[0].markField();
+    expect(boardHardMode.fields[0].isChecked, true);
+  });
+
+  test("Should return true when player try revel field 288 on hard mode", () {
+    fieldEntity.generateFields(boardHardMode);
+    boardHardMode.createListOfBombsMarked();
+    boardHardMode.createListOpenFields();
+
+    boardHardMode.fields[288].hasBomb = false;
+    boardHardMode.fields[288].markField();
+    expect(boardHardMode.fields[288].isChecked, true);
+  });
+
+  test("Should return true when player try revel field 575 on hard mode", () {
+    fieldEntity.generateFields(boardHardMode);
+    boardHardMode.createListOfBombsMarked();
+    boardHardMode.createListOpenFields();
+
+    boardHardMode.fields[575].hasBomb = false;
+    boardHardMode.fields[575].markField();
+    expect(boardHardMode.fields[575].isChecked, true);
+  });
+
+  test("Should return 64 fields on easy board", () {
+    expect(fieldEntity.generateFields(boardEasyMode).length, 64);
+  });
+
+  test("Should return 160 fields on medium board", () {
+    expect(fieldEntity.generateFields(boardMediumMode).length, 160);
+  });
+
+  test("Should return 576 fields on hard board", () {
+    expect(fieldEntity.generateFields(boardHardMode).length, 576);
+  });
 }
