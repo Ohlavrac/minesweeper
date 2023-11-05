@@ -11,7 +11,8 @@ import 'package:minesweeper/ui/widgets/gamewin_widget.dart';
 
 class GameScreen extends StatefulWidget {
   BoardEntity board;
-  GameScreen({super.key, required this.board});
+  int? columns;
+  GameScreen({super.key, required this.board, this.columns});
 
   @override
   State<GameScreen> createState() => _GameScreenState();
@@ -90,7 +91,7 @@ class _GameScreenState extends State<GameScreen> {
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: widget.board.columns,
+              crossAxisCount: widget.columns ?? widget.board.columns,
             ),
             itemBuilder: (context, position) {
               if (widget.board.fieldsOpen[position] == true) {
@@ -104,6 +105,7 @@ class _GameScreenState extends State<GameScreen> {
                   setState(() {
                     if (widget.board.checkIfHasFlag(position)) {
                       if (widget.board.reveleField(position)) {
+                        print("BOOOM");
                         showDialog(
                             context: context,
                             barrierDismissible: false,
@@ -163,6 +165,7 @@ class _GameScreenState extends State<GameScreen> {
                       widget.board.verifyNumberOfBombsMarkedWithFlag();
                       widget.board.fields[position].markField();
                       widget.board.removeFlagFromCounter(maxValue);
+                      print("ADD BANDEIRA");
 
                       if (widget.board.verifyNumberOfBombsMarkedWithFlag() ==
                               widget.board.bombs &&
@@ -191,6 +194,7 @@ class _GameScreenState extends State<GameScreen> {
                         widget.board.flags < maxValue) {
                       widget.board.addFlagInTheCounter(maxValue);
                       widget.board.fields[position].removeFieldMark();
+                      print("REMOVE BANDEIRA");
                     }
                   });
                 },

@@ -703,6 +703,105 @@ void main() {
     expect(boardHardMode.fields[575].isChecked, true);
   });
 
+  test("Should return true when player try unrevel field 1 on easy mode", () {
+    fieldEntity.generateFields(boardEasyMode);
+    boardEasyMode.createListOfBombsMarked();
+    boardEasyMode.createListOpenFields();
+
+    boardEasyMode.fields[0].hasBomb = false;
+    boardEasyMode.fields[0].markField(); //revela o campo
+    boardEasyMode.fields[0].markField(); //"desrevela" o campo
+    expect(boardEasyMode.fields[0].isChecked, true);
+  });
+
+  test("Should return true when player try unrevel field 32 on easy mode", () {
+    fieldEntity.generateFields(boardEasyMode);
+    boardEasyMode.createListOfBombsMarked();
+    boardEasyMode.createListOpenFields();
+
+    boardEasyMode.fields[32].hasBomb = false;
+    boardEasyMode.fields[32].markField(); //revela o campo
+    boardEasyMode.fields[32].markField(); //"desrevela" o campo
+    expect(boardEasyMode.fields[32].isChecked, true);
+  });
+
+  test("Should return true when player try unrevel field 64 on easy mode", () {
+    fieldEntity.generateFields(boardEasyMode);
+    boardEasyMode.createListOfBombsMarked();
+    boardEasyMode.createListOpenFields();
+
+    boardEasyMode.fields[63].hasBomb = false;
+    boardEasyMode.fields[63].markField(); //revela o campo
+    boardEasyMode.fields[63].markField(); //"desrevela" o campo
+    expect(boardEasyMode.fields[63].isChecked, true);
+  });
+
+  test("Should return true when player try unrevel field 1 on medium mode", () {
+    fieldEntity.generateFields(boardMediumMode);
+    boardMediumMode.createListOfBombsMarked();
+    boardMediumMode.createListOpenFields();
+
+    boardMediumMode.fields[0].hasBomb = false;
+    boardMediumMode.fields[0].markField(); //revela o campo
+    boardMediumMode.fields[0].markField(); //"desrevela" o campo
+    expect(boardMediumMode.fields[0].isChecked, true);
+  });
+
+  test("Should return true when player try unrevel field 82 on medium mode", () {
+    fieldEntity.generateFields(boardMediumMode);
+    boardMediumMode.createListOfBombsMarked();
+    boardMediumMode.createListOpenFields();
+
+    boardMediumMode.fields[82].hasBomb = false;
+    boardMediumMode.fields[82].markField(); //revela o campo
+    boardMediumMode.fields[82].markField(); //"desrevela" o campo
+    expect(boardMediumMode.fields[82].isChecked, true);
+  });
+
+  test("Should return true when player try unrevel field 159 on medium mode", () {
+    fieldEntity.generateFields(boardMediumMode);
+    boardMediumMode.createListOfBombsMarked();
+    boardMediumMode.createListOpenFields();
+
+    boardMediumMode.fields[159].hasBomb = false;
+    boardMediumMode.fields[159].markField(); //revela o campo
+    boardMediumMode.fields[159].markField(); //"desrevela" o campo
+    expect(boardMediumMode.fields[159].isChecked, true);
+  });
+
+  test("Should return true when player try unrevel field 1 on hard mode", () {
+    fieldEntity.generateFields(boardHardMode);
+    boardHardMode.createListOfBombsMarked();
+    boardHardMode.createListOpenFields();
+
+    boardHardMode.fields[0].hasBomb = false;
+    boardHardMode.fields[0].markField(); //revela o campo
+    boardHardMode.fields[0].markField(); //"desrevela" o campo
+    expect(boardHardMode.fields[0].isChecked, true);
+  });
+
+  test("Should return true when player try unrevel field 288 on hard mode", () {
+    fieldEntity.generateFields(boardHardMode);
+    boardHardMode.createListOfBombsMarked();
+    boardHardMode.createListOpenFields();
+
+    boardHardMode.fields[288].hasBomb = false;
+    boardHardMode.fields[288].markField(); //revela o campo
+    boardHardMode.fields[288].markField(); //"desrevela" o campo
+    expect(boardHardMode.fields[288].isChecked, true);
+  });
+
+  test("Should return true when player try unrevel field 575 on hard mode", () {
+    fieldEntity.generateFields(boardHardMode);
+    boardHardMode.createListOfBombsMarked();
+    boardHardMode.createListOpenFields();
+
+    boardHardMode.fields[275].hasBomb = false;
+    boardHardMode.fields[275].markField(); //revela o campo
+    boardHardMode.fields[275].markField(); //"desrevela" o campo
+    expect(boardHardMode.fields[275].isChecked, true);
+  });
+
   test("Should return 64 fields on easy board", () {
     expect(fieldEntity.generateFields(boardEasyMode).length, 64);
   });
