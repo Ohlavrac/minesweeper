@@ -345,8 +345,11 @@ void main() {
   testWidgets("Should return 64 fields widget on easy mode board",
       (widgetTester) async {
     MenuEntity menu = MenuEntity();
-    await widgetTester.pumpWidget(
-        MaterialApp(home: GameScreen(board: menu.initGame("easy"), columns: boardEasyMode.columns*2,)));
+    await widgetTester.pumpWidget(MaterialApp(
+        home: GameScreen(
+      board: menu.initGame("easy"),
+      columns: boardEasyMode.columns * 2,
+    )));
 
     await widgetTester.pump(const Duration(seconds: 1));
 
@@ -358,8 +361,11 @@ void main() {
   testWidgets("Should return 160 fields widget on medium mode board",
       (widgetTester) async {
     MenuEntity menu = MenuEntity();
-    await widgetTester.pumpWidget(
-        MaterialApp(home: GameScreen(board: menu.initGame("medium"), columns: boardMediumMode.columns*2,)));
+    await widgetTester.pumpWidget(MaterialApp(
+        home: GameScreen(
+      board: menu.initGame("medium"),
+      columns: boardMediumMode.columns * 2,
+    )));
 
     await widgetTester.pump(const Duration(seconds: 1));
 
@@ -371,8 +377,11 @@ void main() {
   testWidgets("Should return 576 fields widget on hard mode board",
       (widgetTester) async {
     MenuEntity menu = MenuEntity();
-    await widgetTester.pumpWidget(
-        MaterialApp(home: GameScreen(board: menu.initGame("hard"), columns: boardHardMode.columns*2,)));
+    await widgetTester.pumpWidget(MaterialApp(
+        home: GameScreen(
+      board: menu.initGame("hard"),
+      columns: boardHardMode.columns * 2,
+    )));
 
     await widgetTester.pump(const Duration(seconds: 1));
 
