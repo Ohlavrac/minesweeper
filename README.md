@@ -151,6 +151,9 @@
     - Verificar se o campo selecionado possui uma bomba [OK]
     - Verificar se o campo selecionado não possui uma bomba [OK]
     - Verificar se o jogo acabou quando a bomba foi selecionada [OK]
+    - Verificar se aparece a mensagem de fim de jogo quando o usuario seleciona uma bomba no modo facil [UI] [OK]
+    - Verificar se aparece a mensagem de fim de jogo quando o usuario seleciona uma bomba no modo medio [UI] [OK]
+    - Verificar se aparece a mensagem de fim de jogo quando o usuario seleciona uma bomba no modo dificil [UI] [OK]
 * Quando o USUARIO marcar um campo sem bombas deve ser revelado se existe alguma bomba adijacente a ele
     - Verificar se é retornado 0 caso o campo revelado não possua bombas vizinhas [OK]
     - Verificar se é retornado 1 caso o campo revelado possua possua bombas vizinhas [OK]

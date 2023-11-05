@@ -33,6 +33,16 @@ class BoardEntity {
         bombsMarkedFlag: bombsMarkedFlag);
   }
 
+  String getGamemode() {
+    if (bombs == 10) {
+      return "Facil";
+    } else if (bombs == 30) {
+      return "Medio";
+    } else {
+      return "Dificil";
+    }
+  }
+
   //MELHORAR ISSO
   String removeFlagFromCounter(int maxValue) {
     if (flags > 0 && flags <= maxValue) {

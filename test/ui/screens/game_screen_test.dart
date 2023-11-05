@@ -1507,4 +1507,70 @@ void main() {
     await widgetTester.pump(const Duration(seconds: 1));
     expect(find.widgetWithIcon(FieldWidget, Icons.flag), findsNothing);
   });
+
+  testWidgets(
+      "Should return gameover message when player select a bomb easy mode",
+      (widgetTester) async {
+    boardEasyMode.fields[0].hasBomb = true;
+    await widgetTester.pumpWidget(MaterialApp(
+        home: GameScreen(
+      board: boardEasyMode,
+    )));
+
+    final fieldFinder = find.byType(FieldWidget).first;
+
+    await widgetTester.pump(const Duration(seconds: 1));
+
+    //remove uma bandeira
+    await widgetTester.tap(fieldFinder);
+    await widgetTester.pumpAndSettle(const Duration(seconds: 1));
+
+    final gameovertext = find.text("FIM DE JOGO");
+    await widgetTester.pump(const Duration(seconds: 1));
+    expect(gameovertext, findsOneWidget);
+  });
+
+  testWidgets(
+      "Should return gameover message when player select a bomb medium mode",
+      (widgetTester) async {
+    boardMediumMode.fields[0].hasBomb = true;
+    await widgetTester.pumpWidget(MaterialApp(
+        home: GameScreen(
+      board: boardMediumMode,
+    )));
+
+    final fieldFinder = find.byType(FieldWidget).first;
+
+    await widgetTester.pump(const Duration(seconds: 1));
+
+    //remove uma bandeira
+    await widgetTester.tap(fieldFinder);
+    await widgetTester.pumpAndSettle(const Duration(seconds: 1));
+
+    final gameovertext = find.text("FIM DE JOGO");
+    await widgetTester.pump(const Duration(seconds: 1));
+    expect(gameovertext, findsOneWidget);
+  });
+
+  testWidgets(
+      "Should return gameover message when player select a bomb hard mode",
+      (widgetTester) async {
+    boardHardMode.fields[0].hasBomb = true;
+    await widgetTester.pumpWidget(MaterialApp(
+        home: GameScreen(
+      board: boardHardMode,
+    )));
+
+    final fieldFinder = find.byType(FieldWidget).first;
+
+    await widgetTester.pump(const Duration(seconds: 1));
+
+    //remove uma bandeira
+    await widgetTester.tap(fieldFinder);
+    await widgetTester.pumpAndSettle(const Duration(seconds: 1));
+
+    final gameovertext = find.text("FIM DE JOGO");
+    await widgetTester.pump(const Duration(seconds: 1));
+    expect(gameovertext, findsOneWidget);
+  });
 }

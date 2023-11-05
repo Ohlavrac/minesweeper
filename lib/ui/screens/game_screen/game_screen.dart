@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:minesweeper/domain/entities/board_entity.dart';
+import 'package:minesweeper/domain/entities/history_entity.dart';
 import 'package:minesweeper/domain/entities/menu_entity.dart';
 import 'package:minesweeper/ui/shared/app_colors.dart';
 import 'package:minesweeper/ui/shared/app_texts.dart';
@@ -53,6 +54,8 @@ class _GameScreenState extends State<GameScreen> {
     widget.board.timer = start;
     Color fieldColor = Colors.blue;
     MenuEntity menu = MenuEntity();
+
+    HistoryEntity history = HistoryEntity();
 
     return Scaffold(
       backgroundColor: AppColors.backgroundcolor,
@@ -112,6 +115,11 @@ class _GameScreenState extends State<GameScreen> {
                             builder: (context) {
                               return GameOverWidget(
                                 onPressed: () {
+                                  history.saveGameHistory(
+                                      widget.board.timer,
+                                      widget.board.getGamemode(),
+                                      DateTime.now(),
+                                      false);
                                   widget.board =
                                       menu.initGame(widget.board.bombs == 10
                                           ? "easy"
@@ -142,6 +150,11 @@ class _GameScreenState extends State<GameScreen> {
                           builder: (context) {
                             return GameWinWidget(
                               onPressed: () {
+                                history.saveGameHistory(
+                                      widget.board.timer,
+                                      widget.board.getGamemode(),
+                                      DateTime.now(),
+                                      true);
                                 widget.board =
                                     menu.initGame(widget.board.bombs == 10
                                         ? "easy"
@@ -177,6 +190,11 @@ class _GameScreenState extends State<GameScreen> {
                             builder: (context) {
                               return GameWinWidget(
                                 onPressed: () {
+                                  history.saveGameHistory(
+                                      widget.board.timer,
+                                      widget.board.getGamemode(),
+                                      DateTime.now(),
+                                      true);
                                   widget.board =
                                       menu.initGame(widget.board.bombs == 10
                                           ? "easy"
