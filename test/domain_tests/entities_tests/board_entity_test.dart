@@ -973,7 +973,8 @@ void main() {
     expect(boardEasyMode.getBoard().columns == 0, false);
   });
 
-  test("Should return false if the easy mode board has more than 8 columns", () {
+  test("Should return false if the easy mode board has more than 8 columns",
+      () {
     expect(boardEasyMode.getBoard().columns > 8, false);
   });
 
@@ -981,7 +982,8 @@ void main() {
     expect(boardMediumMode.getBoard().lines == 0, false);
   });
 
-  test("Should return false if the medium mode board has more than 10 lines", () {
+  test("Should return false if the medium mode board has more than 10 lines",
+      () {
     expect(boardMediumMode.getBoard().lines > 10, false);
   });
 
@@ -989,7 +991,8 @@ void main() {
     expect(boardMediumMode.getBoard().columns == 0, false);
   });
 
-  test("Should return false if the medium mode board has more than 16 columns", () {
+  test("Should return false if the medium mode board has more than 16 columns",
+      () {
     expect(boardMediumMode.getBoard().columns > 16, false);
   });
 
@@ -1005,7 +1008,44 @@ void main() {
     expect(boardHardMode.getBoard().columns == 0, false);
   });
 
-  test("Should return false if the hard mode board has more than 24 columns", () {
+  test("Should return false if the hard mode board has more than 24 columns",
+      () {
     expect(boardHardMode.getBoard().columns > 24, false);
+  });
+
+  test("Should return true if flags count equal 0 easy mode", () {
+    MenuEntity menu = MenuEntity();
+    BoardEntity board = menu.initGame("easy");
+
+    for (int c = 0; c < 10; c++) {
+      board.fields[c].markField();
+      board.removeFlagFromCounter(10);
+    }
+
+    expect(board.flags == 0, true);
+  });
+
+  test("Should return true if flags count equal 0 medium mode", () {
+    MenuEntity menu = MenuEntity();
+    BoardEntity board = menu.initGame("medium");
+
+    for (int c = 0; c < 30; c++) {
+      board.fields[c].markField();
+      board.removeFlagFromCounter(30);
+    }
+
+    expect(board.flags == 0, true);
+  });
+
+  test("Should return true if flags count equal 0 hard mode", () {
+    MenuEntity menu = MenuEntity();
+    BoardEntity board = menu.initGame("hard");
+
+    for (int c = 0; c < 100; c++) {
+      board.fields[c].markField();
+      board.removeFlagFromCounter(100);
+    }
+
+    expect(board.flags == 0, true);
   });
 }

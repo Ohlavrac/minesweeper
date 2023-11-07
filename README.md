@@ -18,31 +18,31 @@
     - Testar se foi criado um tabuleiro com o tamanho correto [OK]
     - Testar se foi criado um tabuleiro com o tamanho correto [UI] [OK]
     - Testar se o tabuleiro tem 8 linhas [OK]
-    - Testar se o tabuleiro não tem linhas
-    - Testar se o tabuleiro não tem mais de 8 linhas
+    - Testar se o tabuleiro não tem linhas [OK]
+    - Testar se o tabuleiro não tem mais de 8 linhas [OK]
     - Testar se o tabuleiro tem 8 colunas [OK]
-    - Testar se o tabuleiro não tem colunas
-    - Testar se o tabuleiro não tem mais de 8 colunas
+    - Testar se o tabuleiro não tem colunas [OK]
+    - Testar se o tabuleiro não tem mais de 8 colunas [OK]
     - Testar se o tabuleiro tem 64 campos [OK] 
 - 3 Tabuleiro do modo MÉDIO deve ser 10x16
     - Testar se foi criado um tabuleiro com o tamanho correto [OK]
     - Testar se foi criado um tabuleiro com o tamanho correto [UI] [OK]
     - Testar se o tabuleiro tem 10 linhas [OK]
-    - Testar se o tabuleiro não tem linhas
-    - Testar se o tabuleiro não tem mais de 10 linhas
+    - Testar se o tabuleiro não tem linhas [OK]
+    - Testar se o tabuleiro não tem mais de 10 linhas [OK]
     - Testar se o tabuleiro tem 16 colunas [OK]
-    - Testar se o tabuleiro não tem colunas
-    - Testar se o tabuleiro não tem mais de 16 colunas
+    - Testar se o tabuleiro não tem colunas [OK]
+    - Testar se o tabuleiro não tem mais de 16 colunas [OK]
     - Testar se o tabuleiro tem 160 campos [OK]
 - 4 Tabuleiro do modo DIFÍCIL deve ser 24x24
     - Testar se foi criado um tabuleiro com o tamanho correto [OK]
     - Testar se foi criado um tabuleiro com o tamanho correto [UI] [OK]
     - Testar se o tabuleiro tem 24 linhas [OK]
-    - Testar se o tabuleiro não tem linhas
-    - Testar se o tabuleiro não tem mais de 24 linhas
+    - Testar se o tabuleiro não tem linhas [OK]
+    - Testar se o tabuleiro não tem mais de 24 linhas [OK]
     - Testar se o tabuleiro tem 24 colunas [OK]
-    - Testar se o tabuleiro não tem colunas
-    - Testar se o tabuleiro não tem mais de 24 colunas
+    - Testar se o tabuleiro não tem colunas [OK]
+    - Testar se o tabuleiro não tem mais de 24 colunas [OK]
     - Testar se o tabuleiro tem 576 campos [OK]
 - 5 O tabuleiro deve ter 10 bombas no modo FÁCIL
 	- Testar se o tabuleiro possui 10 bombas [OK]
@@ -161,6 +161,11 @@
     - Testar se aparece a mensagem de fim de jogo quando o usuario seleciona uma bomba no modo medio [UI] [OK]
     - Testar se aparece a mensagem de fim de jogo quando o usuario seleciona uma bomba no modo dificil [UI] [OK]
 - 22 O USUÁRIO não deve conseguir por bandeira se o contador de bandeiras estiver zerado
+    - Testar se o contador de bandeiras esta vazio no modo facil [OK]
+    - Testar se o contador de bandeiras esta vazio no modo medio [OK]
+    - Testar se o contador de bandeiras esta vazio no modo dificil [OK]
+    - Testar e retornar um erro se o USUARIO tentar marcar uma bandeira quando o contador estiver em ZERO [OK]
+    - Testar e retornar um erro se o USUARIO tentar marcar uma bandeira quando o contador estiver abaixo de ZERO [OK]
 - 23 Quando USUÁRIO por uma bandeira em um campo a mesma deve ser removida do contador
     - Testar se foi removido uma bandeira do contador [OK]
     - Testar se o contador fica com 9 bandeiras no contador de bandeiras apos marcar um campo com uma bandeira no modo facil [UI] [OK]
@@ -169,8 +174,6 @@
     - Testar se o contador fica com 0 bandeiras no contador de bandeiras apos marcar 10 campos com uma bandeira no modo facil [UI] [OK]
     - Testar se o contador fica com 0 bandeiras no contador de bandeiras apos marcar 30 campos com uma bandeira no modo medio [UI] [OK]
     - Testar se o contador fica com 0 bandeiras no contador de bandeiras apos marcar 100 campos com uma bandeira no modo dificil [UI] [OK]
-    - Testar e retornar um erro se o USUARIO tentar marcar uma bandeira quando o contador estiver em ZERO [OK]
-    - Testar e retornar um erro se o USUARIO tentar marcar uma bandeira quando o contador estiver abaixo de ZERO [OK]
 - 24 Quando USUÁRIO remover uma bandeira de um campo a mesma deve ser adicionada ao contador
     - Testar se foi adicionada uma bandeira ao contador [OK]
     - Testar se o contador fica com 1 bandeiras no contador de bandeiras apos marcar 10 campos e depois remover uma bandeira no modo facil [UI] [OK]
