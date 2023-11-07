@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:minesweeper/box.dart';
 import 'package:minesweeper/domain/entities/history_entity.dart';

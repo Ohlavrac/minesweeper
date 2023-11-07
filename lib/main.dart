@@ -9,6 +9,5 @@ void main() async {
 
   Hive.registerAdapter(HistoryEntityAdapter());
   box = await Hive.openBox<HistoryEntity>("gamehistory");
-  print(box);
   runApp(const MyApp());
 }

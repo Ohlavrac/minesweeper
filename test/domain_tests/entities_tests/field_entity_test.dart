@@ -88,8 +88,6 @@ void main() {
     expect(field.generateFields(boardHardMode).length, 576);
   });
 
-  //VERIFICAR SE POSSO TESTAR OS ESTREMOS DE CADA TIPO DE TABULEIRO JA QUE DEPENDENDO CADA CAMPO DA BORDA PODE TER ENTRE 0 E 5 BOMBAS
-
   test("Should return 0 if the field dont have nearby bombs", () {
     field.generateFields(boardEasyMode);
     boardEasyMode.fields[7].neighboringPumps = 0;

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:minesweeper/ui/screens/game_screen/game_screen.dart';
+import 'package:minesweeper/ui/screens/history_screen/history_screen.dart';
 import 'package:minesweeper/ui/screens/menu_screen/menu_screen.dart';
 import 'package:minesweeper/ui/widgets/custom_menu_button_widget.dart';
 
 void main() {
+
   testWidgets(
       "Should return GameScreen when player select easy mode on menu screen",
       (widgetTester) async {
@@ -75,10 +77,9 @@ void main() {
     ));
     await widgetTester.pump();
 
-    final customButtomEasyMode =
-        find.widgetWithText(CustomMenuButtonWidget, "MEDIO");
+    final custombutton = find.widgetWithText(CustomMenuButtonWidget, "MEDIO");
 
-    expect(customButtomEasyMode, findsOneWidget);
+    expect(custombutton, findsOneWidget);
   });
 
   testWidgets("Verify if exist a hard mode button in the menu",
@@ -88,9 +89,20 @@ void main() {
     ));
     await widgetTester.pump();
 
-    final customButtomEasyMode =
-        find.widgetWithText(CustomMenuButtonWidget, "DIFICIL");
+    final custombutton = find.widgetWithText(CustomMenuButtonWidget, "DIFICIL");
 
-    expect(customButtomEasyMode, findsOneWidget);
+    expect(custombutton, findsOneWidget);
+  });
+
+  testWidgets("Verify if exist a history button", (widgetTester) async {
+    await widgetTester.pumpWidget(const MaterialApp(
+      home: MenuScreen(),
+    ));
+    await widgetTester.pump();
+
+    final historyButton =
+        find.widgetWithText(CustomMenuButtonWidget, "Historico");
+
+    expect(historyButton, findsOneWidget);
   });
 }

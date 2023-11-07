@@ -746,7 +746,7 @@ void main() {
     MenuEntity menu = MenuEntity();
     await widgetTester.pumpWidget(MaterialApp(
         home: GameScreen(
-      board: menu.initGame("medium"),
+      board: boardMediumMode,
     )));
 
     await widgetTester.pump(const Duration(seconds: 1));
@@ -813,7 +813,7 @@ void main() {
     MenuEntity menu = MenuEntity();
     await widgetTester.pumpWidget(MaterialApp(
         home: GameScreen(
-      board: menu.initGame("medium"),
+      board: boardMediumMode
     )));
 
     await widgetTester.pump(const Duration(seconds: 1));
@@ -1521,7 +1521,6 @@ void main() {
 
     await widgetTester.pump(const Duration(seconds: 1));
 
-    //remove uma bandeira
     await widgetTester.tap(fieldFinder);
     await widgetTester.pumpAndSettle(const Duration(seconds: 1));
 
@@ -1543,7 +1542,6 @@ void main() {
 
     await widgetTester.pump(const Duration(seconds: 1));
 
-    //remove uma bandeira
     await widgetTester.tap(fieldFinder);
     await widgetTester.pumpAndSettle(const Duration(seconds: 1));
 
@@ -1565,7 +1563,6 @@ void main() {
 
     await widgetTester.pump(const Duration(seconds: 1));
 
-    //remove uma bandeira
     await widgetTester.tap(fieldFinder);
     await widgetTester.pumpAndSettle(const Duration(seconds: 1));
 

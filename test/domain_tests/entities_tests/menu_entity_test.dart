@@ -25,11 +25,4 @@ void main() {
     int option = 55;
     expect(menu.selectGameMode(option), "error");
   });
-
-  /*test("Should return a Board for EASY mode", () {
-    MenuEntity menu = MenuEntity();
-    BoardEntity board = BoardEntity([], 8, 8);
-
-    expect(menu.createBoard("easy") == board, true);
-  });*/
 }

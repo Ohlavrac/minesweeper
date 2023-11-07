@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:minesweeper/domain/entities/board_entity.dart';
 import 'package:minesweeper/domain/entities/menu_entity.dart';
 import 'package:minesweeper/ui/screens/game_screen/game_screen.dart';
 import 'package:minesweeper/ui/screens/history_screen/history_screen.dart';

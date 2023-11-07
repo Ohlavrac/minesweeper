@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:minesweeper/domain/entities/board_entity.dart';
 import 'package:minesweeper/domain/entities/field_entity.dart';
+import 'package:minesweeper/domain/entities/menu_entity.dart';
 import 'package:minesweeper/domain/errors/flags_error.dart';
 
 void main() {
@@ -747,7 +748,8 @@ void main() {
     expect(boardMediumMode.fields[0].isChecked, true);
   });
 
-  test("Should return true when player try unrevel field 82 on medium mode", () {
+  test("Should return true when player try unrevel field 82 on medium mode",
+      () {
     fieldEntity.generateFields(boardMediumMode);
     boardMediumMode.createListOfBombsMarked();
     boardMediumMode.createListOpenFields();
@@ -758,7 +760,8 @@ void main() {
     expect(boardMediumMode.fields[82].isChecked, true);
   });
 
-  test("Should return true when player try unrevel field 159 on medium mode", () {
+  test("Should return true when player try unrevel field 159 on medium mode",
+      () {
     fieldEntity.generateFields(boardMediumMode);
     boardMediumMode.createListOfBombsMarked();
     boardMediumMode.createListOpenFields();
@@ -812,5 +815,197 @@ void main() {
 
   test("Should return 576 fields on hard board", () {
     expect(fieldEntity.generateFields(boardHardMode).length, 576);
+  });
+
+  test("Should return false if the board is not without bombs in easy mode",
+      () {
+    MenuEntity menu = MenuEntity();
+    BoardEntity board = menu.initGame("easy");
+    int numberofbombs = 0;
+
+    for (int c = 0; c < board.fields.length; c++) {
+      if (board.fields[c].hasBomb == true) {
+        numberofbombs++;
+      }
+    }
+
+    expect(numberofbombs == 0, false);
+  });
+
+  test("Should return false if the board has more than 10 bombs in easy mode",
+      () {
+    MenuEntity menu = MenuEntity();
+    BoardEntity board = menu.initGame("easy");
+    int numberofbombs = 0;
+
+    for (int c = 0; c < board.fields.length; c++) {
+      if (board.fields[c].hasBomb == true) {
+        numberofbombs++;
+      }
+    }
+
+    expect(numberofbombs > 10, false);
+  });
+
+  test("Should return false if the board is not without bombs in medium mode",
+      () {
+    MenuEntity menu = MenuEntity();
+    BoardEntity board = menu.initGame("medium");
+    int numberofbombs = 0;
+
+    for (int c = 0; c < board.fields.length; c++) {
+      if (board.fields[c].hasBomb == true) {
+        numberofbombs++;
+      }
+    }
+
+    expect(numberofbombs == 0, false);
+  });
+
+  test("Should return false if the board has more than 30 bombs in medium mode",
+      () {
+    MenuEntity menu = MenuEntity();
+    BoardEntity board = menu.initGame("medium");
+    int numberofbombs = 0;
+
+    for (int c = 0; c < board.fields.length; c++) {
+      if (board.fields[c].hasBomb == true) {
+        numberofbombs++;
+      }
+    }
+
+    expect(numberofbombs > 30, false);
+  });
+
+  test("Should return false if the board is not without bombs in hard mode",
+      () {
+    MenuEntity menu = MenuEntity();
+    BoardEntity board = menu.initGame("hard");
+    int numberofbombs = 0;
+
+    for (int c = 0; c < board.fields.length; c++) {
+      if (board.fields[c].hasBomb == true) {
+        numberofbombs++;
+      }
+    }
+
+    expect(numberofbombs == 0, false);
+  });
+
+  test("Should return false if the board has more than 100 bombs in hard mode",
+      () {
+    MenuEntity menu = MenuEntity();
+    BoardEntity board = menu.initGame("hard");
+    int numberofbombs = 0;
+
+    for (int c = 0; c < board.fields.length; c++) {
+      if (board.fields[c].hasBomb == true) {
+        numberofbombs++;
+      }
+    }
+
+    expect(numberofbombs > 100, false);
+  });
+
+  test(
+      "Should return false if there is no flag on the counter when the game starts in easy mode",
+      () {
+    MenuEntity menu = MenuEntity();
+    BoardEntity board = menu.initGame("easy");
+
+    expect(board.flags == 0, false);
+  });
+
+  test(
+      "Should return false if the flag number is not greater than 10 in easy mode",
+      () {
+    MenuEntity menu = MenuEntity();
+    BoardEntity board = menu.initGame("easy");
+
+    expect(board.flags > 10, false);
+  });
+
+  test(
+      "Should return false if there is no flag on the counter when the game starts in medium mode",
+      () {
+    MenuEntity menu = MenuEntity();
+    BoardEntity board = menu.initGame("medium");
+
+    expect(board.flags == 0, false);
+  });
+
+  test(
+      "Should return false if the flag number is not greater than 30 in medium mode",
+      () {
+    MenuEntity menu = MenuEntity();
+    BoardEntity board = menu.initGame("medium");
+
+    expect(board.flags > 30, false);
+  });
+
+  test(
+      "Should return false if there is no flag on the counter when the game starts in hard mode",
+      () {
+    MenuEntity menu = MenuEntity();
+    BoardEntity board = menu.initGame("hard");
+
+    expect(board.flags == 0, false);
+  });
+
+  test(
+      "Should return false if the flag number is not greater than 100 in hard mode",
+      () {
+    MenuEntity menu = MenuEntity();
+    BoardEntity board = menu.initGame("hard");
+
+    expect(board.flags > 100, false);
+  });
+
+  test("Should return false if the easy mode board has no lines", () {
+    expect(boardEasyMode.getBoard().lines == 0, false);
+  });
+
+  test("Should return false if the easy mode board has more than 8 lines", () {
+    expect(boardEasyMode.getBoard().lines > 8, false);
+  });
+
+  test("Should return false if the easy mode board has no columns", () {
+    expect(boardEasyMode.getBoard().columns == 0, false);
+  });
+
+  test("Should return false if the easy mode board has more than 8 columns", () {
+    expect(boardEasyMode.getBoard().columns > 8, false);
+  });
+
+  test("Should return false if the medium mode board has no lines", () {
+    expect(boardMediumMode.getBoard().lines == 0, false);
+  });
+
+  test("Should return false if the medium mode board has more than 10 lines", () {
+    expect(boardMediumMode.getBoard().lines > 10, false);
+  });
+
+  test("Should return false if the medium mode board has no columns", () {
+    expect(boardMediumMode.getBoard().columns == 0, false);
+  });
+
+  test("Should return false if the medium mode board has more than 16 columns", () {
+    expect(boardMediumMode.getBoard().columns > 16, false);
+  });
+
+  test("Should return false if the hard mode board has no lines", () {
+    expect(boardHardMode.getBoard().lines == 0, false);
+  });
+
+  test("Should return false if the hard mode board has more than 24 lines", () {
+    expect(boardHardMode.getBoard().lines > 24, false);
+  });
+
+  test("Should return false if the hard mode board has no columns", () {
+    expect(boardHardMode.getBoard().columns == 0, false);
+  });
+
+  test("Should return false if the hard mode board has more than 24 columns", () {
+    expect(boardHardMode.getBoard().columns > 24, false);
   });
 }

@@ -115,11 +115,7 @@ class _GameScreenState extends State<GameScreen> {
                             builder: (context) {
                               return GameOverWidget(
                                 onPressed: () {
-                                  history.saveGameHistory(
-                                      widget.board.timer,
-                                      widget.board.getGamemode(),
-                                      DateTime.now(),
-                                      false);
+                                  history.saveGameHistory(HistoryEntity(points: widget.board.timer, gamemode: widget.board.getGamemode(), createdAt: DateTime.now(), win: false));
                                   widget.board =
                                       menu.initGame(widget.board.bombs == 10
                                           ? "easy"
@@ -150,11 +146,7 @@ class _GameScreenState extends State<GameScreen> {
                           builder: (context) {
                             return GameWinWidget(
                               onPressed: () {
-                                history.saveGameHistory(
-                                      widget.board.timer,
-                                      widget.board.getGamemode(),
-                                      DateTime.now(),
-                                      true);
+                                history.saveGameHistory(HistoryEntity(points: widget.board.timer, gamemode: widget.board.getGamemode(), createdAt: DateTime.now(), win: true));
                                 widget.board =
                                     menu.initGame(widget.board.bombs == 10
                                         ? "easy"
@@ -190,11 +182,8 @@ class _GameScreenState extends State<GameScreen> {
                             builder: (context) {
                               return GameWinWidget(
                                 onPressed: () {
-                                  history.saveGameHistory(
-                                      widget.board.timer,
-                                      widget.board.getGamemode(),
-                                      DateTime.now(),
-                                      true);
+                                  print("WIN");
+                                  history.saveGameHistory(HistoryEntity(points: widget.board.timer, gamemode: widget.board.getGamemode(), createdAt: DateTime.now(), win: true));
                                   widget.board =
                                       menu.initGame(widget.board.bombs == 10
                                           ? "easy"

@@ -18,15 +18,8 @@ class HistoryEntity {
 
   HistoryEntity({this.points, this.gamemode, this.createdAt, this.win});
 
-  void saveGameHistory(
-      int points, String gamemode, DateTime createdAt, bool win) {
-    box.put(
-        "game$createdAt",
-        HistoryEntity(
-            points: points,
-            gamemode: gamemode,
-            createdAt: createdAt,
-            win: win));
+  void saveGameHistory(HistoryEntity history) {
+    box.put("game$createdAt", history);
   }
 
   HistoryEntity getGameHistory(int index) {
