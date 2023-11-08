@@ -779,7 +779,7 @@ void main() {
     MenuEntity menu = MenuEntity();
     await widgetTester.pumpWidget(MaterialApp(
         home: GameScreen(
-      board: menu.initGame("medium"),
+      board: boardMediumMode
     )));
 
     await widgetTester.pump(const Duration(seconds: 1));

@@ -35,27 +35,39 @@ class _HistoryScreenState extends State<HistoryScreen> {
                 }),
           ],
         ),
-        body: box.length == 0 ? const Center(child: Text("Historico Vazio", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),),) : ListView.builder(
-          itemCount: box.length,
-          itemBuilder: (context, index) {
-            var gameHistory = history.getGameHistory(index);
-            return Card(
-              child: ListTile(
-                title:
-                    Text("Game ${dateFormat.format(gameHistory.createdAt!)}"),
-                subtitle: Text(
-                    "Pontos: ${gameHistory.points} | Dificuldade: ${gameHistory.gamemode}"),
-                trailing: Text(
-                  gameHistory.win == true ? "Vitoria" : "Derrota",
+        body: box.length == 0
+            ? const Center(
+                child: Text(
+                  "Historico Vazio",
                   style: TextStyle(
-                      fontWeight: FontWeight.bold,
                       fontSize: 16,
-                      color:
-                          gameHistory.win == true ? Colors.green : Colors.red),
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
                 ),
-              ),
-            );
-          },
-        ));
+              )
+            : ListView.builder(
+                itemCount: box.length,
+                itemBuilder: (context, index) {
+                  var gameHistory = history.getGameHistory(index);
+                  print("$index | ${box.length}");
+                  return Card(
+                    child: ListTile(
+                      title: Text(
+                          "Game ${dateFormat.format(gameHistory.createdAt!)}"),
+                      subtitle: Text(
+                          "Pontos: ${gameHistory.points} | Dificuldade: ${gameHistory.gamemode}"),
+                      trailing: Text(
+                        gameHistory.win == true ? "Vitoria" : "Derrota",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                            color: gameHistory.win == true
+                                ? Colors.green
+                                : Colors.red),
+                      ),
+                    ),
+                  );
+                },
+              ));
   }
 }
